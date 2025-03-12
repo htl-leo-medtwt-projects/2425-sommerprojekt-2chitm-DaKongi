@@ -1,0 +1,144 @@
+body,
+html {
+    overflow: hidden;
+}
+
+nav{
+    position: unset;
+}
+
+main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+#time {
+    color: rgb(0, 240, 255);
+    font-size: 15rem;
+}
+
+#scramble {
+    font-size: 3rem;
+    margin: 0% auto;
+    padding: 0.5%;
+    width: 90vw;
+    height: 10vh;
+    background-color: rgb(0, 240, 255);
+    clip-path: polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#scrambleCon {
+    background-color: rgb(0, 143, 153);
+    width: 100vw;
+    margin: 0 auto;
+    height: 15vh;
+    outline: black solid 3px;
+    padding: 0.5%;
+}
+
+#sidebars{
+    width: 100vw;
+    height: 75vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+#sidebars>div{
+    height: 75vh;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.8rem;
+    outline: black solid 3px;
+}
+
+#stats {
+    width: 20vw;
+    height: 35vh;
+    background-color: rgb(0, 143, 153);
+    outline: black solid 3px;
+}
+
+#stats>div {
+    padding: 1% 0;
+    background-color: rgb(0, 240, 255);
+    border-bottom: black solid 3px;
+    height: 3vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#times {
+    background-color: rgb(0, 143, 153);
+    width: 20vw;
+    height: 40vh;
+    outline: black solid 3px;
+    overflow: auto;
+}
+
+#mode{
+    background-color: rgb(0, 143, 153);
+    height: 75vh;
+    display: grid;
+    grid-template-columns: auto auto;
+    overflow: auto;
+}
+#mode::-webkit-scrollbar {
+    display: none;
+}
+#mode img{
+    width: 90%;
+    padding: 5%;
+}
+#mode img:hover{
+    background-color: #f0f0f0;
+}
+
+#sidebarLeft h2 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#times::-webkit-scrollbar {
+    display: none;
+}
+
+#times>div {
+    padding: 1% 0;
+    background-color: rgb(0, 240, 255);
+    border-bottom: black solid 3px;
+    height: 3vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#context-menu {
+    position: absolute;
+    background: white;
+    border: 2px solid #ccc;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 5;
+    padding: 1%;
+}
+
+.menu-item {
+    padding: 0.35vw 0.525vw;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #f0f0f0;
+}

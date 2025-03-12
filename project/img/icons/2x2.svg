@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480.5">
+  <g>
+    <rect x="251.4" y="251.9" width="228.1" height="228.1"/>
+    <path d="M479,252.4v227.1h-227.1v-227.1h227.1M480,251.4h-229.1v229.1h229.1v-229.1h0Z"/>
+  </g>
+  <g>
+    <rect x=".5" y="251.9" width="228.1" height="228.1"/>
+    <path d="M228.1,252.4v227.1H1v-227.1h227.1M229.1,251.4H0v229.1h229.1v-229.1h0Z"/>
+  </g>
+  <g>
+    <rect x="251.4" y=".5" width="228.1" height="228.1"/>
+    <path d="M479,1v227.1h-227.1V1h227.1M480,0h-229.1v229.1h229.1V0h0Z"/>
+  </g>
+  <g>
+    <rect x=".5" y=".5" width="228.1" height="228.1"/>
+    <path d="M228.1,1v227.1H1V1h227.1M229.1,0H0v229.1h229.1V0h0Z"/>
+  </g>
+</svg>

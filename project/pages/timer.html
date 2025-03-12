@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC-Timer</title>
+    <script src="../script/timer.js" defer></script>
+    <link rel="icon" type="image/png" href="../img/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../style/general.css">
+    <link rel="stylesheet" href="../style/timer.css">
+</head>
+
+<body>
+    <nav>
+        <div id="navLogo" onclick="window.location.href='../index.html'">
+            <img src="../img/logo.png" alt="Master Cube Logo">
+            <p>MASTER CUBE</p>
+        </div>
+        <div id="navRight">
+            <div onclick="window.location.href='tutorials.html'">Tutorials</div>
+            <div onclick="window.location.href='timer.html'">Timer</div>
+            <div onclick="window.location.href='competitionArea.html'">Competitions</div>
+            <div onclick="window.location.href='shop.html'">Shop</div>
+            <div><i class="fa">&#xf013;</i></div>
+        </div>
+    </nav>
+
+    <div id="context-menu">
+        <div class="menu-item" id="menu-delete">Delete</div>
+        <div class="menu-item" id="menu-+2">+2</div>
+        <div class="menu-item" id="menu-dnf">DNF</div>
+    </div>
+
+    <div id="scrambleCon">
+        <div id="scramble">If you see this text, refresh the side</div>
+    </div>
+
+    <div id="sidebars">
+        <div id="sidebarLeft">
+            <div id="stats"></div>
+            <div id="times"></div>
+        </div>
+
+        <div id="sidebarRight">
+            <div id="mode">
+                <img src="../img/icons/2x2.svg" alt="2x2">
+                <img src="../img/icons/3x3.svg" alt="3x3">
+                <img src="../img/icons/4x4.svg" alt="4x4">
+                <img src="../img/icons/5x5.svg" alt="5x5">
+                <img src="../img/icons/6x6.svg" alt="6x6">
+                <img src="../img/icons/7x7.svg" alt="7x7">
+                <img src="../img/icons/skweb.svg" alt="skweb">
+                <img src="../img/icons/pyraminx.svg" alt="pyraminx">
+                <img src="../img/icons/megaminx.svg" alt="megaminx">
+                <img src="../img/icons/square-1.svg" alt="square-1">
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div id="time">00.00</div>
+    </main>
+</body>
+
+</html>

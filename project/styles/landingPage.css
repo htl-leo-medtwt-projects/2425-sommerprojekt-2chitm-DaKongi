@@ -1,0 +1,35 @@
+body,html{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#start{
+    width: 100vw;
+    height: 120vh;
+    background-image: url("../img/headerIMg.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+#headlines{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+h1{
+    font-size: 10rem;
+    color: white;
+    margin: 0;
+    text-transform: uppercase;
+}
+h2{
+    font-size: 3rem;
+    color: white;
+    margin: 0.2%;
+}
+header{
+    color: white;
+}
