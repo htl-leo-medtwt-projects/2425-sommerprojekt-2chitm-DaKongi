@@ -6,26 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MC-Timer</title>
     <script src="../script/timer.js" defer></script>
+    <script src="../script/general.js" defer></script>
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../style/general.css">
-    <link rel="stylesheet" href="../style/timer.css">
+    <link rel="stylesheet" href="../styles/general.css">
+    <link rel="stylesheet" href="../styles/timer.css">
 </head>
 
 <body>
-    <nav>
-        <div id="navLogo" onclick="window.location.href='../index.html'">
+    <div id="settings">
+        <div id="appearanceAll">
+            <div id="appearance">
+                <h2>Appearance</h2>
+                <div>
+                    <label for="primaryColor">Primary Color</label>
+                    <input type="color" name="primaryColor" id="inputPrimaryColor" value="#ADFCF9"
+                        onchange="saveSettings()">
+                </div>
+
+                <div>
+                    <label for="secondaryColor">Secondary Color</label>
+                    <input type="color" name="secondaryColor" id="inputSecondaryColor" value="#118A8A"
+                        onchange="saveSettings()">
+                </div>
+
+                <div>
+                    <label for="accentColor">Accent Color</label>
+                    <input type="color" name="accentColor" id="inputAccentColor" value="#F7A278"
+                        onchange="saveSettings()">
+                </div>
+
+                <div>
+                    <label for="bgColor">Background Color</label>
+                    <input type="color" name="bgColor" id="inputBgColor" value="#F7F7F7" onchange="saveSettings()">
+                </div>
+
+                <div>
+                    <label for="fontColor">Font Color</label>
+                    <input type="color" name="fontColor" id="inputFontColor" value="#02182B" onchange="saveSettings()">
+                </div>
+            </div>
+
+            <div id="appearanceWarning">
+                <p>Text Readability: <span id="readability">Good</span></p>
+            </div>
+        </div>
+
+        <div id="settings-menu">
+            <div id="appearance">Appearence</div>
+            <div id="general">General</div>
+            <div id="default" onclick="resetAppearanceToDefault()">Reset to Default</div>
+            <div id="close" onclick="toggleSettings()">Close</div>
+        </div>
+    </div>
+    <header>
+        <div id="logo" onclick="window.location.href='../index.html'">
             <img src="../img/logo.png" alt="Master Cube Logo">
-            <p>MASTER CUBE</p>
+            <p>Master Cube</p>
         </div>
-        <div id="navRight">
-            <div onclick="window.location.href='tutorials.html'">Tutorials</div>
-            <div onclick="window.location.href='timer.html'">Timer</div>
-            <div onclick="window.location.href='competitionArea.html'">Competitions</div>
-            <div onclick="window.location.href='shop.html'">Shop</div>
-            <div><i class="fa">&#xf013;</i></div>
-        </div>
-    </nav>
+        <nav>
+            <div id="navItem-tutorials" onclick="window.location.href='tutorials.html'">
+                Tutorials
+            </div>
+            <div id="navItem-timer" onclick="window.location.href='timer.html'">
+                Timer
+            </div>
+            <div id="navItem-competition" onclick="window.location.href='competitionArea.html'">
+                Competition
+            </div>
+            <div id="navItem-shop" onclick="window.location.href='shop.html'">
+                Shop Portal
+            </div>
+            <div id="navItem-settings" onclick="toggleSettings()">
+                &#9881;
+            </div>
+        </nav>
+    </header>
 
     <div id="context-menu">
         <div class="menu-item" id="menu-delete">Delete</div>

@@ -47,6 +47,8 @@ function saveSettings() {
     localStorage.setItem("user_prefernce_appearance", JSON.stringify(user_preference_appearance_json));
 
     updateUI();
+
+    updateReadability();
 }
 
 //load settings from local storage
@@ -74,12 +76,17 @@ function updateUI() {
     updateApperance();
 }
 
+function updateReadability() {
+    document.getElementById("readability").innerHTML = getContrastQuality(document.getElementById("inputFontColor").value, document.getElementById("inputBgColor").value);
+}
+
 function resetAppearanceToDefault() {
     user_preference_appearance_json = user_preference_appearance_json_default;
 
     localStorage.setItem("user_prefernce_appearance", JSON.stringify(user_preference_appearance_json));
 
     updateUI();
+    updateReadability();
 }
 
 //load settings when reloading the site
@@ -89,3 +96,42 @@ function getAppearanceOnSideload() {
     updateUI();
 }
 getAppearanceOnSideload(); //load settings on startup
+
+//checking for good contrast !!Written by BlackboxAI!!
+function hexToLuminance(hex) {
+    // Hex to RGB
+    let r = parseInt(hex.substring(1, 3), 16) / 255;
+    let g = parseInt(hex.substring(3, 5), 16) / 255;
+    let b = parseInt(hex.substring(5, 7), 16) / 255;
+
+    // apply luminance transformation
+    function transform(c) {
+        return (c <= 0.03928) ? (c / 12.92) : Math.pow((c + 0.055) / 1.055, 2.4);
+    }
+
+    let luminance = 0.2126 * transform(r) + 0.7152 * transform(g) + 0.0722 * transform(b);
+    return luminance;
+}
+
+function getContrastRatio(hex1, hex2) {
+    let lum1 = hexToLuminance(hex1);
+    let lum2 = hexToLuminance(hex2);
+
+    let brighter = Math.max(lum1, lum2);
+    let darker = Math.min(lum1, lum2);
+
+    return (brighter + 0.05) / (darker + 0.05);
+}
+
+function getContrastQuality(hex1, hex2) {
+    let contrast = getContrastRatio(hex1, hex2);
+    if (contrast >= 20) {
+        return "Excellent"; // perfect contrast
+    } else if (contrast >= 7.0) {
+        return "good"; // high contrast
+    } else if (contrast >= 4.5) {
+        return "medium"; // medium constrast
+    } else {
+        return "bad"; // low contrast
+    }
+}

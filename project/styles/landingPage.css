@@ -1,35 +1,176 @@
-body,html{
+:root {
+    --primary-color: #ADFCF9;
+    --secondary-color: #118A8A;
+    --accent-color: #F7A278;
+    --font-color: #02182B;
+    --background-color: #F7F7F7;
+    --font-family: jura:
+}
+
+body,
+html {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-#start{
-    width: 100vw;
-    height: 120vh;
-    background-image: url("../img/headerIMg.png");
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 
 
-#headlines{
+#headlines {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-h1{
+
+h1 {
     font-size: 10rem;
     color: white;
     margin: 0;
     text-transform: uppercase;
 }
-h2{
+
+#start h2 {
     font-size: 3rem;
     color: white;
     margin: 0.2%;
 }
-header{
+#headlines{
+    margin: 0.5%;
+}
+
+header {
     color: white;
+}
+
+section{
+    width: 96%;
+    height: 100vh;
+    margin: 0 2%;
+}
+
+#start {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../img/headerIMg.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+#landingPageHeader.scrolled {
+    color: var(--font-color);
+}
+
+/*What is Master Cube Slider*/
+.whatIsMastercubeBox {
+    width: 80vw;
+    height: 70vh;
+    margin: auto;
+    background-color: var(--primary-color);
+    border-radius: 25px;
+}
+
+.whatIsMastercubeBox h3{
+    font-size: 6rem;
+    padding: 5%;
+    padding-bottom: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.whatIsMastercubeBoxContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    height: 40%;
+    font-size: 5rem;
+}
+.whatIsMastercubeBoxContent i{
+    font-size: 10rem;
+}
+.whatIsMastercubeBoxContent p{
+    width: 60%;
+}
+
+/*Getting faster section*/
+#gettingFasterthreeCols {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 80vw;
+    margin: 5% auto;
+}
+.gettingFasterCol{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    margin: 7.5%;
+    padding: 2.5%;
+    border-radius: 25px;
+    transition: all 0.75s;
+}
+.gettingFasterCol:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.285);
+}
+.gettingFasterBox{
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    border-radius: 45px;
+}
+.gettingFasterBox h3{
+    font-family: jomhu;
+    font-size: 6rem;
+}
+
+.gettingFasterText p{
+    font-size: 2rem;
+    padding: 5%;
+}
+
+
+/*Learn overview section*/
+#learnMain{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+}
+#learnMainContent{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+#switchingImage{
+    width: 30%;
+    aspect-ratio: 1/1;
+    background-image: url('../img/cubeExample/cubic_cubes.png');
+    background-size: cover;
+    padding: 10%;
+    margin-right: 10%;
+}
+#cubeList{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    font-size: 3rem;
+}
+#cubeList p{
+    margin: 0;
+    padding: 2.5%;
+    height: 100%;
+    border-bottom: var(--secondary-color) 5px solid;
+    transition: all 0.5s ease;
+}
+#cubeList p:hover{
+    background-color: var(--accent-color);
 }

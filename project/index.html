@@ -7,7 +7,9 @@
     <title>Master Cube</title>
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="styles/landingPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script/general.js" defer></script>
+    <script src="script/landingPage.js" defer></script>
 </head>
 
 <body>
@@ -17,32 +19,35 @@
                 <h2>Appearance</h2>
                 <div>
                     <label for="primaryColor">Primary Color</label>
-                    <input type="color" name="primaryColor" id="inputPrimaryColor" value="#ADFCF9">
+                    <input type="color" name="primaryColor" id="inputPrimaryColor" value="#ADFCF9"
+                        onchange="saveSettings()">
                 </div>
 
                 <div>
                     <label for="secondaryColor">Secondary Color</label>
-                    <input type="color" name="secondaryColor" id="inputSecondaryColor" value="#118A8A">
+                    <input type="color" name="secondaryColor" id="inputSecondaryColor" value="#118A8A"
+                        onchange="saveSettings()">
                 </div>
 
                 <div>
                     <label for="accentColor">Accent Color</label>
-                    <input type="color" name="accentColor" id="inputAccentColor" value="#F7A278">
+                    <input type="color" name="accentColor" id="inputAccentColor" value="#F7A278"
+                        onchange="saveSettings()">
                 </div>
 
                 <div>
                     <label for="bgColor">Background Color</label>
-                    <input type="color" name="bgColor" id="inputBgColor" value="#F7F7F7">
+                    <input type="color" name="bgColor" id="inputBgColor" value="#F7F7F7" onchange="saveSettings()">
                 </div>
 
                 <div>
                     <label for="fontColor">Font Color</label>
-                    <input type="color" name="fontColor" id="inputFontColor" value="#02182B">
+                    <input type="color" name="fontColor" id="inputFontColor" value="#02182B" onchange="saveSettings()">
                 </div>
             </div>
-                
-            <div id="appearanceWarning">
 
+            <div id="appearanceWarning">
+                <p>Text Readability: <span id="readability">Good</span></p>
             </div>
         </div>
 
@@ -50,27 +55,27 @@
             <div id="appearance">Appearence</div>
             <div id="general">General</div>
             <div id="default" onclick="resetAppearanceToDefault()">Reset to Default</div>
-            <div id="close" onclick="toggleSettings();saveSettings()">Save & Exit</div>
+            <div id="close" onclick="toggleSettings()">Close</div>
         </div>
     </div>
 
     <section id="start">
-        <header>
-            <div id="logo">
+        <header id="landingPageHeader">
+            <div id="logo" onclick="window.location.href='#whatIsMastercube'">
                 <img src="img/logo.png" alt="Master Cube Logo">
                 <p>Master Cube</p>
             </div>
             <nav>
-                <div id="navItem-tutorials">
+                <div id="navItem-tutorials" onclick="window.location.href='pages/tutorials.html'">
                     Tutorials
                 </div>
-                <div id="navItem-timer">
+                <div id="navItem-timer" onclick="window.location.href='pages/timer.html'">
                     Timer
                 </div>
-                <div id="navItem-competition">
+                <div id="navItem-competition" onclick="window.location.href='pages/competitionArea.html'">
                     Competition
                 </div>
-                <div id="navItem-shop">
+                <div id="navItem-shop" onclick="window.location.href='pages/shop.html'">
                     Shop Portal
                 </div>
                 <div id="navItem-settings" onclick="toggleSettings()">
@@ -85,15 +90,100 @@
         </div>
     </section>
 
-    <section id="learning">
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-            sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    <section id="whatIsMastercube" class="content">
+        <h2>What is Mastercube?</h2>
+        <div class="whatIsMastercubeBox">
+            <h3>Tutorials</h3>
+            <div class="whatIsMastercubeBoxContent">
+                <span>&#11164</span>
+                <p>There's nothing you can't find there</p>
+                <i class="fa fa-book"></i>
+                <span>&#11166</span>
+            </div>
+        </div>
     </section>
 
+    <section id="gettingFaster" class="content">
+        <h2>Getting faster</h2>
+        <div id="gettingFasterthreeCols">
+            <div class="gettingFasterCol" onclick="window.location.href='pages/tutorials.html'">
+                <div class="gettingFasterBox">
+                    <h3>Learning</h3>
+                </div>
+                <div class="gettingFasterText">
+                    <p>Learning new techniques is the first step to improving your solve times and getting better at
+                        cubing. Check out the Tutorials section, pick a method, and start mastering it!</p>
+                </div>
+            </div>
+            <div class="gettingFasterCol" onclick="window.location.href='pages/timer.html'">
+                <div class="gettingFasterBox">
+                    <h3>Practice</h3>
+                </div>
+                <div class="gettingFasterText">
+                    <p>You won't become great in a single day, even if you learn the most advanced techniques and use
+                        the best cube available. The key is practice—there's no such thing as too much of it!</p>
+                </div>
+            </div>
+            <div class="gettingFasterCol" onclick="window.location.href='pages/competitionArea.html'">
+                <div class="gettingFasterBox">
+                    <h3>Compete</h3>
+                </div>
+                <div class="gettingFasterText">
+                    <p>Once you've reached a solid time, start competing against others—this will keep you motivated,
+                        challenge your skills, and push you to get even faster!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="learn" class="content">
+        <h2>Learn</h2>
+
+        <div id="learnMain">
+            <div id="buttonCon">
+                <div class="button">
+                    Tutorials >
+                </div>
+            </div>
+            <div id="learnMainContent">
+                <div id="switchingImage"></div>
+
+                <div id="cubeList">
+                    <p onmouseover="changeExampleImage('cubic_cubes')">Cubic Cubes</p>
+                    <p onmouseover="changeExampleImage('pyraminx')">Pyraminx</p>
+                    <p onmouseover="changeExampleImage('megaminx')">Megaminx</p>
+                    <p onmouseover="changeExampleImage('skweb')">Skweb</p>
+                    <p onmouseover="changeExampleImage('square-1')">Square-1</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div id="footerLeft">
+            <div class="footerVertical">
+                <h4>Mastercube</h4>
+                <div id="socialMediaIcons">
+                    some social stuff
+                </div>
+            </div>
+        </div>
+
+        <div id="footerRight">
+            <div class="footerVertical">
+                <h4>Tutorials</h4>
+                <a href="pages/tutorials.html">All Tutorials</a>
+                <a href="pages/tutorials.html">WCA</a>
+                <a href="pages/tutorials.html">CFOP - Trainer</a>
+            </div>
+            <div class="footerVertical">
+                <h4>Other Pages</h4>
+                <a href="pages/timer.html">Timer</a>
+                <a href="pages/competitionArea.html">Competition</a>
+                <a href="pages/shop.html">Shop Portal</a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
