@@ -2,7 +2,7 @@ let settingsVisible = false;
 let settings = document.getElementById("settings");
 
 const user_preference_appearance_json_default = {
-    "primary-color": "#ADFCF9",
+    "primary-color": "#00FFFF",
     "secondary-color": "#118A8A",
     "accent-color": "#F7A278",
     "background-color": "#F7F7F7",
@@ -10,8 +10,35 @@ const user_preference_appearance_json_default = {
     "font-family": "jura"
 }
 
+const user_preference_appearance_json_dark = {
+    "primary-color": "#00c2c2",
+    "secondary-color": "#003fd1",
+    "accent-color": "#00ffee",
+    "background-color": "#000000",
+    "font-color": "#ffffff",
+    "font-family": "jura"
+}
+
+const user_preference_appearance_json_unicorn = {
+    "primary-color": "#fc42ff",
+    "secondary-color": "#8f008a",
+    "accent-color": "#b30000",
+    "background-color": "#ff0088",
+    "font-color": "#ffffff",
+    "font-family": "jura"
+}
+
+const user_preference_appearance_json_wood = {
+    "primary-color": "#ad4e00",
+    "secondary-color": "#ff7300",
+    "accent-color": "#ffdd00",
+    "background-color": "#572300",
+    "font-color": "#ffffff",
+    "font-family": "jura"
+}
+
 let user_preference_appearance_json = {
-    "primary-color": "#ADFCF9",
+    "primary-color": "#00FFFF",
     "secondary-color": "#118A8A",
     "accent-color": "#F7A278",
     "background-color": "#F7F7F7",
@@ -57,6 +84,7 @@ function getAppearance() {
 }
 
 //set the new css propertys
+let currentPreset = "default";
 function updateApperance() {
     //update the css
     for (let key in user_preference_appearance_json) {
@@ -69,6 +97,7 @@ function updateApperance() {
     document.getElementById("inputSecondaryColor").value = user_preference_appearance_json["secondary-color"];
     document.getElementById("inputAccentColor").value = user_preference_appearance_json["accent-color"];
     document.getElementById("inputBgColor").value = user_preference_appearance_json["background-color"];
+    document.getElementById("inputPreset").value = currentPreset;
 }
 
 function updateUI() {
@@ -80,8 +109,34 @@ function updateReadability() {
     document.getElementById("readability").innerHTML = getContrastQuality(document.getElementById("inputFontColor").value, document.getElementById("inputBgColor").value);
 }
 
-function resetAppearanceToDefault() {
-    user_preference_appearance_json = user_preference_appearance_json_default;
+function loadPreset(toDefault = false) {
+    if (toDefault) {
+        user_preference_appearance_json = user_preference_appearance_json_default;
+    } else {
+        currentPreset = document.getElementById("inputPreset").value;
+        switch (document.getElementById("inputPreset").value) {
+            case "default": {
+                user_preference_appearance_json = user_preference_appearance_json_default;
+                break;
+            }
+            case "dark": {
+                user_preference_appearance_json = user_preference_appearance_json_dark;
+                break;
+            }
+            case "pink": {
+                user_preference_appearance_json = user_preference_appearance_json_unicorn;
+                break;
+            }
+            case "wood":{
+                user_preference_appearance_json = user_preference_appearance_json_wood;
+                break;
+            }
+            default: {
+                user_preference_appearance_json = user_preference_appearance_json_default;
+            }
+        }
+    }
+
 
     localStorage.setItem("user_prefernce_appearance", JSON.stringify(user_preference_appearance_json));
 

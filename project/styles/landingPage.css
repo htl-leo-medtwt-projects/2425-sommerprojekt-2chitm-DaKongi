@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #ADFCF9;
+    --primary-color: #00FFFF;
     --secondary-color: #118A8A;
     --accent-color: #F7A278;
     --font-color: #02182B;
@@ -26,6 +26,7 @@ h1 {
     color: white;
     margin: 0;
     text-transform: uppercase;
+    text-shadow: #02182B 5px 10px 5px;
 }
 
 #start h2 {

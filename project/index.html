@@ -18,6 +18,16 @@
             <div id="appearance">
                 <h2>Appearance</h2>
                 <div>
+                    <label for="preset">Select Preset</label>
+                    <select name="preset" id="inputPreset" onchange="loadPreset()">
+                        <option value="custom">Custom</option>
+                        <option value="default">Default</option>
+                        <option value="dark">Dark</option>
+                        <option value="pink">Pink fluffy unicorn</option>
+                        <option value="wood">Wood</option>
+                    </select>
+                </div>
+                <div>
                     <label for="primaryColor">Primary Color</label>
                     <input type="color" name="primaryColor" id="inputPrimaryColor" value="#ADFCF9"
                         onchange="saveSettings()">
@@ -37,12 +47,14 @@
 
                 <div>
                     <label for="bgColor">Background Color</label>
-                    <input type="color" name="bgColor" id="inputBgColor" value="#F7F7F7" onchange="saveSettings()">
+                    <input type="color" name="bgColor" id="inputBgColor" value="#F7F7F7"
+                        onchange="saveSettings()">
                 </div>
 
                 <div>
                     <label for="fontColor">Font Color</label>
-                    <input type="color" name="fontColor" id="inputFontColor" value="#02182B" onchange="saveSettings()">
+                    <input type="color" name="fontColor" id="inputFontColor" value="#02182B"
+                        onchange="saveSettings()">
                 </div>
             </div>
 
@@ -54,7 +66,7 @@
         <div id="settings-menu">
             <div id="appearance">Appearence</div>
             <div id="general">General</div>
-            <div id="default" onclick="resetAppearanceToDefault()">Reset to Default</div>
+            <div id="default" onclick="loadPreset(true)">Reset to Default</div>
             <div id="close" onclick="toggleSettings()">Close</div>
         </div>
     </div>

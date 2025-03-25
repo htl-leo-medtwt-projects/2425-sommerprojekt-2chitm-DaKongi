@@ -8,14 +8,14 @@
     src: url(../fonts/Jomhuria-Regular.ttf);
 }
 
-/*CSS-variables learned from Stack Overflow*/
 :root {
-    --primary-color: #ADFCF9;
+    --primary-color: #00FFFF;
     --secondary-color: #118A8A;
     --accent-color: #F7A278;
     --font-color: #02182B;
     --background-color: #F7F7F7;
-    --font-family: jura:
+    --font-family: jura;
+    --border-radius: 25px;
 }
 
 /*general Settings*/
@@ -47,7 +47,7 @@ a:hover{
     color: var(--background-color);
     width: 10vw;
     aspect-ratio: 2/0.75;
-    border-radius: 25px;
+    border-radius: var(--border-radius);
     transition: all 0.3s ease;
     display: flex;
     justify-content: center;
@@ -117,6 +117,9 @@ nav>div:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
+b{
+    font-weight: bold;
+}
 /*Settings*/
 #settings {
     width: 60vw;
@@ -129,6 +132,7 @@ nav>div:hover {
     display: none;
     border: var(--secondary-color) 5px solid;
     border-radius: 20px;
+    z-index: 1000;
 }
 
 #settings-menu {

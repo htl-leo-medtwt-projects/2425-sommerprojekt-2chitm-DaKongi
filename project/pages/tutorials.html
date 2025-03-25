@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorials</title>
     <link rel="icon" type="image/png" href="../img/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../styles/general.css">
     <link rel="stylesheet" href="../styles/tutorials.css">
     <script src="../script/general.js" defer></script>
+    <script src="../script/tutorials.js" defer></script>
 </head>
+
 <body>
     <div id="settings">
         <div id="appearanceAll">
@@ -68,7 +72,7 @@
             <div id="navItem-timer" onclick="window.location.href='timer.html'">
                 Timer
             </div>
-            <div id="navItem-competition"onclick="window.location.href='competitionArea.html'">
+            <div id="navItem-competition" onclick="window.location.href='competitionArea.html'">
                 Competition
             </div>
             <div id="navItem-shop" onclick="window.location.href='shop.html'">
@@ -83,6 +87,80 @@
 
     <main>
         <h1 id="tutorialsHeadline">Tutorials</h1>
+        <hr>
+        <div id="startInfo">
+            <i class="fa">&#xf05a;</i>
+            <p>New to cubing? Master Cube recommends the Layer-by-Layer Method (LBL) for solving the 3x3.</p>
+        </div>
+
+        <div id="tutorialGrid">
+            <div class="tutorial-item" id="2x2LP">
+                <img src="../img/icons/2x2.svg" alt="2x2">
+                <p>LP</p>
+            </div>
+            <div class="tutorial-item" id="3x3LBL">
+                <img src="../img/icons/3x3.svg" alt="3x3">
+                <p>LBL</p>
+            </div>
+            <div class="tutorial-item" id="3x3CFOP">
+                <img src="../img/icons/3x3.svg" alt="3x3">
+                <p>CFOP</p>
+            </div>
+            <div class="tutorial-item" id="3x3ROUX">
+                <img src="../img/icons/3x3.svg" alt="3x3">
+                <p>ROUX</p>
+            </div>
+            <div class="tutorial-item" id="4x4YAU">
+                <img src="../img/icons/4x4.svg" alt="4x4">
+                <p>YAU</p>
+            </div>
+            <div class="tutorial-item" id="5x5YAU">
+                <img src="../img/icons/5x5.svg" alt="5x5">
+                <p>YAU</p>
+            </div>
+            <div class="tutorial-item" id="6x6HOJA">
+                <img src="../img/icons/6x6.svg" alt="6x6">
+                <p>HOJA</p>
+            </div>
+            <div class="tutorial-item" id="7x7HOJA">
+                <img src="../img/icons/7x7.svg" alt="7x7">
+                <p>HOJA</p>
+            </div>
+            <div class="tutorial-item" id="skewbSB">
+                <img src="../img/icons/skweb.svg" alt="skewb">
+                <p>SB</p>
+            </div>
+            <div class="tutorial-item" id="pyraminxPB">
+                <img src="../img/icons/pyraminx.svg" alt="pyraminx">
+                <p>PB</p>
+            </div>
+            <div class="tutorial-item" id="megaminxMQL">
+                <img src="../img/icons/megaminx.svg" alt="megaminx">
+                <p>MQL</p>
+            </div>
+            <div class="tutorial-item" id="square-1YAOP">
+                <img src="../img/icons/square-1.svg" alt="square-1">
+                <p>YAOP</p>
+            </div>
+        </div>
+
+        <!-------------------->
+        <!--Actual Tutorials-->
+        <!-------------------->
+
+        <section id="tutorial2x2" class="tutorialBox">
+            <hr>
+            <h1>2x2 LP</h1>
+            <hr>
+
+            <div class="tutorialStartInfo">
+                <div class="tutorialDifficultyInfo easy">EASY</div>
+                <div class="tutorialRequired">you should already know: <br> <b>Nothing<b></b></div>
+                <div class="tutorialBuy">Buy a 2x2</div>
+            </div>
+
+        </section>
     </main>
 </body>
+
 </html>
