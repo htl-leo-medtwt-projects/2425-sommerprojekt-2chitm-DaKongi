@@ -83,8 +83,14 @@ function getAppearance() {
     user_preference_appearance_json = JSON.parse(localStorage.getItem("user_prefernce_appearance"));
 }
 
-//set the new css propertys
+//change preset to custom when changing spcific color
+function setToCustom(){
+    localStorage.setItem("currentPreset","custom");
+}
+
+
 let currentPreset = "default";
+//set the new css propertys
 function updateApperance() {
     //update the css
     for (let key in user_preference_appearance_json) {
@@ -101,6 +107,13 @@ function updateApperance() {
 }
 
 function updateUI() {
+    //load preset
+    if (!localStorage.getItem("currentPreset")) {
+        localStorage.setItem("currentPreset",currentPreset); 
+    } else {
+        currentPreset = localStorage.getItem("currentPreset");
+        localStorage.setItem("currentPreset",currentPreset); 
+    }
     getAppearance();
     updateApperance();
 }
@@ -112,8 +125,9 @@ function updateReadability() {
 function loadPreset(toDefault = false) {
     if (toDefault) {
         user_preference_appearance_json = user_preference_appearance_json_default;
+        localStorage.setItem("currentPreset","default");
     } else {
-        currentPreset = document.getElementById("inputPreset").value;
+        localStorage.setItem("currentPreset",document.getElementById("inputPreset").value); 
         switch (document.getElementById("inputPreset").value) {
             case "default": {
                 user_preference_appearance_json = user_preference_appearance_json_default;
@@ -127,7 +141,7 @@ function loadPreset(toDefault = false) {
                 user_preference_appearance_json = user_preference_appearance_json_unicorn;
                 break;
             }
-            case "wood":{
+            case "wood": {
                 user_preference_appearance_json = user_preference_appearance_json_wood;
                 break;
             }
