@@ -3,10 +3,6 @@ html {
     overflow: hidden;
 }
 
-nav{
-    position: unset;
-}
-
 main {
     position: absolute;
     top: 0;
