@@ -94,7 +94,7 @@
         </div>
 
         <div id="tutorialGrid">
-            <div class="tutorial-item" id="2x2LP">
+            <div class="tutorial-item" id="2x2LP" onclick="document.getElementById('tutorial2x2').scrollIntoView()">
                 <img src="../img/icons/2x2.svg" alt="2x2">
                 <p>LP</p>
             </div>
@@ -151,12 +151,45 @@
         <section id="tutorial2x2" class="tutorialBox">
             <hr>
             <h1>2x2 LP</h1>
-            <hr>
 
             <div class="tutorialStartInfo">
                 <div class="tutorialDifficultyInfo easy">EASY</div>
-                <div class="tutorialRequired">you should already know: <br> <b>Nothing<b></b></div>
-                <div class="tutorialBuy">Buy a 2x2</div>
+                <div class="tutorialRequired">you should already know: <br> <b>Nothing</b></div>
+                <div class="tutorialBuy hoverItem">Buy a 2x2 ></div>
+            </div>
+
+            <div class="tutorialText">
+                <p>The LP (Layer Permutation) Method is a simple yet effective approach to solving the 2x2 Rubik's Cube.
+                    It's easy to learn, and with a bit of practice, you'll be able to solve the cube in under a minute!
+                </p>
+            </div>
+
+            <div class="tutorialStartDisclaimer">
+                <i class="fa">&#xf05a;</i>
+                <p>If you're already proficient at solving a 3x3 quickly, you can apply the same method to a 2x2 while
+                    simply ignoring the center layers, as they don't exist. This approach is likely faster and
+                    eliminates the need to learn an entirely new method.</p>
+            </div>
+
+            <div class="tutorialStepBox">
+                <h2 class="tutorialSteps">Step 1</h2>
+
+                <div class="tutorialText">
+                    <p>Start by solving the white face while ensuring that the side colors of the pieces align
+                        correctly. To do this, position the piece you want to insert directly above its target location.
+                        Then, insert it using </p>
+                </div>
+
+                <div class="tutorialAlg">
+                    <p>R</p>
+                    <p>U</p>
+                    <p>R'</p>
+                    <p>U'</p>
+                </div>
+
+                <div class="tutorialAlgImg">
+                    
+                </div>
             </div>
 
         </section>
