@@ -152,7 +152,7 @@ h1 {
     background-color: var(--accent-color);
 }
 
-.tutorialStartDisclaimer{
+.tutorialInfoBox{
     width: 90%;
     min-height: 10vh;
     border-top: var(--secondary-color) 5px solid;
@@ -162,12 +162,12 @@ h1 {
     justify-content: space-evenly;
     align-items: center;
 }
-.tutorialStartDisclaimer>i{
+.tutorialInfoBox>i{
     font-size: 7rem;
     color: var(--accent-color);
     text-align: center;
 }
-.tutorialStartDisclaimer>p{
+.tutorialInfoBox>p{
     font-size: 1.5rem;
     width: 60%;
     text-align: center;
@@ -175,7 +175,7 @@ h1 {
 
 .tutorialText{
     width: 90%;
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin: 2% auto;
 }
 .tutorialStepBox{
@@ -202,4 +202,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.tutorialAlgImg>img{
+    width: 10vw;
 }
