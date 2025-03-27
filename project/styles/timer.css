@@ -1,3 +1,14 @@
+:root {
+    --primary-color: #00FFFF;
+    --secondary-color: #118A8A;
+    --accent-color: #F7A278;
+    --font-color: #02182B;
+    --background-color: #F7F7F7;
+    --font-family: jura;
+    --border-radius: 25px;
+}
+
+
 body,
 html {
     overflow: hidden;
@@ -16,7 +27,7 @@ main {
 }
 
 #time {
-    color: rgb(0, 240, 255);
+    color: var(--primary-color);
     font-size: 15rem;
 }
 
