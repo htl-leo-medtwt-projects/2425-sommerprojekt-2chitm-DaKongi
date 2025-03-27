@@ -225,7 +225,7 @@ footer a{
 .footerVertical{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width: 20%;
     height: 100%;
@@ -240,4 +240,10 @@ footer a{
     display: flex;
     justify-content: space-around;
     width: 40%;
+}
+#socialMediaIcons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }

@@ -9,6 +9,9 @@ let timerRunning = false;
 
 let currentMode = "3x3"
 
+const originalFontColor = document.documentElement.style.getPropertyValue("--font-color");
+const originalSecondColor = document.documentElement.style.getPropertyValue("--secondary-color");
+
 function startTimer() {
     milliseconds = 0;
     timerRunning = true;
@@ -54,6 +57,7 @@ document.addEventListener("keydown", function (event) {
         } else {
             if (!turnedRed) {
                 document.getElementById("time").style.color = "red";
+                document.getElementById("time").style.boxShadow = "0 0 50px 35px red";
                 turnedRed = true;
             }
 
@@ -61,6 +65,7 @@ document.addEventListener("keydown", function (event) {
             colorChangeTimer = setTimeout(() => {
                 if (Date.now() - keyDownTime >= 500) {
                     document.getElementById("time").style.color = "green";
+                    document.getElementById("time").style.boxShadow = " 0 0 50px 35px green";
                 }
             }, 500);
         }
@@ -70,7 +75,8 @@ document.addEventListener("keydown", function (event) {
 document.addEventListener("keyup", function (event) {
     if (event.key === " ") {
         turnedRed = false;
-        document.getElementById("time").style.color = "rgb(0, 240, 255)";
+        document.getElementById("time").style.color = originalFontColor;
+        document.getElementById("time").style.boxShadow = " 0 0 50px 35px" + originalSecondColor;
 
         if (keyDownTime !== null) {
             let elapsedTime = Date.now() - keyDownTime;

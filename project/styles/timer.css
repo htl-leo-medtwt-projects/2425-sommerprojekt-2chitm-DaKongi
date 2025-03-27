@@ -27,8 +27,17 @@ main {
 }
 
 #time {
-    color: var(--primary-color);
+    width: 20vw;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 50px 35px var(--secondary-color);
+    color: var(--font-color);
     font-size: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7rem;
 }
 
 #scramble {
