@@ -158,3 +158,16 @@ main {
 .menu-item:hover {
     background: #f0f0f0;
 }
+
+.pulsing{
+    animation: pulse alternate 0.5s infinite ease;
+}
+
+@keyframes pulse {
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1.05);
+    }
+}

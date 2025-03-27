@@ -21,6 +21,7 @@ function startTimer() {
             document.getElementById("time").innerHTML = formatMilliseconds(milliseconds);
         }, 10);
     }
+    document.getElementById("time").classList.add("pulsing");
 }
 
 function stopTimer() {
@@ -29,7 +30,9 @@ function stopTimer() {
         clearInterval(intervalId);
         intervalId = null;
     }
-    document.getElementById("scramble").innerHTML = generateScramble();
+    //document.getElementById("scramble").innerHTML = generateScramble();
+
+    document.getElementById("time").classList.remove("pulsing");
 
     saveTime();
     showTimes();
@@ -76,7 +79,7 @@ document.addEventListener("keyup", function (event) {
     if (event.key === " ") {
         turnedRed = false;
         document.getElementById("time").style.color = originalFontColor;
-        document.getElementById("time").style.boxShadow = " 0 0 50px 35px" + originalSecondColor;
+        document.getElementById("time").style.boxShadow = " 0 0 50px 35px" + document.documentElement.style.getPropertyValue("--secondary-color");
 
         if (keyDownTime !== null) {
             let elapsedTime = Date.now() - keyDownTime;
