@@ -22,23 +22,30 @@ function startTimer() {
         }, 10);
     }
 
+    //everything except the time slides outside of the screen
     let timeElement = document.getElementById("time");
     let timeListElement = document.getElementById("timeList");
     let menuElement = document.getElementById("menu");
+    let headerElement = document.getElementById("header");
 
     timeListElement.style.animation = "none";
     timeElement.style.animation = "none";
     menuElement.style.animation = "none";
+    headerElement.style.animation = "none";
     void timeListElement.offsetWidth;
+    void menuElement.offsetWidth;
+    void headerElement.offsetWidth; 
 
     timeElement.style.animation = "pulse alternate 0.5s infinite ease";
     timeListElement.style.animation = "slideLeft 0.5s ease-out 1";
     menuElement.style.animation = "slideDown 0.5s ease-out 1";
+    headerElement.style.animation = "slideUp 0.5s ease-out 1"
 
     setTimeout(() => {
         timeListElement.style.marginLeft = "-25%";
         menuElement.style.marginBottom = "-25%";
-    }, 500);
+        headerElement.style.top = "-20vh";
+    }, 450); //-50ms to prevent too late trigger
 }
 
 function stopTimer() {
@@ -48,22 +55,29 @@ function stopTimer() {
         intervalId = null;
     }
 
+    //elements slide back in
     let timeElement = document.getElementById("time");
     let timeListElement = document.getElementById("timeList");
     let menuElement = document.getElementById("menu");
+    let headerElement = document.getElementById("header");
 
     timeElement.style.animation = "none";
     timeListElement.style.animation = "none";
     menuElement.style.animation = "none";
+    headerElement.style.animation = "none";
     void timeListElement.offsetWidth;
+    void menuElement.offsetWidth;
+    void headerElement.offsetWidth; 
 
-    timeListElement.style.animation = "slideLeft 0.5s ease-out 1 reverse";
-    menuElement.style.animation = "slideUp 0.5s ease-out 1";
+    timeListElement.style.animation = "slideLeft 0.3s ease-out 1 reverse";
+    menuElement.style.animation = "slideDown 0.3s ease-out 1 reverse";
+    headerElement.style.animation = "slideUp 0.3s ease-out 1 reverse"
 
     setTimeout(() => {
         timeListElement.style.marginLeft = "2%";
         menuElement.style.marginBottom = "2%";
-    }, 500);
+        headerElement.style.top = "0";
+    }, 250); //-50ms to prevent too late trigger
 
     saveTime();
     showTimes();

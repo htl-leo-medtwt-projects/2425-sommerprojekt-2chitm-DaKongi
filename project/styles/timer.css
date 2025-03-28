@@ -38,6 +38,7 @@ main {
     justify-content: center;
     align-items: center;
     font-size: 7rem;
+    font-family: monospace;
 }
 
 #scramble {
@@ -145,5 +146,13 @@ main {
     }
     to{
         margin-bottom: -25vw;
+    }
+}
+@keyframes slideUp {
+    from{
+        top: 0;
+    }
+    to{
+        top: -20vh;
     }
 }
