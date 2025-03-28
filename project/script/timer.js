@@ -12,6 +12,11 @@ let currentMode = "3x3"
 const originalFontColor = document.documentElement.style.getPropertyValue("--font-color");
 const originalSecondColor = document.documentElement.style.getPropertyValue("--secondary-color");
 
+//create time array, if it doesn't exist
+if (localStorage.getItem(`times${currentMode}`) == null) {
+    localStorage.setItem(`times${currentMode}`, JSON.stringify([]));
+}
+
 function startTimer() {
     milliseconds = 0;
     timerRunning = true;
@@ -149,7 +154,7 @@ document.addEventListener("keydown", function (event) {
 });
 
 //set a Scramble on page load
-document.getElementById("scramble").innerHTML = generateScramble();
+//document.getElementById("scramble").innerHTML = generateScramble();
 
 //Scramble Generator
 function generateScramble(length = 20, size = 3) {
@@ -178,11 +183,6 @@ function getRandNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-//create time array, if it doesn't exist
-if (localStorage.getItem(`times${currentMode}`) == null) {
-    localStorage.setItem(`times${currentMode}`, JSON.stringify([]));
-}
-
 //save time in local storage
 function saveTime() {
     let times = JSON.parse(localStorage.getItem(`times${currentMode}`));
@@ -198,7 +198,7 @@ function clearTimes() {
 //generate mo3,ao5,ao12,ao100 and total Average
 function generateStatistics() {
     let times = JSON.parse(localStorage.getItem("times"));
-    times = times.filter(item => item !== "DNF"); //this line is from BlackboxAI
+    times = times.filter(item => item !== "DNF");
 
     let best = null;
     let mo3 = null;
@@ -270,20 +270,21 @@ function generateStatistics() {
 
 //set the times in list
 function showTimes() {
-    let timeBox = document.getElementById("times");
-    let times = JSON.parse(localStorage.getItem("times"));
+    let timeBox = document.getElementById("timeList");
+    let times = JSON.parse(localStorage.getItem("times" + currentMode));
     times.reverse();
 
     if (times.length == 0) {
         timeBox.innerHTML = "<h2>Times</h2><div>No times recorded.</div>";
     } else {
 
-        let str = "<h2>Times</h2>";
+        let str = "<h2>Times</h2><div id='singleTimesBox'>";
         for (let i = 0; i < times.length; i++) {
             str += `
-            <div class="singleTime">Solve ${times.length - i}: ${times[i]}</div>
+            <div class="singleTime"><div class="singleTimeNumber">${times.length - i}</div> <div class="singleTimeTime">${times[i]}</div></div>
         `;
         }
+        str +='</div>'
         timeBox.innerHTML = str;
     }
 }
@@ -305,7 +306,6 @@ function showStats() {
     `
 }
 showStats();
-
 // Custom context menu (not finished yet)
 const menu = document.getElementById("context-menu");
 let clickedElement = null;
