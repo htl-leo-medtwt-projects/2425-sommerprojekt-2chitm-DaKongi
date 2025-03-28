@@ -32,6 +32,24 @@ if (localStorage.getItem("timeChartYValues") == null) {
     chartTimes = storedchartTimes ? JSON.parse(storedchartTimes) : [];
 }
 
+//chart (from: https://www.w3schools.com/js/tryit.asp?filename=tryai_chartjs_lines)
+let timeChart = new Chart("timeChart", {
+    type: "line",
+    data: {
+        labels: xValues,
+        datasets: [{
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "rgba(0,0,255,1.0)",
+            borderColor: "rgba(0,0,255,0.1)",
+            data: chartTimes
+        }]
+    },
+    options: {
+        legend: { display: false },
+    }
+});
+
 
 //create time array, if it doesn't exist
 if (localStorage.getItem(`times${currentMode}`) == null) {
@@ -333,6 +351,9 @@ function showStats() {
         <div>ao100: ${stats.ao100}</div>
         <div>Total Ø: ${stats.totalAverage}</div>
     `
+
+    //update char
+    timeChart.update();
 }
 showStats();
 // Custom context menu (not finished yet)
@@ -397,25 +418,4 @@ document.getElementById("menu-dnf").addEventListener("click", function () {
 // Hide menu when clicking anywhere else
 document.addEventListener("click", function () {
     menu.style.display = "none";
-});
-
-//chart (from: https://www.w3schools.com/js/tryit.asp?filename=tryai_chartjs_lines)
-new Chart("timeChart", {
-    type: "line",
-    data: {
-        labels: xValues,
-        datasets: [{
-            fill: false,
-            lineTension: 0,
-            backgroundColor: "rgba(0,0,255,1.0)",
-            borderColor: "rgba(0,0,255,0.1)",
-            data: chartTimes
-        }]
-    },
-    options: {
-        legend: { display: false },
-        scales: {
-            yAxes: [{ ticks: { min: 6, max: 16 } }],
-        }
-    }
 });
