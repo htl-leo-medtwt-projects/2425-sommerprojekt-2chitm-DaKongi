@@ -23,7 +23,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: -1;
+    z-index: 0;
 }
 
 #time {
@@ -62,64 +62,26 @@ main {
     padding: 0.5%;
 }
 
-#sidebars{
-    width: 100vw;
-    height: 75vh;
-    display: flex;
-    justify-content: space-between;
-}
-
-#sidebars>div{
-    height: 75vh;
-    width: 20vw;
-    display: flex;
-    flex-direction: column;
-    font-size: 1.8rem;
-    outline: black solid 3px;
-}
-
-#stats {
-    width: 20vw;
-    height: 35vh;
-    background-color: rgb(0, 143, 153);
-    outline: black solid 3px;
-}
-
-#stats>div {
-    padding: 1% 0;
-    background-color: rgb(0, 240, 255);
-    border-bottom: black solid 3px;
-    height: 3vh;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-}
-
 #timeList{
     width: 20vw;
-    aspect-ratio: 1/2;
+    height: 50vh;
+    background-color: var(--primary-color);
+    margin: 10% 2%;
+    border-radius: var(--border-radius);
 }
 
 #times {
-    
+    overflow: scroll;
 }
 
-#mode{
-    background-color: rgb(0, 143, 153);
-    height: 75vh;
-    display: grid;
-    grid-template-columns: auto auto;
-    overflow: auto;
-}
-#mode::-webkit-scrollbar {
-    display: none;
-}
-#mode img{
-    width: 90%;
-    padding: 5%;
-}
-#mode img:hover{
-    background-color: #f0f0f0;
+#menu{
+    position: absolute;
+    bottom: 0;
+    width: 98vw;
+    height: 25vh;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    margin: 1vw;
 }
 
 #sidebarLeft h2 {
@@ -160,15 +122,28 @@ main {
     background: #f0f0f0;
 }
 
-.pulsing{
-    animation: pulse alternate 0.5s infinite ease;
-}
-
 @keyframes pulse {
     from{
         transform: scale(1);
     }
     to{
         transform: scale(1.05);
+    }
+}
+
+@keyframes slideLeft {
+    from{
+        margin-left: 2%;
+    }
+    to{
+        margin-left: -30%;
+    }
+}
+@keyframes slideDown {
+    from{
+        margin-bottom: 1vw;
+    }
+    to{
+        margin-bottom: -25vw;
     }
 }

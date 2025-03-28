@@ -21,7 +21,24 @@ function startTimer() {
             document.getElementById("time").innerHTML = formatMilliseconds(milliseconds);
         }, 10);
     }
-    document.getElementById("time").classList.add("pulsing");
+
+    let timeElement = document.getElementById("time");
+    let timeListElement = document.getElementById("timeList");
+    let menuElement = document.getElementById("menu");
+
+    timeListElement.style.animation = "none";
+    timeElement.style.animation = "none";
+    menuElement.style.animation = "none";
+    void timeListElement.offsetWidth;
+
+    timeElement.style.animation = "pulse alternate 0.5s infinite ease";
+    timeListElement.style.animation = "slideLeft 0.5s ease-out 1";
+    menuElement.style.animation = "slideDown 0.5s ease-out 1";
+
+    setTimeout(() => {
+        timeListElement.style.marginLeft = "-25%";
+        menuElement.style.marginBottom = "-25%";
+    }, 500);
 }
 
 function stopTimer() {
@@ -30,14 +47,29 @@ function stopTimer() {
         clearInterval(intervalId);
         intervalId = null;
     }
-    //document.getElementById("scramble").innerHTML = generateScramble();
 
-    document.getElementById("time").classList.remove("pulsing");
+    let timeElement = document.getElementById("time");
+    let timeListElement = document.getElementById("timeList");
+    let menuElement = document.getElementById("menu");
+
+    timeElement.style.animation = "none";
+    timeListElement.style.animation = "none";
+    menuElement.style.animation = "none";
+    void timeListElement.offsetWidth;
+
+    timeListElement.style.animation = "slideLeft 0.5s ease-out 1 reverse";
+    menuElement.style.animation = "slideUp 0.5s ease-out 1";
+
+    setTimeout(() => {
+        timeListElement.style.marginLeft = "2%";
+        menuElement.style.marginBottom = "2%";
+    }, 500);
 
     saveTime();
     showTimes();
     showStats();
 }
+
 
 function formatMilliseconds(ms) {
     const minutes = Math.floor(ms / 60000);
