@@ -7,6 +7,7 @@
     <title>MC-Timer</title>
     <script src="../script/timer.js" defer></script>
     <script src="../script/general.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> <!--chart.js for charts-->
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../styles/general.css">
@@ -114,14 +115,14 @@
             <div id="mo3"></div>
             <div id="bestMo3"></div>
             <div id="ao5"></div>
-            <div id="bestAo5"></div> 
+            <div id="bestAo5"></div>
             <div id="ao12"></div>
             <div id="bestAo12"></div>
         </div>
-    </div>
 
-    <div id="scrambleCon">
-        
+        <div id="scrambleCon"></div>
+
+        <canvas id="timeChart"></canvas>
     </div>
     <!--
     <div id="scrambleCon">

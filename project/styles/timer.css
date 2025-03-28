@@ -162,6 +162,11 @@ main {
     margin: 2% auto;
 }
 
+#timeChart{
+    max-width: 30%;
+    max-height: 90%;
+}
+
 #context-menu {
     position: absolute;
     background: white;

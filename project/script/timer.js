@@ -12,6 +12,27 @@ let currentMode = "3x3"
 const originalFontColor = document.documentElement.style.getPropertyValue("--font-color");
 const originalSecondColor = document.documentElement.style.getPropertyValue("--secondary-color");
 
+//values for chart
+let xValues = [];
+let chartTimes = [];
+
+//create xValues array, if it doesn't exist
+if (localStorage.getItem("timeChartXValues") == null) {
+    localStorage.setItem("timeChartXValues", JSON.stringify([]));
+} else {
+    let storedXValues = localStorage.getItem("timeChartXValues");
+    xValues = storedXValues ? JSON.parse(storedXValues) : [];
+}
+
+//create times array, if it doesn't exist
+if (localStorage.getItem("timeChartYValues") == null) {
+    localStorage.setItem("timeChartYValues", JSON.stringify([]));
+} else {
+    let storedchartTimes = localStorage.getItem("timeChartYValues");
+    chartTimes = storedchartTimes ? JSON.parse(storedchartTimes) : [];
+}
+
+
 //create time array, if it doesn't exist
 if (localStorage.getItem(`times${currentMode}`) == null) {
     localStorage.setItem(`times${currentMode}`, JSON.stringify([]));
@@ -39,7 +60,7 @@ function startTimer() {
     headerElement.style.animation = "none";
     void timeListElement.offsetWidth;
     void menuElement.offsetWidth;
-    void headerElement.offsetWidth; 
+    void headerElement.offsetWidth;
 
     timeElement.style.animation = "pulse alternate 0.5s infinite ease";
     timeListElement.style.animation = "slideLeft 0.5s ease-out 1";
@@ -72,7 +93,7 @@ function stopTimer() {
     headerElement.style.animation = "none";
     void timeListElement.offsetWidth;
     void menuElement.offsetWidth;
-    void headerElement.offsetWidth; 
+    void headerElement.offsetWidth;
 
     timeListElement.style.animation = "slideLeft 0.3s ease-out 1 reverse";
     menuElement.style.animation = "slideDown 0.3s ease-out 1 reverse";
@@ -185,9 +206,17 @@ function getRandNum(min, max) {
 
 //save time in local storage
 function saveTime() {
+    let time = document.getElementById("time").innerHTML;
     let times = JSON.parse(localStorage.getItem(`times${currentMode}`));
-    times.push(document.getElementById("time").innerHTML);
+    times.push(time);
     localStorage.setItem(`times${currentMode}`, JSON.stringify(times));
+
+    //add to chart
+    chartTimes.push(time);
+    localStorage.setItem("timeChartYValues", JSON.stringify(chartTimes));
+
+    xValues.push(xValues.length + 1);
+    localStorage.setItem("timeChartXValues", JSON.stringify(xValues));
 }
 
 //reset Times
@@ -197,7 +226,7 @@ function clearTimes() {
 
 //generate mo3,ao5,ao12,ao100 and total Average
 function generateStatistics() {
-    let times = JSON.parse(localStorage.getItem("times"));
+    let times = JSON.parse(localStorage.getItem("times" + currentMode));
     times = times.filter(item => item !== "DNF");
 
     let best = null;
@@ -284,7 +313,7 @@ function showTimes() {
             <div class="singleTime"><div class="singleTimeNumber">${times.length - i}</div> <div class="singleTimeTime">${times[i]}</div></div>
         `;
         }
-        str +='</div>'
+        str += '</div>'
         timeBox.innerHTML = str;
     }
 }
@@ -292,7 +321,7 @@ showTimes();
 
 //set the stats in list
 function showStats() {
-    let statsBox = document.getElementById("stats");
+    let statsBox = document.getElementById("statistics");
     let stats = generateStatistics();
 
     statsBox.innerHTML = `
@@ -368,4 +397,25 @@ document.getElementById("menu-dnf").addEventListener("click", function () {
 // Hide menu when clicking anywhere else
 document.addEventListener("click", function () {
     menu.style.display = "none";
+});
+
+//chart (from: https://www.w3schools.com/js/tryit.asp?filename=tryai_chartjs_lines)
+new Chart("timeChart", {
+    type: "line",
+    data: {
+        labels: xValues,
+        datasets: [{
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "rgba(0,0,255,1.0)",
+            borderColor: "rgba(0,0,255,0.1)",
+            data: chartTimes
+        }]
+    },
+    options: {
+        legend: { display: false },
+        scales: {
+            yAxes: [{ ticks: { min: 6, max: 16 } }],
+        }
+    }
 });
