@@ -41,7 +41,7 @@ let timeChart = new Chart("timeChart", {
             fill: false,
             lineTension: 0,
             backgroundColor: "rgba(0,0,255,1.0)",
-            borderColor: "rgba(0,0,255,0.1)",
+            borderColor: originalFontColor,
             data: chartTimes
         }]
     },
@@ -343,7 +343,7 @@ function showStats() {
     let stats = generateStatistics();
 
     statsBox.innerHTML = `
-        <h2>Statistics</h2>
+        <div>Time: ${document.getElementById("time").innerHTML}</div>
         <div>Best: ${stats.best}</div>
         <div>mo3: ${stats.mo3}</div>
         <div>ao5: ${stats.ao5}</div>
