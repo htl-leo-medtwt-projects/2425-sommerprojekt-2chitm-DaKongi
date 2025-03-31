@@ -7,10 +7,15 @@ let turnedRed = false;
 
 let timerRunning = false;
 
-let currentMode = "3x3"
-
 const originalFontColor = document.documentElement.style.getPropertyValue("--font-color");
 const originalSecondColor = document.documentElement.style.getPropertyValue("--secondary-color");
+
+//create current mode
+if (localStorage.getItem("currentMode") == null){
+    localStorage.setItem("currentMode","3x3")
+}else{
+    currentMode = localStorage.getItem("currentMode");
+}
 
 //values for chart
 let xValues = [];
@@ -193,7 +198,7 @@ document.addEventListener("keydown", function (event) {
 });
 
 //set a Scramble on page load
-//document.getElementById("scramble").innerHTML = generateScramble();
+document.getElementById("scramble").innerHTML = "<div>" + generateScramble() + "</div>";
 
 //Scramble Generator
 function generateScramble(length = 20, size = 3) {
@@ -341,9 +346,10 @@ showTimes();
 function showStats() {
     let statsBox = document.getElementById("statistics");
     let stats = generateStatistics();
+    let times = JSON.parse(localStorage.getItem("times" + currentMode));
 
     statsBox.innerHTML = `
-        <div>Time: ${document.getElementById("time").innerHTML}</div>
+        <div>Time: ${times[times.length-1]}</div>
         <div>Best: ${stats.best}</div>
         <div>mo3: ${stats.mo3}</div>
         <div>ao5: ${stats.ao5}</div>
@@ -356,6 +362,17 @@ function showStats() {
     timeChart.update();
 }
 showStats();
+
+//change cube mode
+function changeCubeMode(mode){
+    currentMode = mode;
+    localStorage.setItem("currentMode",currentMode);
+
+    showTimes();
+    showStats();
+}
+
+
 // Custom context menu (not finished yet)
 const menu = document.getElementById("context-menu");
 let clickedElement = null;
