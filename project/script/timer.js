@@ -21,15 +21,6 @@ if (localStorage.getItem("currentMode") == null){
 let xValues = [];
 let chartTimes = [];
 
-let currentCubeIndex = 2;
-
-//create currentCubeIndex
-if (localStorage.getItem("currentCubeIndex") == null){
-    localStorage.setItem("currentCubeIndex",2);
-}else{
-    currentCubeIndex = localStorage.getItem("currentCubeIndex");
-}
-
 //create xValues array, if it doesn't exist
 if (localStorage.getItem("timeChartXValues") == null) {
     localStorage.setItem("timeChartXValues", JSON.stringify([]));
@@ -209,6 +200,17 @@ document.addEventListener("keydown", function (event) {
 
 //cube selection
 let available_cubes = ["2x2","3x3","4x4","5x5","6x6","7x7","megaminx","pyraminx","skewb","square-1"];
+
+let currentCubeIndex = 2;
+
+//create currentCubeIndex
+if (localStorage.getItem("currentCubeIndex") == null){
+    localStorage.setItem("currentCubeIndex",currentCubeIndex);
+}else{
+    currentCubeIndex = localStorage.getItem("currentCubeIndex");
+    document.getElementById("cubeModeImg").src = `../img/icons/${available_cubes[currentCubeIndex]}.svg`;
+    document.getElementById("cubeModeImg").alt = available_cubes[currentCubeIndex]; 
+}
 
 function next(){
     if (currentCubeIndex >= available_cubes.length-1){
