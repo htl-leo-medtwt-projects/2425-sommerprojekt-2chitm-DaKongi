@@ -93,7 +93,7 @@ main {
 .singleTime>div {
     font-family: monospace;
     font-weight: bold;
-    padding: 3%;
+    padding-left:3%;
 }
 
 #times {

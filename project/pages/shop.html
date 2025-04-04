@@ -1,44 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link rel="stylesheet" href="../styles/general.css">
+    <link rel="stylesheet" href="../styles/shopPortal.css">
     <script src="../script/general.js" defer></script>
 </head>
+
 <body>
     <div id="settings">
         <div id="appearanceAll">
             <div id="appearance">
                 <h2>Appearance</h2>
                 <div>
+                    <label for="preset">Select Preset</label>
+                    <select name="preset" id="inputPreset" onchange="loadPreset()">
+                        <option value="custom" disabled>Custom</option>
+                        <option value="default">Default</option>
+                        <option value="dark">Dark</option>
+                        <option value="pink">Pink fluffy unicorn</option>
+                        <option value="wood">Wood</option>
+                    </select>
+                </div>
+                <div>
                     <label for="primaryColor">Primary Color</label>
                     <input type="color" name="primaryColor" id="inputPrimaryColor" value="#ADFCF9"
-                        onchange="saveSettings()">
+                        onchange="setToCustom(),saveSettings()">
                 </div>
 
                 <div>
                     <label for="secondaryColor">Secondary Color</label>
                     <input type="color" name="secondaryColor" id="inputSecondaryColor" value="#118A8A"
-                        onchange="saveSettings()">
+                        onchange="setToCustom(),saveSettings()">
                 </div>
 
                 <div>
                     <label for="accentColor">Accent Color</label>
                     <input type="color" name="accentColor" id="inputAccentColor" value="#F7A278"
-                        onchange="saveSettings()">
+                        onchange="setToCustom(),saveSettings()">
                 </div>
 
                 <div>
                     <label for="bgColor">Background Color</label>
-                    <input type="color" name="bgColor" id="inputBgColor" value="#F7F7F7" onchange="saveSettings()">
+                    <input type="color" name="bgColor" id="inputBgColor" value="#F7F7F7"
+                        onchange="setToCustom(),saveSettings()">
                 </div>
 
                 <div>
                     <label for="fontColor">Font Color</label>
-                    <input type="color" name="fontColor" id="inputFontColor" value="#02182B" onchange="saveSettings()">
+                    <input type="color" name="fontColor" id="inputFontColor" value="#02182B"
+                        onchange="setToCustom(),saveSettings()">
                 </div>
             </div>
 
@@ -50,11 +65,11 @@
         <div id="settings-menu">
             <div id="appearance">Appearence</div>
             <div id="general">General</div>
-            <div id="default" onclick="resetAppearanceToDefault()">Reset to Default</div>
+            <div id="default" onclick="loadPreset(true)">Reset to Default</div>
             <div id="close" onclick="toggleSettings()">Close</div>
         </div>
     </div>
-    <header>
+    <header id="header">
         <div id="logo" onclick="window.location.href='../index.html'">
             <img src="../img/logo.png" alt="Master Cube Logo">
             <p>Master Cube</p>
@@ -77,5 +92,41 @@
             </div>
         </nav>
     </header>
+
+
+    <div id="shopTopBar">
+        <h2>Shop Portal</h2>
+
+
+        <!-- From Uiverse.io by satyamchaudharydev -->
+        <form class="form">
+            <button>
+                <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
+                    aria-labelledby="search">
+                    <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
+                        stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round">
+                    </path>
+                </svg>
+            </button>
+            <input class="input" placeholder="Search" type="text">
+            <button class="reset" type="reset">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </form>
+    </div>
+
+    <main>
+        <section id="dailyTip">
+            <h2>Daily Tip:</h2>
+            <div id="presentedCube">
+                <img src="../img/cubeExample/moyu-weilong-wr-m-v10.png" alt="Moyu cube">
+                <p>MOYU WeiLong WR M V10</p>
+            </div>
+        </section>
+    </main>
 </body>
+
 </html>

@@ -131,6 +131,8 @@ function stopTimer() {
     saveTime();
     showTimes();
     showStats();
+
+    document.getElementById("scramble").innerHTML = "<div>" + generateScramble() + "</div>";
 }
 
 
