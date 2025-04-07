@@ -59,8 +59,17 @@ section{
     margin: 0;
 }
 
+#landingPageHeader{
+    transition: all 1s;
+}
+
 #landingPageHeader.scrolled {
     color: var(--font-color);
+    background-color: var(--background-color);
+    height: 5vh;
+}
+#landingPageHeader.scrolled #logo>img{
+    display: none;
 }
 
 /*What is Master Cube Slider*/

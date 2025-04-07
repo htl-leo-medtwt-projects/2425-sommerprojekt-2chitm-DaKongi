@@ -1,6 +1,8 @@
 let settingsVisible = false;
 let settings = document.getElementById("settings");
 
+fitty('.fit-me'); //fit elements in their boxes
+
 const user_preference_appearance_json_default = {
     "primary-color": "#00FFFF",
     "secondary-color": "#118A8A",

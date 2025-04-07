@@ -8,7 +8,12 @@
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link rel="stylesheet" href="../styles/general.css">
     <link rel="stylesheet" href="../styles/shopPortal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+    <script src="https://unpkg.com/tippy.js@6" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/fitty@2.3.6/dist/fitty.min.js" defer></script>
     <script src="../script/general.js" defer></script>
+    <script src="../script/shopPortal.js" defer></script>
 </head>
 
 <body>
@@ -97,6 +102,20 @@
     <div id="shopTopBar">
         <h2>Shop Portal</h2>
 
+        <div class="shopTopBarCategory">
+            <div id="wca">WCA</div>
+            <div id="dropdown" hidden>
+                <div>3x3</div>
+                <div>4x4</div>
+                <div>5x5</div>
+                <div>6x6</div>
+                <div>7x7</div>
+            </div>
+        </div>
+
+        <div id="backToTopButton" onclick="window.location.href = 'shop.html'">
+            <i style="font-size:24px" class="fa">&#xf0aa;</i>
+        </div>
 
         <!-- From Uiverse.io by satyamchaudharydev -->
         <form class="form">
@@ -121,9 +140,19 @@
     <main>
         <section id="dailyTip">
             <h2>Daily Tip:</h2>
-            <div id="presentedCube">
-                <img src="../img/cubeExample/moyu-weilong-wr-m-v10.png" alt="Moyu cube">
-                <p>MOYU WeiLong WR M V10</p>
+            <div id="dailyTipContent">
+                <div id="presentedCube">
+                    <img src="../img/cubeExample/moyu-weilong-wr-m-v10.png" alt="Moyu cube">
+                    <p class="fit-me">MOYU<br> WeiLong <br>WR M V10</p>
+                </div>
+                <!--This is still static for creating the basic layout but will be dynamic, when implementing the functionality-->
+                <div id="dailyShopBoxes">
+                    <!--Here will be the shops linked with images of their logos (dynamicly generated)-->
+                    <div class="shopBox"></div>
+                    <div class="shopBox"></div>
+                    <div class="shopBox"></div>
+                    <div class="shopBox"></div>
+                </div>
             </div>
         </section>
     </main>
