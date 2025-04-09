@@ -1,4 +1,4 @@
-//recolor navbar when scrolling to make it readable
+//recolor navbar and makes it smaller when scrolling to make it readable
 window.addEventListener("scroll", function () {
     let navbar = document.getElementById("landingPageHeader");
     if (window.scrollY > window.innerHeight) {

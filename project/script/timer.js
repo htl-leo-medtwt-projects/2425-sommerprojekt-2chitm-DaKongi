@@ -8,12 +8,12 @@ let turnedRed = false;
 let timerRunning = false;
 
 const originalFontColor = document.documentElement.style.getPropertyValue("--font-color");
-const originalSecondColor = document.documentElement.style.getPropertyValue("--secondary-color");
+const originalSecondColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary-color').trim();
 
 //create current mode
-if (localStorage.getItem("currentMode") == null){
-    localStorage.setItem("currentMode","3x3")
-}else{
+if (localStorage.getItem("currentMode") == null) {
+    localStorage.setItem("currentMode", "3x3")
+} else {
     currentMode = localStorage.getItem("currentMode");
 }
 
@@ -148,6 +148,25 @@ function formatMilliseconds(ms) {
     }
 }
 
+function parseFormattedTime(timeStr) {
+    let minutes = 0, seconds = 0, milliseconds = 0;
+
+    if (timeStr.includes(':')) {
+        const [minPart, secPart] = timeStr.split(':');
+        minutes = parseInt(minPart, 10);
+        const [sec, ms] = secPart.split('.');
+        seconds = parseInt(sec, 10);
+        milliseconds = parseInt(ms, 10) * 10;
+    } else {
+        const [sec, ms] = timeStr.split('.');
+        seconds = parseInt(sec, 10);
+        milliseconds = parseInt(ms, 10) * 10;
+    }
+
+    return (minutes * 60000) + (seconds * 1000) + milliseconds;
+}
+
+
 //spacebar needs to be pressed for 0.5s to start the timer, prevents accidental start
 document.addEventListener("keydown", function (event) {
     if (event.key === " " && !event.repeat) {
@@ -176,7 +195,7 @@ document.addEventListener("keyup", function (event) {
     if (event.key === " ") {
         turnedRed = false;
         document.getElementById("time").style.color = originalFontColor;
-        document.getElementById("time").style.boxShadow = " 0 0 50px 35px" + document.documentElement.style.getPropertyValue("--secondary-color");
+        document.getElementById("time").style.boxShadow = "0 0 50px 35px " + originalSecondColor;
 
         if (keyDownTime !== null) {
             let elapsedTime = Date.now() - keyDownTime;
@@ -201,27 +220,27 @@ document.addEventListener("keydown", function (event) {
 
 
 //cube selection
-let available_cubes = ["2x2","3x3","4x4","5x5","6x6","7x7","megaminx","pyraminx","skewb","square-1"];
+let available_cubes = ["2x2", "3x3", "4x4", "5x5", "6x6", "7x7", "megaminx", "pyraminx", "skewb", "square-1"];
 
 let currentCubeIndex = 2;
 
 //create currentCubeIndex
-if (localStorage.getItem("currentCubeIndex") == null){
-    localStorage.setItem("currentCubeIndex",currentCubeIndex);
-}else{
+if (localStorage.getItem("currentCubeIndex") == null) {
+    localStorage.setItem("currentCubeIndex", currentCubeIndex);
+} else {
     currentCubeIndex = localStorage.getItem("currentCubeIndex");
     document.getElementById("cubeModeImg").src = `../img/icons/${available_cubes[currentCubeIndex]}.svg`;
-    document.getElementById("cubeModeImg").alt = available_cubes[currentCubeIndex]; 
+    document.getElementById("cubeModeImg").alt = available_cubes[currentCubeIndex];
 }
 
-function next(){
-    if (currentCubeIndex >= available_cubes.length-1){
+function next() {
+    if (currentCubeIndex >= available_cubes.length - 1) {
         currentCubeIndex = 0;
-    }else{
+    } else {
         currentCubeIndex++;
     }
 
-    localStorage.setItem("currentCubeIndex",currentCubeIndex);
+    localStorage.setItem("currentCubeIndex", currentCubeIndex);
 
     document.getElementById("cubeModeImg").src = `../img/icons/${available_cubes[currentCubeIndex]}.svg`
     document.getElementById("cubeModeImg").alt = available_cubes[currentCubeIndex];
@@ -229,14 +248,14 @@ function next(){
     changeCubeMode(available_cubes[currentCubeIndex]);
 }
 
-function previous(){
-    if (currentCubeIndex == 0){
-        currentCubeIndex = available_cubes.length-1;
-    }else{
+function previous() {
+    if (currentCubeIndex == 0) {
+        currentCubeIndex = available_cubes.length - 1;
+    } else {
         currentCubeIndex--;
     }
 
-    localStorage.setItem("currentCubeIndex",currentCubeIndex);
+    localStorage.setItem("currentCubeIndex", currentCubeIndex);
 
     document.getElementById("cubeModeImg").src = `../img/icons/${available_cubes[currentCubeIndex]}.svg`
     document.getElementById("cubeModeImg").alt = available_cubes[currentCubeIndex];
@@ -396,7 +415,7 @@ function showStats() {
     let times = JSON.parse(localStorage.getItem("times" + currentMode));
 
     statsBox.innerHTML = `
-        <div>Time: ${times[times.length-1]}</div>
+        <div>Time: ${times[times.length - 1]}</div>
         <div>Best: ${stats.best}</div>
         <div>mo3: ${stats.mo3}</div>
         <div>ao5: ${stats.ao5}</div>
@@ -411,9 +430,9 @@ function showStats() {
 showStats();
 
 //change cube mode
-function changeCubeMode(mode){
+function changeCubeMode(mode) {
     currentMode = mode;
-    localStorage.setItem("currentMode",currentMode);
+    localStorage.setItem("currentMode", currentMode);
 
     showTimes();
     showStats();
@@ -440,12 +459,13 @@ document.addEventListener("contextmenu", function (event) {
 document.getElementById("menu-delete").addEventListener("click", function () {
     if (clickedElement) {
         // Get index of element
-        let index = parseInt(clickedElement.innerHTML.charAt(6) + clickedElement.innerHTML.charAt(7));
+        let singleTimeNumber = clickedElement.querySelector(".singleTimeNumber");
+        let index = parseInt(singleTimeNumber.textContent, 10);
 
         // Set new array without the clicked element
-        let times = JSON.parse(localStorage.getItem("times"));
+        let times = JSON.parse(localStorage.getItem("times" + available_cubes[currentCubeIndex]));
         times.splice(index - 1, 1);
-        localStorage.setItem("times", JSON.stringify(times));
+        localStorage.setItem("times" + available_cubes[currentCubeIndex], JSON.stringify(times));
 
         showTimes();
         showStats();
@@ -454,10 +474,20 @@ document.getElementById("menu-delete").addEventListener("click", function () {
 document.getElementById("menu-+2").addEventListener("click", function () {
     if (clickedElement) {
         // Get index of element
-        let index = parseInt(clickedElement.innerHTML.charAt(6) + clickedElement.innerHTML.charAt(7));
+        let singleTimeNumber = clickedElement.querySelector(".singleTimeNumber");
+        let index = parseInt(singleTimeNumber.textContent, 10);
 
-        //TODO: modify the clicked element (+2)
-        console.log("not available yet");
+        // Get Time of element
+        let singleTimeTime = clickedElement.querySelector(".singleTimeTime");
+        let time = parseFormattedTime(singleTimeTime.textContent);
+
+        //add 2sec penalty
+        time += 2000;
+
+        // Set new array without the clicked element
+        let times = JSON.parse(localStorage.getItem("times" + available_cubes[currentCubeIndex]));
+        times[index - 1] = formatMilliseconds(time) + "+";
+        localStorage.setItem("times" + available_cubes[currentCubeIndex], JSON.stringify(times));
 
         showTimes();
         showStats();
@@ -466,12 +496,13 @@ document.getElementById("menu-+2").addEventListener("click", function () {
 document.getElementById("menu-dnf").addEventListener("click", function () {
     if (clickedElement) {
         // Get index of element
-        let index = parseInt(clickedElement.innerHTML.charAt(6) + clickedElement.innerHTML.charAt(7));
+        let singleTimeNumber = clickedElement.querySelector(".singleTimeNumber");
+        let index = parseInt(singleTimeNumber.textContent, 10);
 
-        // Set new array without the clicked element
-        let times = JSON.parse(localStorage.getItem("times"));
+        // Set new array with dnf
+        let times = JSON.parse(localStorage.getItem("times" + available_cubes[currentCubeIndex]));
         times[index - 1] = "DNF";
-        localStorage.setItem("times", JSON.stringify(times));
+        localStorage.setItem("times" + available_cubes[currentCubeIndex], JSON.stringify(times));
 
         showTimes();
         showStats();

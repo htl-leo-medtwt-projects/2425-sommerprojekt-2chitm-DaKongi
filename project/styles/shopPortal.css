@@ -118,9 +118,9 @@ main {
 #shopTopBar {
     width: 98vw;
     position: sticky;
-    height: 10vh;
+    height: 5vh;
     top: 0;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -183,10 +183,28 @@ main {
 }
 
 .shopBox {
-    background-color: gray;
+    background-image: url("../img/shop/shopsIcons/cuboss.png");
+    background-size: cover;
     border-radius: var(--border-radius);
     width: 90%;
     aspect-ratio: 1/1;
+}
+
+.shopHeadline2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shopHeadline2>hr {
+    width: 35vw;
+    color: var(--font-color);
+}
+
+.shopHeadline2>h2 {
+    font-size: 3rem;
+    width: 20vw;
+    text-align: center;
 }
 
 .drop-content {
@@ -227,4 +245,28 @@ main {
 #backToTopButton i {
     font-size: 2.5vw !important;
     color: var(--font-color);
+}
+
+.categoryBox {
+    width: 20vw;
+    aspect-ratio: 1/1;
+    background-color: #00FFFF;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    font-size: 3.5rem;
+    text-align: center;
+    background-size:cover;
+}
+
+#categories {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 5vh;
+}
+
+#categoryBoxWCA{
+    background-image: url(../img/shop/categories/wca.png);
 }

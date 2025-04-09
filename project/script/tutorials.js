@@ -1,3 +1,14 @@
+//recolor navbar when scrolling to make it readable
+window.addEventListener("scroll", function () {
+    let navbar = document.getElementById("tutorialHeader");
+    if (window.scrollY > window.innerHeight/10) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+
+
 //make hover effects for tutorial l.boxes
 const hoverContent = {
     "2x2LP": ["2x2", "Method: <b>LP</b>", "Difficulty: <span class='difficultyEasy'>Easy</span>"],

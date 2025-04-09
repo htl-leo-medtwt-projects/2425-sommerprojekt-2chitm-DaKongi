@@ -60,7 +60,7 @@ section{
 }
 
 #landingPageHeader{
-    transition: all 1s;
+    transition: height 0.5s;
 }
 
 #landingPageHeader.scrolled {

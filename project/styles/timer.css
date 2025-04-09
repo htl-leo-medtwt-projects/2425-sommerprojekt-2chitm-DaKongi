@@ -188,7 +188,7 @@ main {
 
 #context-menu {
     position: absolute;
-    background: white;
+    background: var(--background-color);
     border: 2px solid #ccc;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     display: none;
@@ -202,7 +202,7 @@ main {
 }
 
 .menu-item:hover {
-    background: #f0f0f0;
+    background: #f0f0f061;
 }
 
 #cubeSelection{
