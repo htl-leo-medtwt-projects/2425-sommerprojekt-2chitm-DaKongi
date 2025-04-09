@@ -1,0 +1,107 @@
+:root {
+    --primary-color: #00FFFF;
+    --secondary-color: #118A8A;
+    --accent-color: #F7A278;
+    --font-color: #02182B;
+    --background-color: #F7F7F7;
+    --font-family: jura;
+    --border-radius: 25px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    width: 90vw;
+    margin-top: 12vh;
+}
+
+#competitionStartSettings {
+    width: 100%;
+    height: 88vh;
+}
+
+#competitionStartSettingsSettings {
+    width: 100%;
+    height: 80%;
+    background-color: var(--primary-color);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: var(--border-radius);
+}
+.competitionSettingsItem h2{
+    font-size: 4rem;
+    text-align: center;
+}
+
+#competitionStartSettingsSettings>div{
+    margin:0% 5%;
+}
+
+#competitionStartSettingsSettings>div:nth-child(even) {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#contestantsInputs {
+    margin: 2%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+#addContestant{
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+#addContestant:hover{
+    background-color: var(--accent-color);
+}
+
+#contestantInput{
+    border-radius: 5px;
+}
+
+#contestantsInputs>input {
+    padding: 2%;
+    margin: 2%;
+    font-size: 1.2rem;
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--background-color);
+}
+
+#contestantInput::placeholder{
+    color: var(--background-color);
+}
+#contestantInput:focus{
+    border-bottom: var(--accent-color) 5px solid;
+    outline: none;
+}
+
+#startButton {
+    text-transform: uppercase;
+    font-size: 3rem;
+    width: 70%;
+    margin: 2% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    height: 10vh;
+    transition: all 0.3s;
+}
+
+#startButton:hover {
+    background-color: var(--accent-color);
+    cursor: pointer;
+}
+
+#classicCompArea{
+    width: 100%;
+    height: 100vh;
+}

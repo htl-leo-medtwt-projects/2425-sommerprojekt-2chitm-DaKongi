@@ -1,44 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Competiotion Area</title>
+    <script src="https://cdn.jsdelivr.net/npm/fitty@2.3.6/dist/fitty.min.js" defer></script>
+    <script src="../script/general.js" defer></script>
+    <script src="../script/competition.js" defer></script>
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link rel="stylesheet" href="../styles/general.css">
-    <script src="../script/general.js" defer></script>
+    <link rel="stylesheet" href="../styles/competition.css">
 </head>
+
 <body>
     <div id="settings">
         <div id="appearanceAll">
             <div id="appearance">
                 <h2>Appearance</h2>
                 <div>
+                    <label for="preset">Select Preset</label>
+                    <select name="preset" id="inputPreset" onchange="loadPreset()">
+                        <option value="custom" disabled>Custom</option>
+                        <option value="default">Default</option>
+                        <option value="dark">Dark</option>
+                        <option value="pink">Pink fluffy unicorn</option>
+                        <option value="wood">Wood</option>
+                    </select>
+                </div>
+                <div>
                     <label for="primaryColor">Primary Color</label>
                     <input type="color" name="primaryColor" id="inputPrimaryColor" value="#ADFCF9"
-                        onchange="saveSettings()">
+                        onchange="setToCustom(),saveSettings()">
                 </div>
 
                 <div>
                     <label for="secondaryColor">Secondary Color</label>
                     <input type="color" name="secondaryColor" id="inputSecondaryColor" value="#118A8A"
-                        onchange="saveSettings()">
+                        onchange="setToCustom(),saveSettings()">
                 </div>
 
                 <div>
                     <label for="accentColor">Accent Color</label>
                     <input type="color" name="accentColor" id="inputAccentColor" value="#F7A278"
-                        onchange="saveSettings()">
+                        onchange="setToCustom(),saveSettings()">
                 </div>
 
                 <div>
                     <label for="bgColor">Background Color</label>
-                    <input type="color" name="bgColor" id="inputBgColor" value="#F7F7F7" onchange="saveSettings()">
+                    <input type="color" name="bgColor" id="inputBgColor" value="#F7F7F7"
+                        onchange="setToCustom(),saveSettings()">
                 </div>
 
                 <div>
                     <label for="fontColor">Font Color</label>
-                    <input type="color" name="fontColor" id="inputFontColor" value="#02182B" onchange="saveSettings()">
+                    <input type="color" name="fontColor" id="inputFontColor" value="#02182B"
+                        onchange="setToCustom(),saveSettings()">
                 </div>
             </div>
 
@@ -50,11 +67,11 @@
         <div id="settings-menu">
             <div id="appearance">Appearence</div>
             <div id="general">General</div>
-            <div id="default" onclick="resetAppearanceToDefault()">Reset to Default</div>
+            <div id="default" onclick="loadPreset(true)">Reset to Default</div>
             <div id="close" onclick="toggleSettings()">Close</div>
         </div>
     </div>
-    <header>
+    <header id="header">
         <div id="logo" onclick="window.location.href='../index.html'">
             <img src="../img/logo.png" alt="Master Cube Logo">
             <p>Master Cube</p>
@@ -77,6 +94,86 @@
             </div>
         </nav>
     </header>
-    
+
+    <main>
+        <section id="competitionStartSettings">
+            <div id="competitionStartSettingsSettings">
+                <div class="competitionSettingsItem" id="contestants">
+                    <h2>Contestants</h2>
+
+                    <div id="contestantsInputs">
+                        <input type="text" placeholder="Name" id="contestantInput">
+                        <input type="button" value="+ add contestant" id="addContestant">
+                    </div>
+                </div>
+                <div class="competitionSettingsItem" id="disciplines">
+                    <h2>Disciplines</h2>
+                </div>
+                <div class="competitionSettingsItem" id="gamemode">
+                    <h2>Gamemode</h2>
+
+                    <form>
+                        <label>
+                            <input type="radio" name="game_mode" value="classic" checked>
+                            Classic
+                        </label><br>
+
+                        <label>
+                            <input type="radio" name="game_mode" value="duel">
+                            Duel
+                        </label><br>
+
+                        <label>
+                            <input type="radio" name="game_mode" value="solo">
+                            Solo
+                        </label>
+                    </form>
+                </div>
+            </div>
+            <div id="startButton">&gt;&gt;start&lt;&lt;</div>
+        </section>
+
+        <section id="classicCompArea">
+
+        </section>
+    </main>
+
+    <footer>
+        <div id="footerLeft">
+            <div class="footerVertical">
+                <h4>Mastercube</h4>
+                <div id="socialMediaIcons">
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="https://youtu.be/dQw4w9WgXcQ?si=PVgfCTgJdGCsNiAq" target="_blank">
+                        <i class="fa fa-youtube-play"></i>
+                    </a>
+                    <a href="https://www.twitter.com/" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="https://www.twitch.tv/" target="_blank">
+                        <i class="fa fa-twitch"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="footerRight">
+            <div class="footerVertical">
+                <h4>Tutorials</h4>
+                <a href="pages/tutorials.html">All Tutorials</a>
+                <a href="pages/tutorials.html">WCA</a>
+                <a href="pages/tutorials.html">CFOP - Trainer</a>
+            </div>
+            <div class="footerVertical">
+                <h4>Other Pages</h4>
+                <a href="pages/timer.html">Timer</a>
+                <a href="pages/competitionArea.html">Competition</a>
+                <a href="pages/shop.html">Shop Portal</a>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
