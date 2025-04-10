@@ -103,16 +103,75 @@
 
                     <div id="contestantsInputs">
                         <input type="text" placeholder="Name" id="contestantInput">
-                        <input type="button" value="+ add contestant" id="addContestant">
+                        <input type="button" value="+ add contestant" id="addContestant" class="fit-me">
                     </div>
                 </div>
                 <div class="competitionSettingsItem" id="disciplines">
                     <h2>Disciplines</h2>
+
+                    <form id="disciplinesSelect" class="compStartselections">
+                        
+                        <label>
+                            <input type="checkbox" class="ui-checkbox" name="puzzle" value="3x3">
+                            3x3
+                        </label><br>
+
+                        <label>
+                            <input type="checkbox" class="ui-checkbox" name="puzzle" value="4x4">
+                            4x4
+                        </label><br>
+
+                        <label>
+                            <input type="checkbox" class="ui-checkbox" name="puzzle" value="5x5">
+                            5x5
+                        </label><br>
+
+                        <label>
+                            <input type="checkbox" class="ui-checkbox" name="puzzle" value="6x6">
+                            6x6
+                        </label><br>
+
+                        <label>
+                            <input type="checkbox" class="ui-checkbox" name="puzzle" value="7x7">
+                            7x7
+                        </label><br>
+
+                        <label>
+                            <input type="checkbox" class="ui-checkbox" name="puzzle" value="skewb">
+                            Skewb
+                        </label><br>
+
+                        <label>
+                            <input type="checkbox" class="ui-checkbox" name="puzzle" value="pyraminx">
+                            Pyraminx
+                        </label><br>
+
+                        <label>
+                            <input type="checkbox" class="ui-checkbox" name="puzzle" value="megaminx">
+                            Megaminx
+                        </label><br>
+
+                        <label>
+                            <input type="checkbox" class="ui-checkbox" name="puzzle" value="square-1">
+                            Square-1
+                        </label><br>
+
+                        <label>
+                            <input type="checkbox" class="ui-checkbox" name="puzzle" value="3x3_blind">
+                            3x3 Blind
+                        </label><br>
+
+                        <label>
+                            <input type="checkbox" class="ui-checkbox" name="puzzle" value="multi_blind">
+                            Multi Blind
+                        </label><br>
+                    </form>
+
                 </div>
                 <div class="competitionSettingsItem" id="gamemode">
                     <h2>Gamemode</h2>
 
-                    <form>
+                    <form id="gameModeSelect" class="compStartselections">
                         <label>
                             <input type="radio" name="game_mode" value="classic" checked>
                             Classic
