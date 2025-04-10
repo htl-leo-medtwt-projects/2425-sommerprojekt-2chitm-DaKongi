@@ -12,8 +12,6 @@
 /* checkbox settings 👇 */
 
 .ui-checkbox {
-    --primary-color: #1677ff;
-    --secondary-color: #fff;
     --primary-hover-color: #4096ff;
     /* checkbox */
     --checkbox-diameter: 20px;
@@ -175,18 +173,16 @@ main {
     transition: all 0.3s;
 }
 
-#disciplines{
+#disciplines {
     overflow-y: scroll;
 }
-#disciplines::-webkit-scrollbar{
+
+#disciplines::-webkit-scrollbar {
     background-color: var(--secondary-color);
 }
-#disciplines::-webkit-scrollbar-thumb{
+
+#disciplines::-webkit-scrollbar-thumb {
     background-color: var(--font-color);
-}
-
-#disciplinesSelect{
-
 }
 
 #addContestant:hover {
@@ -258,4 +254,80 @@ main {
     align-items: center;
     padding: 1.5%;
     border-radius: var(--border-radius);
+}
+
+/*Actual Competition Area*/
+#classicCompArea {
+    margin-top: 12vh;
+    display: flex;
+    flex-direction: column;
+    height: 88vh;
+}
+
+#classicCompArea>div {
+    width: 100%;
+}
+
+#playersTurnCon {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#playersTurnCon>div {
+    background-color: var(--primary-color);
+    height: 100%;
+    width: 50%;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#timeAndStatsCon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90%;
+}
+
+#timeAndStatsCon>div {
+    height: 70%;
+    background-color: var(--primary-color);
+    width: 20%;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#timer {
+    justify-content: center;
+    background-color: transparent !important;
+    font-size: 10rem;
+}
+
+#timeAndStatsCon h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#TimeListMo3{
+    font-size: 2.5rem !important;
+    font-weight: bold;
+}
+
+#timeAndStatsCon p{
+    font-size: 1.5rem;
+}
+
+#position p{
+    font-size: 3rem !important;
+    font-weight: bold;
 }

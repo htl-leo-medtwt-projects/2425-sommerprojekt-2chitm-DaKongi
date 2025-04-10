@@ -71,6 +71,9 @@ section{
 #landingPageHeader.scrolled #logo>img{
     display: none;
 }
+#landingPageHeader.scrolled #logo:hover{
+    background-color: none;
+}
 
 /*What is Master Cube Slider*/
 .whatIsMastercubeBox {
