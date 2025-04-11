@@ -1,14 +1,14 @@
 let settingsVisible = false;
 let settings = document.getElementById("settings");
 
-fitty('.fit-me'); //fit elements in their boxes
+//fitty('.fit-me'); //fit elements in their boxes
 
 const user_preference_appearance_json_default = {
-    "primary-color": "#00FFFF",
-    "secondary-color": "#118A8A",
-    "accent-color": "#F7A278",
+    "primary-color": "#38b7b7",
+    "secondary-color": "#085e5e",
+    "accent-color": "#f7a278",
     "background-color": "#F7F7F7",
-    "font-color": "#02182B",
+    "font-color": "#02182b",
     "font-family": "jura"
 }
 

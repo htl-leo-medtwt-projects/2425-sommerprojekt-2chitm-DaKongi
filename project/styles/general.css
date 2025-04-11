@@ -9,11 +9,11 @@
 }
 
 :root {
-    --primary-color: #00FFFF;
-    --secondary-color: #118A8A;
-    --accent-color: #F7A278;
-    --font-color: #02182B;
-    --background-color: #F7F7F7;
+    --primary-color: #A7FFFF;
+    --secondary-color: #88C1C1;
+    --accent-color: #FBC8B2;
+    --font-color: #4A5A6A;
+    --background-color: #FAFAFA;
     --font-family: jura;
     --border-radius: 25px;
 }

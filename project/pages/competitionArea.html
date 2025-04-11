@@ -31,7 +31,7 @@
                 <div>
                     <label for="primaryColor">Primary Color</label>
                     <input type="color" name="primaryColor" id="inputPrimaryColor" value="#ADFCF9"
-                        onchange="setToCustom(),saveSettings()">
+                        onchange="setToCustom(),saveSettings()">               
                 </div>
 
                 <div>
@@ -103,7 +103,7 @@
 
                     <div id="contestantsInputs">
                         <input type="text" placeholder="Name" id="contestantInput">
-                        <input type="button" value="+ add contestant" id="addContestant" class="fit-me">
+                        <input type="button" value="+ add contestant" id="addContestant" class="fit-me" onclick="addContestant()">
                     </div>
                 </div>
                 <div class="competitionSettingsItem" id="disciplines">
