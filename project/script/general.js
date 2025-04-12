@@ -13,9 +13,9 @@ const user_preference_appearance_json_default = {
 }
 
 const user_preference_appearance_json_dark = {
-    "primary-color": "#00c2c2",
-    "secondary-color": "#003fd1",
-    "accent-color": "#00ffee",
+    "primary-color": "#258888",
+    "secondary-color": "#3c9ab9",
+    "accent-color": "#267c92",
     "background-color": "#1c1c1c",
     "font-color": "#ffffff",
     "font-family": "jura"

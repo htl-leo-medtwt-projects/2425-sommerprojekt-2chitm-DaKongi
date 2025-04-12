@@ -116,6 +116,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 main {
@@ -123,9 +124,14 @@ main {
     margin-top: 12vh;
 }
 
+main>section {
+    display: none !important;
+}
+
 #competitionStartSettings {
     width: 100%;
     height: 88vh;
+    display: block !important;
 }
 
 #competitionStartSettingsSettings {
@@ -254,11 +260,6 @@ main {
     cursor: pointer;
 }
 
-#classicCompArea {
-    width: 100%;
-    height: 100vh;
-}
-
 .compStartselections {
     width: 80%;
     margin: 2% auto;
@@ -276,12 +277,13 @@ main {
     align-items: center;
     padding: 1.5%;
     border-radius: var(--border-radius);
+    text-transform: capitalize;
 }
 
 /*Actual Competition Area*/
 #classicCompArea {
-    margin-top: 12vh;
-    display: flex;
+    width: 100%;
+    display: none;
     flex-direction: column;
     height: 88vh;
 }
