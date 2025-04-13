@@ -10,6 +10,8 @@ let compData = {
 
 let currentContestantIndex = 0;
 
+let timesArray = [];
+
 function generateDisciplines() {
     //generate disciplines 
     let options = ["3x3", "4x4", "5x5", "6x6", "7x7", "skewb", "pyraminx", "megaminx", "square-1", "3x3_blind", "multi_blind"];
@@ -105,6 +107,22 @@ function startGame() {
         if (compData.gamemode == "duel" || compData.gamemode == "classic") {
             document.getElementById("competitionStartSettings").style.setProperty("display", "none", "important");
             document.getElementById("classicCompArea").style.setProperty("display", "flex", "important");
+
+            //prepare timesArray
+            for (let i = 0; i < compData.names.length; i++) {
+                timesArray.push({
+                    "name": compData.names[i],
+                    "disciplines": [],
+                })
+
+                for (let j = 0; j < compData.disciplines.length; j++) {
+                    timesArray[i].disciplines.push({
+                        "discipline": compData.disciplines[j],
+                        "time": -1
+                    });
+                }
+            }
+
             gameLoop();
         }
     }
@@ -132,6 +150,10 @@ function getNextPlayer() {
     }
 
     return nextPlayer;
+}
+
+function addTimes() {
+
 }
 
 /********TIMER********/
@@ -164,9 +186,6 @@ function stopTimer() {
     }
 
     saveTime();
-    showTimes();
-    showStats();
-
     document.getElementById("scramble").innerHTML = "<div>" + generateScramble() + "</div>";
 }
 
@@ -203,6 +222,10 @@ document.addEventListener("keydown", function (event) {
         }
     }
 });
+
+function saveTime() {
+
+}
 
 document.addEventListener("keyup", function (event) {
     if (event.key === " ") {
