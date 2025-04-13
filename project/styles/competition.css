@@ -334,6 +334,7 @@ main>section {
     justify-content: center;
     background-color: transparent !important;
     font-size: 10rem;
+    font-family: monospace;
 }
 
 #timeAndStatsCon h3 {
