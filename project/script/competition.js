@@ -145,9 +145,11 @@ function gameUpdate() {
 
     if (timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines[timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines.findIndex(obj => obj.discipline == disciplines[currentDisciplineIndex])].times.length == 5) {
         //next Contestant
-        endRound();
-        currentPlayer = getNextPlayer();
-    }
+        setTimeout(() => {
+            endRound();
+            currentPlayer = getNextPlayer();
+        }, 1000)
+    }d
 }
 
 function endRound() {
@@ -155,7 +157,7 @@ function endRound() {
     if (timesArray[timesArray.length - 1].name != currentPlayer) {
         document.getElementById("playerComplete").style.display = "block";
     } else {
-        document.getElementById("nextDisciplineButton").style.display = "block";
+        document.getElementById("disciplineComplete").style.display = "block";
     }
 }
 
@@ -189,6 +191,11 @@ function changeToNextDiscipline() {
     } else {
         currentDisciplineIndex++;
     }
+
+    document.getElementById("disciplineComplete").style.display = "none";
+
+    timesStarted = 0;
+    gameUpdate();
 }
 
 function addTimes() {

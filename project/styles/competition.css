@@ -420,4 +420,5 @@ main>section {
 #nextPlayerButton,#nextDisciplineButton{
     width: 90%;
     height: 10%;
+    margin: 0 auto;
 }
