@@ -14,6 +14,8 @@ let currentRound = 1;
 
 let timesArray = [];
 
+let timesStarted = 0;
+
 function generateDisciplines() {
     //generate disciplines 
     let options = ["3x3", "4x4", "5x5", "6x6", "7x7", "skewb", "pyraminx", "megaminx", "square-1", "3x3_blind", "multi_blind"];
@@ -132,13 +134,32 @@ function startGame() {
 
 }
 
-let currentPlayer
+let currentPlayer;
 function gameLoop() {
-    let finished = false;
-    //while (!finished){
     currentPlayer = getNextPlayer();
-    document.getElementById("playersTurn").innerHTML = document.getElementById("playersTurn").innerHTML.replace("[Player]", currentPlayer);
-    // }
+
+    for (let i = 0; i < compData.names.length; i++) {
+        timesStarted = 0;
+        while (timesStarted < 5) {
+            document.getElementById("playersTurn").innerHTML = document.getElementById("playersTurn").innerHTML.replace("[Player]", currentPlayer);
+            document.getElementById("currentRound").innerHTML = document.getElementById("currentRound").innerHTML.replace("[X]", currentRound);
+            document.getElementById("currentDiscipline").innerHTML = disciplines[currentDisciplineIndex];
+
+            if (timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines[timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines.findIndex(obj => obj.discipline == disciplines[currentDisciplineIndex])].times.length >= 5) {
+                //next Contestant
+                endRound();
+                currentPlayer = getNextPlayer();
+            }
+        }
+    }
+}
+
+function endRound() {
+    document.getElementById("playerComplete").style.display = "block";
+}
+
+function switchToNextPlayer() {
+
 }
 
 function getNextPlayer() {
@@ -151,6 +172,18 @@ function getNextPlayer() {
     }
 
     return nextPlayer;
+}
+
+function getNextDiscipline() {
+    let nextDiscipline = compData.disciplines[currentDisciplineIndex];
+
+    if (currentDisciplineIndex == compData.disciplines.length - 1) {
+        currentDisciplineIndex = 0;
+    } else {
+        currentDisciplineIndex++;
+    }
+
+    return nextDiscipline;
 }
 
 function addTimes() {
@@ -171,6 +204,7 @@ const originalFontColor = document.documentElement.style.getPropertyValue("--fon
 function startTimer() {
     milliseconds = 0;
     timerRunning = true;
+    timesStarted++;
     if (!intervalId) {
         intervalId = setInterval(() => {
             milliseconds += 10;
@@ -264,8 +298,13 @@ function displayTime() {
         timeList.innerHTML = timeList.innerHTML.replace(`Time ${i}: --:--`, `Time ${i}: ${formatMilliseconds(relevantTimes[i - 1])}`);
     }
 
+
+    //Here is a problem
     //show current MO3
-    document.getElementById("TimeListMo3").innerHTML = document.getElementById("TimeListMo3").innerHTML.replace("--:--", getMO3(relevantTimes));
+    document.getElementById("TimeListMo3").innerHTML = "MO3: " + getMO3(relevantTimes);
+
+    //show best possible MO3
+    document.getElementById("bestMO3").innerHTML = getBestPossibleMO3(relevantTimes);
 }
 
 document.addEventListener("keyup", function (event) {
@@ -294,7 +333,8 @@ document.addEventListener("keydown", function (event) {
 });
 
 /********OTHER CALCULATIONS********/
-function getMO3(times) {
+function getMO3(timesArray) {
+    times = timesArray.slice(); //copy array
     //sort times
     let sortedArray = bubbleSort(times);
 
@@ -306,11 +346,12 @@ function getMO3(times) {
     sortedArray.forEach(element => {
         total += element;
     });
-
-    return formatMilliseconds(total / 3);
+    console.log(sortedArray.length)
+    return formatMilliseconds(total / sortedArray.length == 0 ? 1 : sortedArray.length);
 }
 
-function getBestPossibleMO3(times) {
+function getBestPossibleMO3(timesArray) {
+    times = timesArray.slice();  //copy array
     //fill up with best possible times
     while (times.length < 5) {
         times.push(10); //timer counts in 10ms steps => 0.1 is the best possible time

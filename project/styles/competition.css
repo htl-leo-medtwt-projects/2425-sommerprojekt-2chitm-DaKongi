@@ -397,3 +397,27 @@ main>section {
 #resultsTable tr:nth-child(odd) {
     background-color: rgba(119, 119, 119, 0.5);
 }
+
+.compNotificationBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    border: var(--secondary-color) 10px solid;
+    width: 70vw !important;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 2.5rem;
+    text-align: center;
+    display: none;
+}
+
+#nextPlayerButton{
+    width: 90%;
+    height: 10%;
+}

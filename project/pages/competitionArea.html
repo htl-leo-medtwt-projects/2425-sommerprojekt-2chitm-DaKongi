@@ -31,7 +31,7 @@
                 <div>
                     <label for="primaryColor">Primary Color</label>
                     <input type="color" name="primaryColor" id="inputPrimaryColor" value="#ADFCF9"
-                        onchange="setToCustom(),saveSettings()">               
+                        onchange="setToCustom(),saveSettings()">
                 </div>
 
                 <div>
@@ -103,7 +103,8 @@
 
                     <div id="contestantsInputs">
                         <input type="text" placeholder="Name" id="contestantInput">
-                        <input type="button" value="+ add contestant" id="addContestant" class="fit-me" onclick="addContestant()">
+                        <input type="button" value="+ add contestant" id="addContestant" class="fit-me"
+                            onclick="addContestant()">
                     </div>
                 </div>
                 <div class="competitionSettingsItem" id="disciplines">
@@ -116,7 +117,7 @@
                 </div>
                 <div class="competitionSettingsItem" id="gamemode">
                     <h2>Gamemode</h2>
-                    <form id="gameModeSelect" class="compStartselections" onchange="getCheckedGameMode()">  
+                    <form id="gameModeSelect" class="compStartselections" onchange="getCheckedGameMode()">
                         <label>
                             <input type="radio" name="game_mode" value="classic" checked>
                             Classic
@@ -138,6 +139,19 @@
         </section>
 
         <section id="classicCompArea">
+            <div class="compNotificationBox" id="playerComplete">
+                <h2>Round done!</h2>
+                <div>
+                    <p>Congratulations, your Times have been saved.</p>
+                    <p>Click the 'Next Player' button to begin the round for the next contestant.</p>
+                    <p>Good Luck, may the best win!</p>
+                </div>
+
+                <div class="button" id="nextPlayerButton">
+                    Next Player
+                </div>
+            </div>
+
             <div id="playersTurnCon">
                 <div id="currentRound">
                     Current Round: [X]
@@ -146,7 +160,7 @@
                     [Player]s Turn
                 </div>
                 <div id="currentDiscipline">
-                   3x3
+                    3x3
                 </div>
             </div>
 
@@ -179,7 +193,7 @@
         <section id="results">
             <div id="resultsHeadline">
                 <h2>Competition Results</h2>
-            </div>            
+            </div>
 
             <div id="ResultsSelect">
 
