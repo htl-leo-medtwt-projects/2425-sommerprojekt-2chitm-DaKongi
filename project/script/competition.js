@@ -9,6 +9,8 @@ let compData = {
 }
 
 let currentContestantIndex = 0;
+let currentDisciplineIndex = 0;
+let currentRound = 1;
 
 let timesArray = [];
 
@@ -118,7 +120,7 @@ function startGame() {
                 for (let j = 0; j < compData.disciplines.length; j++) {
                     timesArray[i].disciplines.push({
                         "discipline": compData.disciplines[j],
-                        "time": -1
+                        "times": []
                     });
                 }
             }
@@ -130,13 +132,12 @@ function startGame() {
 
 }
 
+let currentPlayer
 function gameLoop() {
     let finished = false;
     //while (!finished){
-    let currentPlayer = getNextPlayer();
+    currentPlayer = getNextPlayer();
     document.getElementById("playersTurn").innerHTML = document.getElementById("playersTurn").innerHTML.replace("[Player]", currentPlayer);
-
-
     // }
 }
 
@@ -186,7 +187,10 @@ function stopTimer() {
     }
 
     saveTime();
-    document.getElementById("scramble").innerHTML = "<div>" + generateScramble() + "</div>";
+    displayTime();
+
+
+    //document.getElementById("scramble").innerHTML = "<div>" + generateScramble() + "</div>";
 }
 
 function formatMilliseconds(ms) {
@@ -199,6 +203,24 @@ function formatMilliseconds(ms) {
     } else {
         return `${minutes}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(2, '0')}`;
     }
+}
+
+function parseFormattedTime(timeStr) {
+    let minutes = 0, seconds = 0, milliseconds = 0;
+
+    if (timeStr.includes(':')) {
+        const [minPart, secPart] = timeStr.split(':');
+        minutes = parseInt(minPart, 10);
+        const [sec, ms] = secPart.split('.');
+        seconds = parseInt(sec, 10);
+        milliseconds = parseInt(ms, 10) * 10;
+    } else {
+        const [sec, ms] = timeStr.split('.');
+        seconds = parseInt(sec, 10);
+        milliseconds = parseInt(ms, 10) * 10;
+    }
+
+    return (minutes * 60000) + (seconds * 1000) + milliseconds;
 }
 
 //spacebar needs to be pressed for 0.5s to start the timer, prevents accidental start
@@ -224,7 +246,26 @@ document.addEventListener("keydown", function (event) {
 });
 
 function saveTime() {
+    let contestant = currentPlayer;
+    let time = parseFormattedTime(document.getElementById("timer").textContent);
+    let discipline = disciplines[currentDisciplineIndex];
 
+    timesArray[timesArray.findIndex(obj => obj.name == contestant)].disciplines[timesArray[timesArray.findIndex(obj => obj.name == contestant)].disciplines.findIndex(obj => obj.discipline == discipline)].times.push(time);
+}
+
+function displayTime() {
+    let contestant = currentPlayer;
+    let discipline = disciplines[currentDisciplineIndex];
+    let timeList = document.getElementById("timeList");
+
+    let relevantTimes = timesArray[timesArray.findIndex(obj => obj.name == contestant)].disciplines[timesArray[timesArray.findIndex(obj => obj.name == contestant)].disciplines.findIndex(obj => obj.discipline == discipline)].times;
+
+    for (let i = 1; i <= relevantTimes.length; i++) {
+        timeList.innerHTML = timeList.innerHTML.replace(`Time ${i}: --:--`, `Time ${i}: ${formatMilliseconds(relevantTimes[i - 1])}`);
+    }
+
+    //show current MO3
+    document.getElementById("TimeListMo3").innerHTML = document.getElementById("TimeListMo3").innerHTML.replace("--:--", getMO3(relevantTimes));
 }
 
 document.addEventListener("keyup", function (event) {
@@ -245,10 +286,59 @@ document.addEventListener("keyup", function (event) {
     }
 });
 
-
 //Press Escape to reset the timer to 0
 document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
         document.getElementById("timer").innerHTML = "00.00"
     }
 });
+
+/********OTHER CALCULATIONS********/
+function getMO3(times) {
+    //sort times
+    let sortedArray = bubbleSort(times);
+
+    //remove highest and lowest
+    sortedArray.shift();
+    sortedArray.pop();
+
+    let total = 0;
+    sortedArray.forEach(element => {
+        total += element;
+    });
+
+    return formatMilliseconds(total / 3);
+}
+
+function getBestPossibleMO3(times) {
+    //fill up with best possible times
+    while (times.length < 5) {
+        times.push(10); //timer counts in 10ms steps => 0.1 is the best possible time
+    }
+
+    //sort times
+    let sortedArray = bubbleSort(times);
+
+    //remove highest and lowest
+    sortedArray.shift();
+    sortedArray.pop();
+
+    let total = 0;
+    sortedArray.forEach(element => {
+        total += element;
+    });
+
+    return formatMilliseconds(total / 3);
+}
+
+//bubble Sort written by ai for time reasons
+function bubbleSort(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+        }
+    }
+    return arr;
+}
