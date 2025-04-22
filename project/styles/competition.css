@@ -417,7 +417,7 @@ main>section {
     display: none;
 }
 
-#nextPlayerButton{
+#nextPlayerButton,#nextDisciplineButton{
     width: 90%;
     height: 10%;
 }

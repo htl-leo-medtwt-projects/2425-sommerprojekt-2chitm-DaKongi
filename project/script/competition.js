@@ -151,17 +151,22 @@ function gameUpdate() {
 }
 
 function endRound() {
-    document.getElementById("playerComplete").style.display = "block";
+    //check if everyone made their turn
+    if (timesArray[timesArray.length - 1].name != currentPlayer) {
+        document.getElementById("playerComplete").style.display = "block";
+    } else {
+        document.getElementById("nextDisciplineButton").style.display = "block";
+    }
 }
 
 function switchToNextPlayer() {
+    document.getElementById("playerComplete").style.display = "none";
+
     currentPlayer = getNextPlayer();
     timesStarted = 0;
 
     document.getElementById("playerComplete").style.display = "none";
     document.getElementById("timeAndStatsCon").innerHTML = `<div id="timeList"> <h3>Times</h3> <p>Time 1: --:--</p> <p>Time 2: --:--</p> <p>Time 3: --:--</p> <p>Time 4: --:--</p> <p>Time 5: --:--</p> <p id="TimeListMo3">MO3: --:--</p> </div> <div id="timer"> 00:00 </div> <div id="position"> <h3>Current Position</h3> <p id="positionNum">1</p> <h3>Best possible MO3</h3> <p id="bestMO3">--:--</p> </div>`;
-  
-    //check if everyone made their turn
 
     gameUpdate();
 }
@@ -178,16 +183,12 @@ function getNextPlayer() {
     return nextPlayer;
 }
 
-function getNextDiscipline() {
-    let nextDiscipline = compData.disciplines[currentDisciplineIndex];
-
+function changeToNextDiscipline() {
     if (currentDisciplineIndex == compData.disciplines.length - 1) {
         currentDisciplineIndex = 0;
     } else {
         currentDisciplineIndex++;
     }
-
-    return nextDiscipline;
 }
 
 function addTimes() {
