@@ -127,7 +127,7 @@ function startGame() {
                 }
             }
 
-            gameLoop();
+            gameUpdate();
         }
     }
 
@@ -135,22 +135,18 @@ function startGame() {
 }
 
 let currentPlayer;
-function gameLoop() {
-    currentPlayer = getNextPlayer();
+function gameUpdate() {
+    if (timesStarted == 0) {
+        currentPlayer = getNextPlayer();
+        document.getElementById("playersTurn").innerHTML = document.getElementById("playersTurn").innerHTML.replace("[Player]", currentPlayer);
+        document.getElementById("currentRound").innerHTML = document.getElementById("currentRound").innerHTML.replace("[X]", currentRound);
+        document.getElementById("currentDiscipline").innerHTML = disciplines[currentDisciplineIndex];
+    }
 
-    for (let i = 0; i < compData.names.length; i++) {
-        timesStarted = 0;
-        while (timesStarted < 5) {
-            document.getElementById("playersTurn").innerHTML = document.getElementById("playersTurn").innerHTML.replace("[Player]", currentPlayer);
-            document.getElementById("currentRound").innerHTML = document.getElementById("currentRound").innerHTML.replace("[X]", currentRound);
-            document.getElementById("currentDiscipline").innerHTML = disciplines[currentDisciplineIndex];
-
-            if (timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines[timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines.findIndex(obj => obj.discipline == disciplines[currentDisciplineIndex])].times.length >= 5) {
-                //next Contestant
-                endRound();
-                currentPlayer = getNextPlayer();
-            }
-        }
+    if (timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines[timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines.findIndex(obj => obj.discipline == disciplines[currentDisciplineIndex])].times.length == 5) {
+        //next Contestant
+        endRound();
+        currentPlayer = getNextPlayer();
     }
 }
 
@@ -159,7 +155,15 @@ function endRound() {
 }
 
 function switchToNextPlayer() {
+    currentPlayer = getNextPlayer();
+    timesStarted = 0;
 
+    document.getElementById("playerComplete").style.display = "none";
+    document.getElementById("timeAndStatsCon").innerHTML = `<div id="timeList"> <h3>Times</h3> <p>Time 1: --:--</p> <p>Time 2: --:--</p> <p>Time 3: --:--</p> <p>Time 4: --:--</p> <p>Time 5: --:--</p> <p id="TimeListMo3">MO3: --:--</p> </div> <div id="timer"> 00:00 </div> <div id="position"> <h3>Current Position</h3> <p id="positionNum">1</p> <h3>Best possible MO3</h3> <p id="bestMO3">--:--</p> </div>`;
+  
+    //check if everyone made their turn
+
+    gameUpdate();
 }
 
 function getNextPlayer() {
@@ -222,7 +226,7 @@ function stopTimer() {
 
     saveTime();
     displayTime();
-
+    gameUpdate();
 
     //document.getElementById("scramble").innerHTML = "<div>" + generateScramble() + "</div>";
 }
@@ -346,7 +350,6 @@ function getMO3(timesArray) {
     sortedArray.forEach(element => {
         total += element;
     });
-    console.log(sortedArray.length)
     return formatMilliseconds(total / sortedArray.length == 0 ? 1 : sortedArray.length);
 }
 
