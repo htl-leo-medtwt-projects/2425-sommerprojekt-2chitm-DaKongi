@@ -149,7 +149,7 @@ function gameUpdate() {
             endRound();
             currentPlayer = getNextPlayer();
         }, 1000)
-    }d
+    }
 }
 
 function endRound() {
@@ -192,12 +192,9 @@ function changeToNextDiscipline() {
         currentDisciplineIndex++;
     }
 
+    switchToNextPlayer();
     document.getElementById("disciplineComplete").style.display = "none";
-
-    timesStarted = 0;
-    gameUpdate();
 }
-
 function addTimes() {
 
 }
