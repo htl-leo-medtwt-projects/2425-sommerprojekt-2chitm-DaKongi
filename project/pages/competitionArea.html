@@ -174,9 +174,6 @@
             <!-------------------->
 
             <div id="playersTurnCon">
-                <div id="currentRound">
-                    Current Round: [X]
-                </div>
                 <div id="playersTurn">
                     [Player]s Turn
                 </div>
@@ -194,7 +191,7 @@
                     <p>Time 4: --:--</p>
                     <p>Time 5: --:--</p>
 
-                    <p id="TimeListMo3">MO3: --:--</p>
+
                 </div>
 
                 <div id="timer">
@@ -202,17 +199,38 @@
                 </div>
 
                 <div id="position">
-                    <h3>Current Position</h3>
-                    <p id="positionNum">1</p>
+                    <h3>Current MO3</h3>
+                    <p id="TimeListMo3">--:--</p>
 
                     <h3>Best possible MO3</h3>
                     <p id="bestMO3">--:--</p>
                 </div>
-                </div>
+            </div>
         </section>
 
         <section id="duelCompArea">
-            <div id="duelTimer">00:00</div>
+            <div id="duelScrambleCon">You shouldn't be able to read this text :O</div>
+
+            <div id="duelPointBoxCon">
+                <div class="duelPointBox" id="duelPointBoxLeft">
+                    <div class="duelPointBoxHeadline">
+                        <h2 id="duelNameField1">[Name]</h2>
+                    </div>
+                    <div class="duelPointBoxPoints">
+
+                    </div>
+                </div>
+                <div class="duelPointBox" id="duelPointBoxRight">
+                    <div class="duelPointBoxHeadline">
+                        <h2 id="duelNameField2">[Name]</h2>
+                    </div>
+                    <div class="duelPointBoxPoints">
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="duelTimer"><span id="duelTimerTimer">00:00</span><span id="duelTimerDiscipline">3x3</span></div>
         </section>
 
         <section id="results">

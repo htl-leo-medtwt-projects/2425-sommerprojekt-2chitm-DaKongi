@@ -129,9 +129,13 @@ function startGame() {
             }
 
             gameUpdate();
-        } else if (compData.gamemode == "duel") {
+        } else if (compData.gamemode == "duel" && compData.names.length == 2) {
             document.getElementById("competitionStartSettings").style.setProperty("display", "none", "important");
             document.getElementById("duelCompArea").style.setProperty("display", "flex", "important");
+
+            //set names
+            document.getElementById('duelNameField1').innerHTML = compData.names[0];
+            document.getElementById('duelNameField2').innerHTML = compData.names[1];
         }
     }
 
@@ -236,7 +240,7 @@ function startTimer() {
             if (compData.gamemode == "classic" || compData.gamemode == "solo") {
                 document.getElementById("timer").innerHTML = formatMilliseconds(milliseconds);
             } else {
-                document.getElementById("duelTimer").innerHTML = formatMilliseconds(milliseconds);
+                document.getElementById("duelTimerTimer").innerHTML = formatMilliseconds(milliseconds);
             }
         }, 10);
     }
