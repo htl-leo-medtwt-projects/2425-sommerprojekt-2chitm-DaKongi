@@ -130,7 +130,8 @@ function startGame() {
 
             gameUpdate();
         } else if (compData.gamemode == "duel") {
-            
+            document.getElementById("competitionStartSettings").style.setProperty("display", "none", "important");
+            document.getElementById("duelCompArea").style.setProperty("display", "flex", "important");
         }
     }
 
@@ -232,7 +233,11 @@ function startTimer() {
     if (!intervalId) {
         intervalId = setInterval(() => {
             milliseconds += 10;
-            document.getElementById("timer").innerHTML = formatMilliseconds(milliseconds);
+            if (compData.gamemode == "classic" || compData.gamemode == "solo") {
+                document.getElementById("timer").innerHTML = formatMilliseconds(milliseconds);
+            } else {
+                document.getElementById("duelTimer").innerHTML = formatMilliseconds(milliseconds);
+            }
         }, 10);
     }
 }
@@ -412,6 +417,25 @@ function bubbleSort(arr) {
 /**********Generate Results Table***********/
 let instantTableBody = document.getElementById("instantTableBody");
 let currentShownDiscipline;
+let currentShownDisciplineIndex = 0;
+
+function nextCurrentShownDisciplineIndex() {
+    if (currentShownDisciplineIndex == timesArray[0].disciplines.length - 1) {
+        currentShownDisciplineIndex = 0;
+    } else {
+        currentShownDisciplineIndex++;
+    }
+    goToResults();
+}
+
+function previousCurrentShownDisciplineIndex() {
+    if (currentShownDisciplineIndex == 0) {
+        currentShownDisciplineIndex = timesArray[0].disciplines.length - 1;
+    } else {
+        currentShownDisciplineIndex--;
+    }
+    goToResults();
+}
 
 function goToResults() {
     document.getElementById("results").style.setProperty("display", "flex", "important");
@@ -419,7 +443,8 @@ function goToResults() {
     document.getElementById('classicCompArea').style.setProperty("display", "none", "important");
 
     //set discipline picker correctly
-    currentShownDiscipline = timesArray[0].disciplines[0].discipline;
+    console.log(currentShownDisciplineIndex)
+    currentShownDiscipline = timesArray[0].disciplines[currentShownDisciplineIndex].discipline;
     document.getElementById("disciplineText").textContent = currentShownDiscipline;
 
     generateInstantTable();
@@ -431,19 +456,39 @@ function generateInstantTable() {
 
 
     for (let i = 0; i < timesArray.length; i++) {
+        let mo3 = getMO3(timesArray[i].disciplines[disciplines.findIndex(d => d === currentSelectedDiscipline)].times);
+
         str +=
             `
         <tr id="instantTableRow-${i}">
         <td>${timesArray[i].name}</td>
-        <td>----</td>
-        <td>${getMO3(timesArray[i].disciplines[disciplines.findIndex(d => d === currentSelectedDiscipline)].times)}</td>
+        <td id="resultPosition-${i}">----</td>
+        <td id="resultMO3-${i}">${mo3}</td>
         <td>${formatMilliseconds(Math.min(...(timesArray[i].disciplines[disciplines.findIndex(d => d === currentSelectedDiscipline)].times)))}</td>
         <td>${new Date().toLocaleDateString('en-GB')}</td>
         </tr>
         `
     }
-
     instantTableBody.innerHTML = str;
+
+    getPositions();
+}
+
+function getPositions() {
+    let mo3s = [];
+
+    for (let i = 0; i < timesArray.length; i++) {
+        mo3s[i] = document.getElementById(`resultMO3-${i}`).textContent;
+    }
+
+    //return positions
+    let positions = {};
+    for (let i = 0; i < mo3s; i++) {
+        let smallestNum = Math.min(...mo3s);
+        
+        positions[i] = smallestNum;
+        removeElement(mo3s,smallestNum);
+    }
 }
 
 function sortTimesArray() {
