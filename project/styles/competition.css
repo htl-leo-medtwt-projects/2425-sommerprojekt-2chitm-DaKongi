@@ -280,6 +280,15 @@ main>section {
     text-transform: capitalize;
 }
 
+i{
+    transition: all 0.3s;
+}
+
+i:hover{
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
 /*Actual Competition Area*/
 #classicCompArea,#duelCompArea {
     width: 100%;

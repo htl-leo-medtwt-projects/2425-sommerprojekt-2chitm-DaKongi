@@ -478,16 +478,29 @@ function getPositions() {
     let mo3s = [];
 
     for (let i = 0; i < timesArray.length; i++) {
-        mo3s[i] = document.getElementById(`resultMO3-${i}`).textContent;
+        mo3s[i] = parseFormattedTime(document.getElementById(`resultMO3-${i}`).textContent);
     }
 
-    //return positions
     let positions = {};
-    for (let i = 0; i < mo3s; i++) {
+    const originalLenght = mo3s.length;
+    for (let i = 0; i < originalLenght; i++) {
         let smallestNum = Math.min(...mo3s);
-        
-        positions[i] = smallestNum;
-        removeElement(mo3s,smallestNum);
+
+        positions[i + 1] = smallestNum;
+        removeElement(mo3s, smallestNum);
+    }
+
+    //assign positions
+    for (let i = 0; i < timesArray.length; i++) {
+        let mo3 = parseFormattedTime(document.getElementById(`resultMO3-${i}`).innerHTML);
+        let pos = null;
+        for (let key in positions) {
+            if (positions[key] == mo3) {
+                pos = key;
+                break;
+            }
+        }
+        document.getElementById(`resultPosition-${i}`).innerHTML = pos;
     }
 }
 
