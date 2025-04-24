@@ -409,12 +409,29 @@ function bubbleSort(arr) {
 let instantTableBody = document.getElementById("instantTableBody");
 let currentShownDiscipline;
 
-function goToResults(){
+function goToResults() {
     document.getElementById("results").style.setProperty("display", "flex", "important");
     document.getElementById("endCompetition").style.setProperty("display", "none", "important");
     document.getElementById('classicCompArea').style.setProperty("display", "none", "important");
 
+    //set discipline picker correctly
     currentShownDiscipline = timesArray[0].disciplines[0].discipline;
+    document.getElementById("disciplineText").textContent = currentShownDiscipline;
 }
+
+function generateInstantTable() {
+    let str = "";
+    for (let i = 0; i < timesArray.length; i++){
+        str +=
+        `
+        <tr id="instantTableRow-${i}">
+        <td>${timesArray[i].name}<td>
+        </tr>
+        `
+    }
+
+    instantTableBody.innerHTML = str;
+}
+
 
 
