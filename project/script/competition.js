@@ -417,21 +417,26 @@ function goToResults() {
     //set discipline picker correctly
     currentShownDiscipline = timesArray[0].disciplines[0].discipline;
     document.getElementById("disciplineText").textContent = currentShownDiscipline;
+
+    generateInstantTable();
 }
 
 function generateInstantTable() {
+    let currentSelectedDiscipline = document.getElementById("disciplineText").textContent;
+    console.log(currentSelectedDiscipline);
     let str = "";
     for (let i = 0; i < timesArray.length; i++){
         str +=
         `
         <tr id="instantTableRow-${i}">
-        <td>${timesArray[i].name}<td>
+        <td>${timesArray[i].name}</td>
+        <td>----</td>
+        <td>${getMO3(timesArray[i].disciplines[disciplines.findIndex(d => d === currentSelectedDiscipline)].times)}</td>
+        <td>${Math.min(timesArray[i].disciplines[disciplines.findIndex(d => d === currentSelectedDiscipline)].times)}</td>
+        <td>${new Date().toLocaleDateString('en-GB')}</td>
         </tr>
         `
     }
 
     instantTableBody.innerHTML = str;
 }
-
-
-
