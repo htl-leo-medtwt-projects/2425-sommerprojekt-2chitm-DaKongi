@@ -360,12 +360,13 @@ main>section {
 /*results*/
 #results {
     width: 100%;
-    height: 88vh;
+    height: 78vh;
     background-color: var(--primary-color);
     border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
 }
 
 #resultsHeadline {

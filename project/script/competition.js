@@ -108,7 +108,7 @@ function startGame() {
     //start the competition
     if (readyToStart) {
         //if gamemode is classic or solo -> show classic comp area
-        if (compData.gamemode == "duel" || compData.gamemode == "classic") {
+        if (compData.gamemode == "solo" || compData.gamemode == "classic") {
             document.getElementById("competitionStartSettings").style.setProperty("display", "none", "important");
             document.getElementById("classicCompArea").style.setProperty("display", "flex", "important");
 
@@ -122,12 +122,15 @@ function startGame() {
                 for (let j = 0; j < compData.disciplines.length; j++) {
                     timesArray[i].disciplines.push({
                         "discipline": compData.disciplines[j],
-                        "times": []
+                        "times": [],
+                        "mo3": -1
                     });
                 }
             }
 
             gameUpdate();
+        } else if (compData.gamemode == "duel") {
+            
         }
     }
 
@@ -321,7 +324,8 @@ function displayTime() {
 
 
     //Here is a problem
-    //show current MO3
+    //set and show show current MO3
+    timesArray[timesArray.findIndex(obj => obj.name == contestant)].disciplines[timesArray[timesArray.findIndex(obj => obj.name == contestant)].disciplines.findIndex(obj => obj.discipline == discipline)].mo3 = getMO3(relevantTimes);
     document.getElementById("TimeListMo3").innerHTML = "MO3: " + getMO3(relevantTimes);
 
     //show best possible MO3
@@ -355,7 +359,7 @@ document.addEventListener("keydown", function (event) {
 
 /********OTHER CALCULATIONS********/
 function getMO3(timesArray) {
-    times = timesArray.slice(); //copy array
+    let times = timesArray.slice(); //copy array
     //sort times
     let sortedArray = bubbleSort(times);
 
@@ -367,7 +371,7 @@ function getMO3(timesArray) {
     sortedArray.forEach(element => {
         total += element;
     });
-    return formatMilliseconds(total / sortedArray.length == 0 ? 1 : sortedArray.length);
+    return formatMilliseconds(total / (sortedArray.length == 0 ? 1 : sortedArray.length));
 }
 
 function getBestPossibleMO3(timesArray) {
@@ -423,16 +427,17 @@ function goToResults() {
 
 function generateInstantTable() {
     let currentSelectedDiscipline = document.getElementById("disciplineText").textContent;
-    console.log(currentSelectedDiscipline);
     let str = "";
-    for (let i = 0; i < timesArray.length; i++){
+
+
+    for (let i = 0; i < timesArray.length; i++) {
         str +=
-        `
+            `
         <tr id="instantTableRow-${i}">
         <td>${timesArray[i].name}</td>
         <td>----</td>
         <td>${getMO3(timesArray[i].disciplines[disciplines.findIndex(d => d === currentSelectedDiscipline)].times)}</td>
-        <td>${Math.min(timesArray[i].disciplines[disciplines.findIndex(d => d === currentSelectedDiscipline)].times)}</td>
+        <td>${formatMilliseconds(Math.min(...(timesArray[i].disciplines[disciplines.findIndex(d => d === currentSelectedDiscipline)].times)))}</td>
         <td>${new Date().toLocaleDateString('en-GB')}</td>
         </tr>
         `
@@ -440,3 +445,20 @@ function generateInstantTable() {
 
     instantTableBody.innerHTML = str;
 }
+
+function sortTimesArray() {
+
+}
+
+/***TO PDF***/
+//Mischung aus Fremdcode und eigenem
+const { jsPDF } = window.jspdf;
+
+document.getElementById('download-btn').addEventListener('click', () => {
+    const doc = new jsPDF();
+
+    doc.text('Thanks for competing!', 10, 10);
+    doc.text('Your Time : 11.15!', 10, 20);
+
+    doc.save('generated-pdf.pdf');
+});

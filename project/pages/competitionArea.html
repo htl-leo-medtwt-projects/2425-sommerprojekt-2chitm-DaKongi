@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Competiotion Area</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/fitty@2.3.6/dist/fitty.min.js" defer></script>
     <script src="../script/general.js" defer></script>
     <script src="../script/competition.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link rel="stylesheet" href="../styles/general.css">
     <link rel="stylesheet" href="../styles/competition.css">
@@ -209,18 +211,23 @@
                 </dfiv>
         </section>
 
+        <section id="duelCompArea">
+            <div id="timer">00:00</div>
+        </section>
+
         <section id="results">
             <div id="resultsHeadline">
                 <h2>Competition Results</h2>
             </div>
 
             <div id="resultsSelect">
-                <span>Left</span>
+                <i class="fa">&#xf060;</i>
                 <span id="disciplineText">3x3</span>
-                <span>Right</span>
+                <i class="fa">&#xf061;</i>
             </div>
 
             <div id="resultsTable">
+                <button id="download-btn">Download</button>
                 <!--Table will be generated dynmaicly-->
                 <table>
                     <thead id="tableHead">
@@ -231,27 +238,7 @@
                         <th>Date</th>
                     </thead>
                     <tbody id="instantTableBody">
-                        <!-- <tr>
-                            <td>Leo-Cubing</td>
-                            <td>Christoph Neumüller</td>
-                            <td>28.15</td>
-                            <td>19.95</td>
-                            <td>14.9.1856</td>
-                        </tr>
-                        <tr>
-                            <td>Super Turns</td>
-                            <td>Manuel Kemmer</td>
-                            <td>18.36</td>
-                            <td>11.12</td>
-                            <td>11.11.2011</td>
-                        </tr>
-                        <tr>
-                            <td>Super Turns</td>
-                            <td>Manuel Kemmer</td>
-                            <td>18.36</td>
-                            <td>11.12</td>
-                            <td>11.11.2011</td>
-                        </tr> -->
+                        <!--Generated content-->
                     </tbody>
                 </table>
             </div>
