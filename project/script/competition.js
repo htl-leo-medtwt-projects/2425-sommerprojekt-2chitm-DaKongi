@@ -136,6 +136,12 @@ function startGame() {
 
 let currentPlayer;
 function gameUpdate() {
+    //check if competition has ended (last player has in last discipline all solves done)
+    if (timesArray[timesArray.length - 1].disciplines[timesArray[timesArray.length - 1].disciplines.length - 1].times.length >= 5) {
+        endCompetition();
+        return;
+    }
+
     if (timesStarted == 0) {
         currentPlayer = getNextPlayer();
         document.getElementById("playersTurn").innerHTML = document.getElementById("playersTurn").innerHTML.replace("[Player]", currentPlayer);
@@ -152,12 +158,16 @@ function gameUpdate() {
     }
 }
 
+function endCompetition() {
+    document.getElementById("endCompetition").style.display = "flex";
+}
+
 function endRound() {
     //check if everyone made their turn
     if (timesArray[timesArray.length - 1].name != currentPlayer) {
-        document.getElementById("playerComplete").style.display = "block";
+        document.getElementById("playerComplete").style.display = "flex";
     } else {
-        document.getElementById("disciplineComplete").style.display = "block";
+        document.getElementById("disciplineComplete").style.display = "flex";
     }
 }
 
@@ -169,6 +179,8 @@ function switchToNextPlayer() {
 
     document.getElementById("playerComplete").style.display = "none";
     document.getElementById("timeAndStatsCon").innerHTML = `<div id="timeList"> <h3>Times</h3> <p>Time 1: --:--</p> <p>Time 2: --:--</p> <p>Time 3: --:--</p> <p>Time 4: --:--</p> <p>Time 5: --:--</p> <p id="TimeListMo3">MO3: --:--</p> </div> <div id="timer"> 00:00 </div> <div id="position"> <h3>Current Position</h3> <p id="positionNum">1</p> <h3>Best possible MO3</h3> <p id="bestMO3">--:--</p> </div>`;
+
+    document.getElementById("playersTurn").innerHTML = document.getElementById("playersTurn").innerHTML.replace("[Player]", currentPlayer);
 
     gameUpdate();
 }
@@ -391,3 +403,18 @@ function bubbleSort(arr) {
     }
     return arr;
 }
+
+
+/**********Generate Results Table***********/
+let instantTableBody = document.getElementById("instantTableBody");
+let currentShownDiscipline;
+
+function goToResults(){
+    document.getElementById("results").style.setProperty("display", "flex", "important");
+    document.getElementById("endCompetition").style.setProperty("display", "none", "important");
+    document.getElementById('classicCompArea').style.setProperty("display", "none", "important");
+
+    currentShownDiscipline = timesArray[0].disciplines[0].discipline;
+}
+
+

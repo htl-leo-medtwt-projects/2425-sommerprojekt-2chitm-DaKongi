@@ -139,6 +139,7 @@
         </section>
 
         <section id="classicCompArea">
+            <!--Notification Boxes-->
             <div class="compNotificationBox" id="playerComplete">
                 <h2>Round done!</h2>
                 <div>
@@ -159,6 +160,16 @@
                     Next Discipline
                 </div>
             </div>
+            <div class="compNotificationBox" id="endCompetition">
+                <h2>Competition Ended</h2>
+                <p>Thank you for participating! Check the results below.</p>
+                <p>Click 'View Results' to see the final standings!</p>
+
+                <div class="button" id="viewResults" onclick="goToResults()">
+                    View Results
+                </div>
+            </div>
+            <!-------------------->
 
             <div id="playersTurnCon">
                 <div id="currentRound">
@@ -195,7 +206,7 @@
                     <h3>Best possible MO3</h3>
                     <p id="bestMO3">--:--</p>
                 </div>
-            </dfiv>
+                </dfiv>
         </section>
 
         <section id="results">
@@ -203,22 +214,24 @@
                 <h2>Competition Results</h2>
             </div>
 
-            <div id="ResultsSelect">
-
+            <div id="resultsSelect">
+                <span>Left</span>
+                <span id="disciplineText">3x3</span>
+                <span>Right</span>
             </div>
 
             <div id="resultsTable">
                 <!--Table will be generated dynmaicly-->
                 <table>
                     <thead id="tableHead">
-                        <th>Competition</th>
-                        <th>Winner</th>
+                        <th>Name</th>
+                        <th>Position</th>
                         <th>Average</th>
                         <th>Best Single</th>
                         <th>Date</th>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="instantTableBody">
+                        <!-- <tr>
                             <td>Leo-Cubing</td>
                             <td>Christoph Neumüller</td>
                             <td>28.15</td>
@@ -238,49 +251,12 @@
                             <td>18.36</td>
                             <td>11.12</td>
                             <td>11.11.2011</td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
         </section>
     </main>
-
-    <footer>
-        <div id="footerLeft">
-            <div class="footerVertical">
-                <h4>Mastercube</h4>
-                <div id="socialMediaIcons">
-                    <a href="https://www.instagram.com/" target="_blank">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                    <a href="https://youtu.be/dQw4w9WgXcQ?si=PVgfCTgJdGCsNiAq" target="_blank">
-                        <i class="fa fa-youtube-play"></i>
-                    </a>
-                    <a href="https://www.twitter.com/" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a href="https://www.twitch.tv/" target="_blank">
-                        <i class="fa fa-twitch"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div id="footerRight">
-            <div class="footerVertical">
-                <h4>Tutorials</h4>
-                <a href="pages/tutorials.html">All Tutorials</a>
-                <a href="pages/tutorials.html">WCA</a>
-                <a href="pages/tutorials.html">CFOP - Trainer</a>
-            </div>
-            <div class="footerVertical">
-                <h4>Other Pages</h4>
-                <a href="pages/timer.html">Timer</a>
-                <a href="pages/competitionArea.html">Competition</a>
-                <a href="pages/shop.html">Shop Portal</a>
-            </div>
-        </div>
-    </footer>
 </body>
 
 </html>

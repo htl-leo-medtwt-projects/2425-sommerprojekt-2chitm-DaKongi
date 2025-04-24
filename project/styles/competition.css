@@ -398,6 +398,16 @@ main>section {
     background-color: rgba(119, 119, 119, 0.5);
 }
 
+#resultsSelect{
+    width: 80%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
 .compNotificationBox {
     position: absolute;
     top: 50%;
@@ -408,7 +418,6 @@ main>section {
     border: var(--secondary-color) 10px solid;
     width: 70vw !important;
     height: 70vh;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
@@ -417,7 +426,7 @@ main>section {
     display: none;
 }
 
-#nextPlayerButton,#nextDisciplineButton{
+#nextPlayerButton,#nextDisciplineButton,#viewResults{
     width: 90%;
     height: 10%;
     margin: 0 auto;
