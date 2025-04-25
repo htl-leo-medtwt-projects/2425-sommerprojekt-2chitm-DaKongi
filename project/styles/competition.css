@@ -280,17 +280,18 @@ main>section {
     text-transform: capitalize;
 }
 
-i{
+i {
     transition: all 0.3s;
 }
 
-i:hover{
+i:hover {
     color: var(--accent-color);
     cursor: pointer;
 }
 
 /*Actual Competition Area*/
-#classicCompArea,#duelCompArea {
+#classicCompArea,
+#duelCompArea {
     width: 100%;
     display: none;
     flex-direction: column;
@@ -346,7 +347,7 @@ i:hover{
     font-family: monospace;
 }
 
-#duelTimer{
+#duelTimer {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -356,19 +357,19 @@ i:hover{
     align-items: center;
 }
 
-#duelTimerTimer{
+#duelTimerTimer {
     font-size: 10rem;
     font-family: monospace;
 }
 
-#duelTimerDiscipline{
+#duelTimerDiscipline {
     font-size: 4rem;
     border: black solid 2px;
     padding: 2%;
     border-radius: var(--border-radius);
 }
 
-#duelScrambleCon{
+#duelScrambleCon {
     width: 80vw;
     height: 10%;
     margin: 2% auto;
@@ -380,7 +381,7 @@ i:hover{
     font-size: 2.5rem;
 }
 
-#duelPointBoxCon{
+#duelPointBoxCon {
     width: 100vw;
     height: 88vh;
     margin-top: 12vh;
@@ -392,24 +393,25 @@ i:hover{
     align-items: center;
 }
 
-.duelPointBoxHeadline{
+.duelPointBoxHeadline {
     width: 100%;
     height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.duelPointBoxHeadline h2{
+
+.duelPointBoxHeadline h2 {
     font-size: 3rem;
 }
 
-.duelPointBoxPoints{
+.duelPointBoxPoints {
     width: 100%;
     height: 80%;
     background-color: var(--secondary-color);
 }
 
-.duelPointBox{
+.duelPointBox {
     width: 20vw;
     height: 50%;
     margin: 2% 5%;
@@ -478,7 +480,7 @@ i:hover{
     background-color: rgba(119, 119, 119, 0.5);
 }
 
-#resultsSelect{
+#resultsSelect {
     width: 80%;
     height: 10vh;
     display: flex;
@@ -507,17 +509,37 @@ i:hover{
     z-index: 1000;
 }
 
-#nextPlayerButton,#nextDisciplineButton,#viewResults{
+#nextPlayerButton,
+#nextDisciplineButton,
+#viewResults {
     width: 90%;
     height: 10%;
     margin: 0 auto;
 }
 
-#duelTimeSelectButtons{
+#duelTimeSelectButtons {
     display: flex;
     justify-content: space-between;
     width: 80%;
 }
-#duelTimeSelectButtons>div{
+
+#duelTimeSelectButtons>div {
     width: 30%;
+}
+
+.duelPointBoxPoints {
+    overflow-y: scroll;
+}
+
+.duelPointBoxPoints::-webkit-scrollbar {
+    background-color: var(--primary-color);
+}
+
+.duelPointBoxPoints::-webkit-scrollbar-thumb {
+    background-color: black;
+    width: 20%;
+}
+
+.duelPoints {
+    width: 40%;
 }

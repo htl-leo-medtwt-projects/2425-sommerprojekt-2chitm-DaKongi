@@ -108,11 +108,15 @@ function startGame() {
                 //ready to start
                 readyToStart = true;
             }
+        } else if (compData.gamemode == "solo" && compData.names.length == 1) {
+            //solo 
+            readyToStart = true;
         }
     }
 
     //start the competition
     if (readyToStart) {
+        console.log('hello world')
         //if gamemode is classic or solo -> show classic comp area
         if (compData.gamemode == "solo" || compData.gamemode == "classic") {
             document.getElementById("competitionStartSettings").style.setProperty("display", "none", "important");
@@ -174,7 +178,7 @@ function gameUpdate() {
             }, 1000)
         }
     } else if (compData.gamemode == "duel") {
-        //game ends by 5 points NEEDS TO BE IMPLEMENTED
+        //game ends by 5 points
         if (duelData.player1.points >= duelPointsToWin || duelData.player2.points >= duelPointsToWin) {
             endDuel();
             return;
@@ -190,6 +194,37 @@ function endDuel() {
     //get Winner
     let winner = duelData.player1.points >= duelPointsToWin ? 0 : 1;
     document.getElementById("duelResultName").innerHTML = compData.names[winner];
+}
+
+function saveDuellTime(player) {
+    duelData[player].points++;
+    duelData[player].times.push(parseFormattedTime(document.getElementById("duelTimerTimer").textContent));
+
+    showDuelPoints();
+    document.getElementById("duelTimeSelect").style.display = "none";
+
+    //game ends by 5 points
+    if (duelData.player1.points >= duelPointsToWin || duelData.player2.points >= duelPointsToWin) {
+        endDuel();
+        return;
+    }
+}
+
+function showDuelPoints() {
+    //player 1
+    let str1 = "";
+    for (let i = 0; i < duelData.player1.points; i++) {
+        str1 += "<img src='../img/coin.png' alt='Master Cube Point' class='duelPoints'>"
+    }
+
+    document.getElementById("duelPointBoxLeftPoints").innerHTML = str1;
+
+    //player 2
+    let str2 = "";
+    for (let i = 0; i < duelData.player2.points; i++) {
+        str2 += "<img src='../img/coin.png' alt='Master Cube Point' class='duelPoints'>"
+    }
+    document.getElementById("duelPointBoxRightPoints").innerHTML = str2;
 }
 
 function endCompetition() {
@@ -304,9 +339,12 @@ function stopTimer() {
         saveTime();
         displayTime();
         gameUpdate();
-    }else if(compData.gamemode == "duel"){
+    } else if (compData.gamemode == "duel") {
         document.getElementById('duelTimeSelect').style.display = "flex";
         document.getElementById('resultInstantTime').innerHTML = document.getElementById("duelTimerTimer").textContent;
+
+        currentDisciplineIndex = getRandomInt(disciplines.length - 1)
+        gameUpdate();
     }
 
     //document.getElementById("scramble").innerHTML = "<div>" + generateScramble() + "</div>";
@@ -322,6 +360,10 @@ function formatMilliseconds(ms) {
     } else {
         return `${minutes}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(2, '0')}`;
     }
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 }
 
 function parseFormattedTime(timeStr) {
@@ -350,14 +392,22 @@ document.addEventListener("keydown", function (event) {
             timerRunning = false;
         } else {
             if (!turnedRed) {
-                document.getElementById("timer").style.color = "red";
+                if (compData.gamemode == "classic" || compData.gamemode == "solo") {
+                    document.getElementById("timer").style.color = "red";
+                } else {
+                    document.getElementById("duelTimerTimer").style.color = "red";
+                }
                 turnedRed = true;
             }
 
             keyDownTime = Date.now();
             colorChangeTimer = setTimeout(() => {
                 if (Date.now() - keyDownTime >= 500) {
-                    document.getElementById("timer").style.color = "green";
+                    if (compData.gamemode == "classic" || compData.gamemode == "solo") {
+                        document.getElementById("timer").style.color = "green";
+                    } else {
+                        document.getElementById("duelTimerTimer").style.color = "green";
+                    }
                 }
             }, 500);
         }
