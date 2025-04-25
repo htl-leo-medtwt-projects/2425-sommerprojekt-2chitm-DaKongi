@@ -147,12 +147,19 @@ function startGame() {
             document.getElementById('duelNameField2').innerHTML = compData.names[1];
             document.getElementById('duelTimeSelectName1').innerHTML = compData.names[0];
             document.getElementById('duelTimeSelectName2').innerHTML = compData.names[1];
+
+            //set scramble
+            document.getElementById("duelScrambleCon").innerHTML = generateScramble();
         }
 
         gameUpdate();
     }
 
 
+}
+
+function getRandNum(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 let currentPlayer;
@@ -586,6 +593,29 @@ function generateInstantTable() {
     getPositions();
 }
 
+//Scramble Generator
+function generateScramble(length = 20, size = 3) {
+    let possibleScrambleAddition = [" ", "2", "'"];
+    let possibleScrambleParts = ["R", "L", "U", "D", "B", "F"];
+
+    let scrambleLenght = 20;
+
+    let scramble = "";
+    let lastRandNum = null;
+    let randNum = null;
+    for (let i = 0; i < scrambleLenght; i++) {
+        do {
+            randNum = getRandNum(0, possibleScrambleParts.length - 1);
+        } while (randNum == lastRandNum);
+
+        scramble += `${possibleScrambleParts[randNum]}${possibleScrambleAddition[getRandNum(0, possibleScrambleAddition.length - 1)]} `
+
+        lastRandNum = randNum;
+    }
+
+    return scramble;
+}
+
 function getPositions() {
     let mo3s = [];
 
@@ -616,8 +646,12 @@ function getPositions() {
     }
 }
 
-function sortTimesArray() {
+function showRules(){
+    document.getElementById("compRules").style.display = "flex";
+}
 
+function hideRules(){
+    document.getElementById("compRules").style.display = "none";
 }
 
 /***TO PDF***/

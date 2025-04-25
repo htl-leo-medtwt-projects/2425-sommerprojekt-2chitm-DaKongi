@@ -275,7 +275,17 @@ main>section {
     font-size: 8rem;
 }
 
+#compRules hr{
+    color: black;
+    width: 80%;
+    border: black solid 2px;
+}
 
+#closeRules{
+    position: fixed;
+    top: 2%;
+    left: 2%;
+}
 
 .compStartselections {
     width: 80%;
@@ -395,7 +405,7 @@ i:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 
 #duelPointBoxCon {
