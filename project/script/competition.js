@@ -8,6 +8,12 @@ let compData = {
     "gamemode": "classic"
 }
 
+let duelData = {
+    "player1": { "points": 0, "times": [] },
+    "player2": { "points": 0, "times": [] }
+}
+let duelPointsToWin = 5;
+
 let currentContestantIndex = 0;
 let currentDisciplineIndex = 0;
 let currentRound = 1;
@@ -128,7 +134,6 @@ function startGame() {
                 }
             }
 
-            gameUpdate();
         } else if (compData.gamemode == "duel" && compData.names.length == 2) {
             document.getElementById("competitionStartSettings").style.setProperty("display", "none", "important");
             document.getElementById("duelCompArea").style.setProperty("display", "flex", "important");
@@ -136,7 +141,11 @@ function startGame() {
             //set names
             document.getElementById('duelNameField1').innerHTML = compData.names[0];
             document.getElementById('duelNameField2').innerHTML = compData.names[1];
+            document.getElementById('duelTimeSelectName1').innerHTML = compData.names[0];
+            document.getElementById('duelTimeSelectName2').innerHTML = compData.names[1];
         }
+
+        gameUpdate();
     }
 
 
@@ -144,26 +153,43 @@ function startGame() {
 
 let currentPlayer;
 function gameUpdate() {
-    //check if competition has ended (last player has in last discipline all solves done)
-    if (timesArray[timesArray.length - 1].disciplines[timesArray[timesArray.length - 1].disciplines.length - 1].times.length >= 5) {
-        endCompetition();
-        return;
-    }
+    if (compData.gamemode == "classic" || compData.gamemode == "solo") {
+        //check if competition has ended (last player has in last discipline all solves done)
+        if (timesArray[timesArray.length - 1].disciplines[timesArray[timesArray.length - 1].disciplines.length - 1].times.length >= 5) {
+            endCompetition();
+            return;
+        }
 
-    if (timesStarted == 0) {
-        currentPlayer = getNextPlayer();
-        document.getElementById("playersTurn").innerHTML = document.getElementById("playersTurn").innerHTML.replace("[Player]", currentPlayer);
-        document.getElementById("currentRound").innerHTML = document.getElementById("currentRound").innerHTML.replace("[X]", currentRound);
-        document.getElementById("currentDiscipline").innerHTML = disciplines[currentDisciplineIndex];
-    }
-
-    if (timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines[timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines.findIndex(obj => obj.discipline == disciplines[currentDisciplineIndex])].times.length == 5) {
-        //next Contestant
-        setTimeout(() => {
-            endRound();
+        if (timesStarted == 0) {
             currentPlayer = getNextPlayer();
-        }, 1000)
+            document.getElementById("playersTurn").innerHTML = document.getElementById("playersTurn").innerHTML.replace("[Player]", currentPlayer);
+            document.getElementById("currentDiscipline").innerHTML = disciplines[currentDisciplineIndex];
+        }
+
+        if (timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines[timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines.findIndex(obj => obj.discipline == disciplines[currentDisciplineIndex])].times.length == 5) {
+            //next Contestant
+            setTimeout(() => {
+                endRound();
+                currentPlayer = getNextPlayer();
+            }, 1000)
+        }
+    } else if (compData.gamemode == "duel") {
+        //game ends by 5 points NEEDS TO BE IMPLEMENTED
+        if (duelData.player1.points >= duelPointsToWin || duelData.player2.points >= duelPointsToWin) {
+            endDuel();
+            return;
+        }
+
+        document.getElementById('duelTimerDiscipline').innerHTML = disciplines[currentDisciplineIndex];
     }
+}
+
+function endDuel() {
+    document.getElementById("duelComplete").style.display = "flex";
+
+    //get Winner
+    let winner = duelData.player1.points >= duelPointsToWin ? 0 : 1;
+    document.getElementById("duelResultName").innerHTML = compData.names[winner];
 }
 
 function endCompetition() {
@@ -186,7 +212,28 @@ function switchToNextPlayer() {
     timesStarted = 0;
 
     document.getElementById("playerComplete").style.display = "none";
-    document.getElementById("timeAndStatsCon").innerHTML = `<div id="timeList"> <h3>Times</h3> <p>Time 1: --:--</p> <p>Time 2: --:--</p> <p>Time 3: --:--</p> <p>Time 4: --:--</p> <p>Time 5: --:--</p> <p id="TimeListMo3">MO3: --:--</p> </div> <div id="timer"> 00:00 </div> <div id="position"> <h3>Current Position</h3> <p id="positionNum">1</p> <h3>Best possible MO3</h3> <p id="bestMO3">--:--</p> </div>`;
+    document.getElementById("timeAndStatsCon").innerHTML = `<div id="timeList">
+                    <h3>Times</h3>
+                    <p>Time 1: --:--</p>
+                    <p>Time 2: --:--</p>
+                    <p>Time 3: --:--</p>
+                    <p>Time 4: --:--</p>
+                    <p>Time 5: --:--</p>
+
+
+                </div>
+
+                <div id="timer">
+                    00:00
+                </div>
+
+                <div id="position">
+                    <h3>Current MO3</h3>
+                    <p id="TimeListMo3">--:--</p>
+
+                    <h3>Best possible MO3</h3>
+                    <p id="bestMO3">--:--</p>
+                </div>`;
 
     document.getElementById("playersTurn").innerHTML = document.getElementById("playersTurn").innerHTML.replace("[Player]", currentPlayer);
 
@@ -253,9 +300,14 @@ function stopTimer() {
         intervalId = null;
     }
 
-    saveTime();
-    displayTime();
-    gameUpdate();
+    if (compData.gamemode == "classic" || compData.gamemode == "solo") {
+        saveTime();
+        displayTime();
+        gameUpdate();
+    }else if(compData.gamemode == "duel"){
+        document.getElementById('duelTimeSelect').style.display = "flex";
+        document.getElementById('resultInstantTime').innerHTML = document.getElementById("duelTimerTimer").textContent;
+    }
 
     //document.getElementById("scramble").innerHTML = "<div>" + generateScramble() + "</div>";
 }
@@ -514,13 +566,13 @@ function sortTimesArray() {
 
 /***TO PDF***/
 //Mischung aus Fremdcode und eigenem
-const { jsPDF } = window.jspdf;
+// const { jsPDF } = window.jspdf;
 
-document.getElementById('download-btn').addEventListener('click', () => {
-    const doc = new jsPDF();
+// document.getElementById('download-btn').addEventListener('click', () => {
+//     const doc = new jsPDF();
 
-    doc.text('Thanks for competing!', 10, 10);
-    doc.text('Your Time : 11.15!', 10, 20);
+//     doc.text('Thanks for competing!', 10, 10);
+//     doc.text('Your Time : 11.15!', 10, 20);
 
-    doc.save('generated-pdf.pdf');
-});
+//     doc.save('generated-pdf.pdf');
+// });

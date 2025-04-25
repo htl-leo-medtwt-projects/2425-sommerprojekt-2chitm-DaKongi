@@ -212,6 +212,34 @@
             <div id="duelScrambleCon">You shouldn't be able to read this text :O</div>
 
             <div id="duelPointBoxCon">
+                <div class="compNotificationBox" id="duelComplete">
+                    <h2>We have a Winner:</h2>
+                    <div>
+                        <p id="duelResultName">[Name]</p>
+                        <p>Times: </p>
+                        <div id="duelResultTimes"></div>
+                    </div>
+
+                    <div class="button" id="nextPlayerButton" onclick="reload()"> <!--TOOD: Reload Page-->
+                        Back To Menu
+                    </div>
+                </div>
+                <div class="compNotificationBox" id="duelTimeSelect">
+                    <h2>Who stopped the timer?</h2>
+                    <div>
+                        <p id="resultInstantTime">--:--</p>
+                    </div>
+
+                    <div id="duelTimeSelectButtons">
+                        <div class="button" id="duelTimeSelectName1" onclick="saveDuellTime('player1')">
+                            [Player 1]
+                        </div>
+                        <div class="button" id="duelTimeSelectName2" onclick="saveDuellTime('player2')">
+                            [Player 2]
+                        </div>
+                    </div>
+                </div>
+
                 <div class="duelPointBox" id="duelPointBoxLeft">
                     <div class="duelPointBoxHeadline">
                         <h2 id="duelNameField1">[Name]</h2>

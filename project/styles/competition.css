@@ -504,10 +504,20 @@ i:hover{
     font-size: 2.5rem;
     text-align: center;
     display: none;
+    z-index: 1000;
 }
 
 #nextPlayerButton,#nextDisciplineButton,#viewResults{
     width: 90%;
     height: 10%;
     margin: 0 auto;
+}
+
+#duelTimeSelectButtons{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+#duelTimeSelectButtons>div{
+    width: 30%;
 }
