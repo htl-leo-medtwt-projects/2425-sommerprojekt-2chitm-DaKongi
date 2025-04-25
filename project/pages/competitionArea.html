@@ -99,12 +99,47 @@
 
     <main>
         <section id="competitionStartSettings">
+            <div id="compRules" class="compNotificationBox">
+                <h1>How To Play</h1>
+                <hr>
+                <p>There are 3 Gamemodes: </p>
+                <ol>Classic</ol>
+                <ol>Duel</ol>
+                <ol>Solo</ol>
+                <hr>
+                <h2>Classic</h2>
+                <p>
+                    To get started, you need at least two players – but there's no upper limit!<br>
+                    The selected disciplines will be played one after another in order. Each player completes 5 solves
+                    before moving on to the next discipline.<br>
+                    The average of the middle three times will be counted.<br>
+                    You may only touch the puzzle once the timer has started, and the timer can only be stopped once the
+                    cube is solved and no longer being touched.<br>
+                    The provided scramble must be used.
+                </p>
+                <hr>
+                <h2>Duel</h2>
+                <p>
+                    Two players are required.<br>
+                    In Duel Mode, there is only one timer, and both players solve the puzzle at the same time.<br>
+                    The player who solves the puzzle first stops the timer and scores a point.<br>
+                    The first player to reach 5 points wins.
+                </p>
+                <hr>
+                <h2>Solo</h2>
+                <p>
+                    Solo Mode is primarily intended for training purposes.<br>
+                    It works essentially the same as Classic Mode, just for one player.
+                </p>
+
+            </div>
+
             <div id="competitionStartSettingsSettings">
                 <div class="competitionSettingsItem" id="contestants">
                     <h2>Contestants</h2>
 
                     <div id="contestantsInputs">
-                        <input type="text" placeholder="Name" id="contestantInput">
+                        <input type="text" placeholder="Name..." id="contestantInput">
                         <input type="button" value="+ add contestant" id="addContestant" class="fit-me"
                             onclick="addContestant()">
                     </div>
@@ -137,6 +172,7 @@
                     </form>
                 </div>
             </div>
+            <div class="button" id="rules" onclick="showRules()">How To Play</div>
             <div id="startButton" onclick="startGame()">&gt;&gt;start&lt;&lt;</div>
         </section>
 
@@ -288,6 +324,7 @@
                     </tbody>
                 </table>
             </div>
+            <div class="button" id="classicBackToMenu" onclick="location.reload()">Back To Menu</div>
         </section>
     </main>
 </body>

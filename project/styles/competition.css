@@ -136,7 +136,7 @@ main>section {
 
 #competitionStartSettingsSettings {
     width: 100%;
-    height: 80%;
+    height: 70%;
     background-color: var(--primary-color);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -240,25 +240,42 @@ main>section {
     outline: none;
 }
 
-#startButton {
+#startButton,
+#rules {
     text-transform: uppercase;
     font-size: 3rem;
     width: 70%;
-    margin: 2% auto;
+    margin: 1% auto;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--primary-color);
     border-radius: var(--border-radius);
-    height: 10vh;
+    height: 10%;
     transition: all 0.3s;
     width: 100%;
+}
+
+#rules:hover{
+    background-color: var(--accent-color);
 }
 
 #startButton:hover {
     background-color: var(--accent-color);
     cursor: pointer;
 }
+
+#compRules{
+    overflow-y: scroll;
+    justify-content: flex-start;
+    padding: 5%;
+}
+
+#compRules h1{
+    font-size: 8rem;
+}
+
+
 
 .compStartselections {
     width: 80%;
@@ -542,4 +559,10 @@ i:hover {
 
 .duelPoints {
     width: 40%;
+}
+
+#classicBackToMenu {
+    width: 80%;
+    height: 10%;
+    margin-top: 2%;
 }

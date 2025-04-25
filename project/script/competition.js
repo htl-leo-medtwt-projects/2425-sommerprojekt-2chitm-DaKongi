@@ -158,18 +158,21 @@ function startGame() {
 let currentPlayer;
 function gameUpdate() {
     if (compData.gamemode == "classic" || compData.gamemode == "solo") {
+        let lastPlayer = timesArray[timesArray.length - 1];
+        let lastDiscipline = lastPlayer.disciplines?.[lastPlayer.disciplines.length - 1];
         //check if competition has ended (last player has in last discipline all solves done)
-        if (timesArray[timesArray.length - 1].disciplines[timesArray[timesArray.length - 1].disciplines.length - 1].times.length >= 5) {
+        if (lastDiscipline?.times?.length >= 5) {
             endCompetition();
             return;
         }
 
         if (timesStarted == 0) {
             currentPlayer = getNextPlayer();
-            document.getElementById("playersTurn").innerHTML = document.getElementById("playersTurn").innerHTML.replace("[Player]", currentPlayer);
+            document.getElementById("playersTurn").innerHTML = currentPlayer + "s Turn";
             document.getElementById("currentDiscipline").innerHTML = disciplines[currentDisciplineIndex];
         }
 
+        //check if currentPlayer has made 5 Solves in current discipline
         if (timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines[timesArray[timesArray.findIndex(obj => obj.name == currentPlayer)].disciplines.findIndex(obj => obj.discipline == disciplines[currentDisciplineIndex])].times.length == 5) {
             //next Contestant
             setTimeout(() => {
@@ -434,7 +437,6 @@ function displayTime() {
     }
 
 
-    //Here is a problem
     //set and show show current MO3
     timesArray[timesArray.findIndex(obj => obj.name == contestant)].disciplines[timesArray[timesArray.findIndex(obj => obj.name == contestant)].disciplines.findIndex(obj => obj.discipline == discipline)].mo3 = getMO3(relevantTimes);
     document.getElementById("TimeListMo3").innerHTML = "MO3: " + getMO3(relevantTimes);
@@ -446,7 +448,11 @@ function displayTime() {
 document.addEventListener("keyup", function (event) {
     if (event.key === " ") {
         turnedRed = false;
-        document.getElementById("timer").style.color = originalFontColor;
+        if (compData.gamemode == "classic" || compData.gamemode == "solo") {
+            document.getElementById("timer").style.color = originalFontColor;
+        } else {
+            document.getElementById("duelTimerTimer").style.color = originalFontColor;
+        }
 
         if (keyDownTime !== null) {
             let elapsedTime = Date.now() - keyDownTime;
