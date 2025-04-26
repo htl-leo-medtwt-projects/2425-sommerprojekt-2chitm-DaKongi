@@ -70,6 +70,11 @@ function addContestant() {
     } else {
         alert("please enter a name")
     }
+
+    if (compData.gamemode == "duel" && compData.names.length == 2){
+        document.getElementById("addContestant").onclick = null; //disable button
+        document.getElementById("addContestant").style.backgroundColor = "gray";
+    }
 }
 
 function clearContestants() {
@@ -107,11 +112,15 @@ function startGame() {
             if (compData.names.length > 1) {
                 //ready to start
                 readyToStart = true;
+            } else {
+                alert("Please enter more players")
             }
         } else if (compData.gamemode == "solo" && compData.names.length == 1) {
             //solo 
             readyToStart = true;
         }
+    } else {
+        alert("Please enter more players or disciplines!")
     }
 
     //start the competition
@@ -646,11 +655,11 @@ function getPositions() {
     }
 }
 
-function showRules(){
+function showRules() {
     document.getElementById("compRules").style.display = "flex";
 }
 
-function hideRules(){
+function hideRules() {
     document.getElementById("compRules").style.display = "none";
 }
 
