@@ -1,3 +1,5 @@
+/// <refernce path="shopDataJson.json" />
+
 document.addEventListener('DOMContentLoaded', function() {
     const wcaButton = document.getElementById('wca');
     const dropdown = document.getElementById('dropdown');
@@ -20,3 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdown.classList.toggle('show');
     });
 });
+
+// cubes.forEach(element => {
+//     console.log(element.name);
+// });
