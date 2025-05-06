@@ -4,7 +4,7 @@
 [...document.getElementsByClassName('shopTopBarCategory')].forEach(element => {
     element.addEventListener("mouseover", () => {
         const dropDownId = element.getAttribute("dropDown");
-        document.getElementById(dropDownId).style.display = "flex";
+        document.getElementById(dropDownId).style.display = "block";
     });
 
     element.addEventListener("mouseleave", () => {

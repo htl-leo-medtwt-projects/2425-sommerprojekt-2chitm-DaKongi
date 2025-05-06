@@ -210,14 +210,19 @@ main {
     position: relative;
 }
 
+.shopTopBarCategory:hover{
+    color: var(--accent-color);
+}
+
 .shopNavMenu {
     position: absolute;
     top: 100%;
     left: 0;
     display: none;
-    width: 20vw;
+    width: 15vw;
     background-color: var(--primary-color);
     border: black solid 5px;
+    color: var(--font-color) !important;
 }
 
 .shopNavMenu>div {
