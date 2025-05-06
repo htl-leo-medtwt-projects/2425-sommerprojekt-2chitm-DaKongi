@@ -104,13 +104,9 @@
         <h2>Shop Portal</h2>
 
         <div class="shopTopBarCategory">
-            <div id="wca">WCA</div>
-            <div id="dropdown" hidden>
-                <div>3x3</div>
-                <div>4x4</div>
-                <div>5x5</div>
-                <div>6x6</div>
-                <div>7x7</div>
+            <div>WCA</div>
+            <div id="shopNavMenuWca" class="shopNavMenu">
+                <div id="3x3"></div>
             </div>
         </div>
 
@@ -119,7 +115,7 @@
         </div>
 
         <!-- From Uiverse.io by satyamchaudharydev -->
-        <form class="form">
+        <form class="form" action="">
             <button>
                 <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
                     aria-labelledby="search">
@@ -128,7 +124,7 @@
                     </path>
                 </svg>
             </button>
-            <input class="input" placeholder="Search" type="text">
+            <input class="input" placeholder="Search" type="text" id="searchBar">
             <button class="reset" type="reset">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
@@ -148,15 +144,10 @@
             <div id="dailyTipContent">
                 <div id="presentedCube">
                     <img src="../img/cubeExample/moyu-weilong-wr-m-v10.png" alt="Moyu cube">
-                    <p class="fit-me">MOYU<br> WeiLong <br>WR M V10</p>
+                    <p id="presentedCubeText">MOYU<br> WeiLong <br>WR M V10</p>
                 </div>
-                <!--This is still static for creating the basic layout but will be dynamic, when implementing the functionality-->
                 <div id="dailyShopBoxes">
-                    <!--Here will be the shops linked with images of their logos (dynamicly generated)-->
-                    <div class="shopBox"></div>
-                    <div class="shopBox"></div>
-                    <div class="shopBox"></div>
-                    <div class="shopBox"></div>
+                    <!--generated content-->
                 </div>
             </div>
         </section>
@@ -185,6 +176,16 @@
             <div class="categoryBox">
                 <p>Shape shifters</p>
             </div>
+        </section>
+
+        <section id="searchResults">
+            <div class="shopHeadline2">
+                <hr>
+                <h2>Search-Results</h2>
+                <hr>
+            </div>
+
+            <div id="searchResultsContent"><p>Please search something</p></div>
         </section>
     </main>
 

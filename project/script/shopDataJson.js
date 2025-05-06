@@ -8,7 +8,7 @@ let cubes = [
         "isUVCoated": false,
         "shops": [
             {
-                "name": "Cuboss",
+                "name": "cuboss",
                 "price": "€32.99",
                 "url": "https://cuboss.com/shop/gan-356-m-maglev-3x3/"
             }
@@ -38,27 +38,27 @@ let cubes = [
         "isUVCoated": false,
         "shops": [
             {
-                "name": "SpeedCubeShop",
+                "name": "scs",
                 "price": "$22.95",
                 "url": "https://speedcubeshop.com/products/yj-mgc-5x5-magnetic"
             },
             {
-                "name": "MasterCubeStore",
+                "name": "cubestore",
                 "price": "€19.29",
                 "url": "https://mastercubestore.de/yj-moyu/1213-yj-mgc-5x5-stickerless-6970774553115.html"
             },
             {
-                "name": "Speedcube.nl",
+                "name": "nordicube",
                 "price": "€25.99",
                 "url": "https://www.speedcube.nl/en/speedcube-en/yj-en/yj-mgc-5x5-m-stickerless/"
             },
             {
-                "name": "Xrubiks",
+                "name": "kewbzie",
                 "price": "$24.68",
                 "url": "https://dexcubeshop.com/product/yj-mgc-5x5-magnetic/"
             },
             {
-                "name": "Cubeless",
+                "name": "TheCubicle",
                 "price": "CHF 24.90",
                 "url": "https://www.cubeless.ch/speedcubes-5x5/yj-mgc-5x5-m_CL-111"
             }
@@ -83,7 +83,7 @@ let cubes = [
                 "url": "https://cycubes.com/products/moyu-aosu-v7-4x4-triple-track-uv"
             },
             {
-                "name": "Speedcubing.org",
+                "name": "cubeStore",
                 "price": "£42.95",
                 "url": "https://speedcubing.org/products/moyu-aosu-v7"
             }
@@ -98,7 +98,7 @@ let cubes = [
         "isUVCoated": true,
         "shops": [
             {
-                "name": "SpeedCube Store Deutschland",
+                "name": "scs",
                 "price": "€16.95",
                 "url": "https://de.speedcubestore.com/produkt/moyu-weilong-wrm-v10-3x3-magnetic-uv-coated/"
             },
@@ -108,12 +108,12 @@ let cubes = [
                 "url": "https://cuboss.com/de/shop/moyu-weilong-wr-m-v10-3x3/"
             },
             {
-                "name": "MasterCubeStore",
+                "name": "nordicube",
                 "price": "€23.99",
                 "url": "https://mastercubestore.de/yj-moyu/1812-moyu-weilong-wr-maglev-3x3-stickerless-6970647060818.html"
             },
             {
-                "name": "CubeStore.gr",
+                "name": "TheCubicle",
                 "price": "€41.90",
                 "url": "https://cubestore.gr/en/product/moyu-weilong-wr-m-v10-3x3-20-magnet-ball-core-uv-maglev/"
             }
@@ -128,7 +128,7 @@ let cubes = [
         "isUVCoated": true,
         "shops": [
             {
-                "name": "SpeedCubeShop",
+                "name": "scs",
                 "price": "$59.99",
                 "url": "https://speedcubeshop.com/products/gan-15-3x3-magnetic-maglev-uv-coated"
             }
@@ -143,7 +143,7 @@ let cubes = [
         "isUVCoated": false,
         "shops": [
             {
-                "name": "SpeedCube Store Deutschland",
+                "name": "scs",
                 "price": "€15.95",
                 "url": "https://de.speedcubestore.com/produkt/moyu-weilong-wr-m-v9-3x3-magnetic/"
             }
