@@ -202,27 +202,7 @@ main {
     text-align: center;
 }
 
-.drop-content {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
 
-.drop-open .drop-content {
-    opacity: 1;
-}
-
-#dropdown {
-    display: none;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-}
-
-#dropdown.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
 
 #backToTopButton {
     border-radius: 25%;
