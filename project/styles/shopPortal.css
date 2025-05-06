@@ -202,7 +202,34 @@ main {
     text-align: center;
 }
 
+.shopTopBarCategory{
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+}
 
+.shopNavMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    width: 20vw;
+    background-color: var(--primary-color);
+    border: black solid 5px;
+}
+
+.shopNavMenu>div {
+    width: 100%;
+    font-size: 2rem;
+    padding: 3% 0 3% 1%;
+    border-bottom: black solid 2px;
+    transition: all 0.2s;
+}
+.shopNavMenu>div:hover{
+    background-color: var(--accent-color);
+}
 
 #backToTopButton {
     border-radius: 25%;

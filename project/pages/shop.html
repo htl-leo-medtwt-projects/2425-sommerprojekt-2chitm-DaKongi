@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/general.css">
     <link rel="stylesheet" href="../styles/shopPortal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="../script/shopDataJson.js" defer></script>
     <script src="https://unpkg.com/@popperjs/core@2" defer></script>
     <script src="https://unpkg.com/tippy.js@6" defer></script>
@@ -103,20 +104,21 @@
     <div id="shopTopBar">
         <h2>Shop Portal</h2>
 
-        <div class="shopTopBarCategory">
-            <div>WCA</div>
-            <div id="shopNavMenuWca" class="shopNavMenu">
-                <div>2x2</div>
-                <div>3x3</div>
-                <div>4x4</div>
-                <div>5x5</div>
-                <div>6x6</div>
-                <div>7x7</div>
-                <div>skewb</div>
-                <div>sqaure-1</div>
-                <div>Pyraminx</div>
-                <div>Megaminx</div>
-            </div>
+        <div class="shopTopBarCategory" dropDown="shopNavMenuWca">
+            WCA
+            <i class="material-icons">&#xe5c5;</i>
+        </div>
+        <div id="shopNavMenuWca" class="shopNavMenu">
+            <div>2x2</div>
+            <div>3x3</div>
+            <div>4x4</div>
+            <div>5x5</div>
+            <div>6x6</div>
+            <div>7x7</div>
+            <div>skewb</div>
+            <div>sqaure-1</div>
+            <div>Pyraminx</div>
+            <div>Megaminx</div>
         </div>
 
         <div id="backToTopButton" onclick="window.location.href = 'shop.html#header'">

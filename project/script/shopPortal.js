@@ -1,5 +1,18 @@
 /// <refernce path="shopDataJson.json" />
 
+//dropDown
+[...document.getElementsByClassName('shopTopBarCategory')].forEach(element => {
+    element.addEventListener("mouseover", () => {
+        const dropDownId = element.getAttribute("dropDown");
+        document.getElementById(dropDownId).style.display = "flex";
+    });
+
+    element.addEventListener("mouseleave", () => {
+        const dropDownId = element.getAttribute("dropDown");
+        document.getElementById(dropDownId).style.display = "none";
+    });
+});
+
 //test log names
 cubes.forEach(element => {
     console.log(element.name);
