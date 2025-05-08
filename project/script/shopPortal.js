@@ -54,6 +54,8 @@ function dailyTip() {
     for (let i = 0; i < Math.min(cubes[cubes.findIndex(cube => cube.name === document.getElementById("presentedCubeText").textContent)].shops.length, 4); i++) {
         document.getElementById("dailyTipShopBox" + i).style.backgroundImage = `url('../img/shop/shopsIcons/${cubes[cubes.findIndex(cube => cube.name === document.getElementById("presentedCubeText").textContent)].shops[i].name}.png')`
     }
+
+   // document.getElementById("presentedCubeImg").src = `../img/shop/cubes/${fittingCubes[i].brand}_${fittingCubes[i].size}.png`;
 }
 dailyTip();
 
@@ -111,12 +113,18 @@ function showSearchResults(fittingCubes) {
 
     for (let i = 0; i < fittingCubes.length; i++) {
         document.getElementById('searchResultsContent').innerHTML += `
-        <div class="searchResultsBox" id="searchResultBox-${i}">
-            <img src="../img/shop/categories/3x3.jpg" alt="cube">
+        <div class="searchResultsBox" id="searchResultBox-${i}" data-cubeName="${fittingCubes[i].name}" onclick="showDetailShops(this)">
+            <img src="../img/shop/cubes/${fittingCubes[i].brand}_${fittingCubes[i].size}.png" alt="cube">
             <p>${fittingCubes[i].name}</p>
         </div>
         `
     };
+
+    [...document.getElementsByClassName("searchResultsBox")].forEach(element => {
+        element.addEventListener("click", () => {
+            document.getElementById("shopOverlay").style.display = "block";
+        })
+    });
 
     //jump to searchResult
     window.location.hash = "#searchResults"
@@ -128,6 +136,11 @@ document.getElementById('searchBar').addEventListener("keydown", (event) => {
         search();
     }
 });
+
+function showDetailShops(element) {
+    let currentItem = cubes[cubes.findIndex(cube => cube.name == element.dataset.cubeName)]
+    console.log(currentItem);
+}
 
 //returns the index of the shop with the best price
 function getBestPrice(element) {
@@ -161,4 +174,3 @@ function showBiggerCubes() {
     });
     showSearchResults(fittingCubes);
 }
-
