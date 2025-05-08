@@ -54,13 +54,8 @@ let cubes = [
             },
             {
                 "name": "kewbzie",
-                "price": "$24.68",
+                "price": "€24.68",
                 "url": "https://dexcubeshop.com/product/yj-mgc-5x5-magnetic/"
-            },
-            {
-                "name": "TheCubicle",
-                "price": "CHF 24.90",
-                "url": "https://www.cubeless.ch/speedcubes-5x5/yj-mgc-5x5-m_CL-111"
             }
         ]
     },
@@ -104,7 +99,7 @@ let cubes = [
             },
             {
                 "name": "Cuboss",
-                "price": "€12.90 – €36.90",
+                "price": "€36.90",
                 "url": "https://cuboss.com/de/shop/moyu-weilong-wr-m-v10-3x3/"
             },
             {
@@ -158,19 +153,24 @@ let cubes = [
         "isUVCoated": false,
         "shops": [
             {
-                "name": "SpeedCubeShop",
+                "name": "scs",
                 "price": "$22.95",
                 "url": "https://speedcubeshop.com/products/yj-mgc-5x5-magnetic"
             },
             {
-                "name": "MasterCubeStore",
+                "name": "cubestore",
                 "price": "€18.36",
                 "url": "https://mastercubestore.com/yj-moyu/1212-yj-mgc-5x5-black-6970774553115.html"
             },
             {
-                "name": "Speedcube.nl",
+                "name": "CYCubes",
                 "price": "€25.99",
                 "url": "https://www.speedcube.nl/en/speedcube-en/yj-en/yj-mgc-5x5-m-stickerless/"
+            },
+            {
+                "name": "TheCubicle",
+                "price": "CHF 24.90",
+                "url": "https://www.cubeless.ch/speedcubes-5x5/yj-mgc-5x5-m_CL-111"
             }
         ]
     },
@@ -198,12 +198,12 @@ let cubes = [
         "isUVCoated": true,
         "shops": [
             {
-                "name": "SpeedCube Store Deutschland",
+                "name": "kewbzie",
                 "price": "€16.95",
                 "url": "https://de.speedcubestore.com/produkt/moyu-weilong-wrm-v10-3x3-magnetic-uv-coated/"
             },
             {
-                "name": "MasterCubeStore",
+                "name": "cubestore",
                 "price": "€23.99",
                 "url": "https://mastercubestore.de/yj-moyu/1812-moyu-weilong-wr-maglev-3x3-stickerless-6970647060818.html"
             }

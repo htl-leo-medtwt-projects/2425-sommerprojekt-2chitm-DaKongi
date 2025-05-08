@@ -14,13 +14,22 @@
 });
 
 [...document.getElementsByClassName('dropDownWca')].forEach(element => {
-     element.addEventListener("click",()=>{
-        
-     });
+    element.addEventListener("click", () => {
+        dropDownSearchWCA(element.textContent);
+    });
 });
 
-function dropDownSearchWCA(value){
-    
+function dropDownSearchWCA(value) {
+    let fittingCubes = [];
+    cubes.forEach(element => {
+        if (element.size == value) {
+            fittingCubes.push(element);
+        }
+    });
+
+    console.log(fittingCubes)
+
+    showSearchResults(fittingCubes);
 }
 
 //test log names
@@ -67,23 +76,7 @@ function search() {
         }
     });
 
-    console.log(fittingCubes)
-
-    //show fitting cubes
-    document.getElementById('searchResultsContent').innerHTML = "";
-
-    for (let i = 0; i < fittingCubes.length; i++) {
-        document.getElementById('searchResultsContent').innerHTML += `
-        <div class="searchResultsBox" id="searchResultBox-${i}">
-            <img src="../img/shop/categories/3x3.jpg" alt="cube">
-            <p>${fittingCubes[i].name}</p>
-        </div>
-        `
-    };
-
-    //jump to searchResult
-    window.location.hash = "#searchResults"
-
+    showSearchResults(fittingCubes);
 
     //add eventlistener for hover effect
     document.querySelectorAll('.searchResultsBox').forEach(box => {
@@ -93,9 +86,8 @@ function search() {
 
         box.addEventListener('mouseenter', () => {
             let data = cubes[cubes.findIndex(cube => cube.name == name)];
-            console.log(data)
             box.innerHTML = `
-                    <p class="hoveredText hoveredTextSize">${data.size}</p>
+                    <p class="hoveredText hoveredTextSize">Starting from: ${data.shops[getBestPrice(data)].price}</p>
                     <p class="hoveredText hoveredTextBrand">Brand: ${data.brand}</p>
                     <p class="hoveredText hoveredTextIsMaglev">Maglev: ${data.isMaglev ? "yes" : "no"}</p>
                     <p class="hoveredText hoveredTextIsMaglev">Magnetic: ${data.isMagnetic ? "yes" : "no"}</p>
@@ -113,9 +105,60 @@ function search() {
     });
 }
 
+function showSearchResults(fittingCubes) {
+    //show fitting cubes
+    document.getElementById('searchResultsContent').innerHTML = "";
+
+    for (let i = 0; i < fittingCubes.length; i++) {
+        document.getElementById('searchResultsContent').innerHTML += `
+        <div class="searchResultsBox" id="searchResultBox-${i}">
+            <img src="../img/shop/categories/3x3.jpg" alt="cube">
+            <p>${fittingCubes[i].name}</p>
+        </div>
+        `
+    };
+
+    //jump to searchResult
+    window.location.hash = "#searchResults"
+}
+
 document.getElementById('searchBar').addEventListener("keydown", (event) => {
     if (event.key == "Enter") {
         event.preventDefault();
         search();
     }
 });
+
+//returns the index of the shop with the best price
+function getBestPrice(element) {
+    let priceArray = [];
+    element.shops.forEach(shop => {
+        priceArray.push(parseFloat(shop.price.replace(/[^\d.]/g, ""))); //parsing is not from me
+    });
+
+    let cheapest = Math.min(...priceArray);
+
+    return element.shops.findIndex(shop => shop.price == "€" + cheapest);
+}
+
+//Categories
+function showWcaCubes() {
+    showSearchResults(cubes);
+}
+
+function show3x3() {
+    let fittingCubes = [];
+    cubes.forEach(element => {
+        if (element.size == "3x3") fittingCubes.push(element);
+    });
+    showSearchResults(fittingCubes);
+}
+
+function showBiggerCubes() {
+    let fittingCubes = [];
+    cubes.forEach(element => {
+        if (element.size != "3x3") fittingCubes.push(element);
+    });
+    showSearchResults(fittingCubes);
+}
+

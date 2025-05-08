@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="../script/shopDataJson.js" defer></script>
-    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
-    <script src="https://unpkg.com/tippy.js@6" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/fitty@2.3.6/dist/fitty.min.js" defer></script>
     <script src="../script/general.js" defer></script>
     <script src="../script/shopPortal.js" defer></script>
@@ -196,16 +194,16 @@
         </div>
         <!--Here will be generated images in the boxes-->
         <section id="categories">
-            <div class="categoryBox" id="categoryBoxWCA">
+            <div class="categoryBox" id="categoryBoxWCA" onclick="showWcaCubes()">
                 <p>WCA Puzzles</p>
             </div>
-            <div class="categoryBox">
+            <div class="categoryBox" onclick="show3x3()">
                 <p>3x3 Speedcubes</p>
             </div>
             <div class="categoryBox">
                 <p>Lubrication</p>
             </div>
-            <div class="categoryBox">
+            <div class="categoryBox" onclick="showBiggerCubes()">
                 <p>Bigger cubes</p>
             </div>
             <div class="categoryBox">
@@ -226,6 +224,10 @@
             <div id="searchResultsContent">
                 <p>Please search something</p>
             </div>
+        </section>
+
+        <section id="shopOverlay">
+            
         </section>
     </main>
 

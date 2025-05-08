@@ -260,7 +260,7 @@ main {
 .categoryBox {
     width: 20vw;
     aspect-ratio: 1/1;
-    background-color: #00FFFF;
+    background-color: var(--primary-color);
     border-radius: var(--border-radius);
     display: flex;
     justify-content: center;
@@ -321,4 +321,11 @@ main {
 .clickToShowMoreInfo {
     font-size: 1.3rem !important;
     font-weight: normal;
+}
+
+#shopOverlay{
+    
+    width: 80vw;
+    height: 80vh;
+    background-color: var(--primary-color);
 }
