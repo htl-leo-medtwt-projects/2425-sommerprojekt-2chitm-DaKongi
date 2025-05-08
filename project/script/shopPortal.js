@@ -46,7 +46,7 @@ function dailyTip() {
     for (let i = 0; i < Math.min(cubes[cubes.findIndex(cube => cube.name === document.getElementById("presentedCubeText").textContent)].shops.length, 4); i++) {
         buildStr +=
             `
-        <div class="shopBox" id="dailyTipShopBox${i}"></div>
+        <div class="shopBox" id="dailyTipShopBox${i}" onclick="window.open('')"></div>
         `
     }
     document.getElementById("dailyShopBoxes").innerHTML = buildStr;

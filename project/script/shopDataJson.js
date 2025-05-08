@@ -9,7 +9,7 @@ let cubes = [
         "shops": [
             {
                 "name": "cuboss",
-                "price": "€32.99",
+                "price": "€22.99",
                 "url": "https://cuboss.com/shop/gan-356-m-maglev-3x3/"
             }
         ]

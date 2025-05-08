@@ -409,3 +409,7 @@ main {
 #shopOverlayShops>div>img {
     width: 100%;
 }
+
+#cheapestCrack{
+    border: green solid 8px;
+}
