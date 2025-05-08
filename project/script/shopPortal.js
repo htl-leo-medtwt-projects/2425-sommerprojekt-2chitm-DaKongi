@@ -13,10 +13,20 @@
     });
 });
 
-//test log names
-cubes.forEach(element => {
-    console.log(element.name);
+[...document.getElementsByClassName('dropDownWca')].forEach(element => {
+     element.addEventListener("click",()=>{
+        
+     });
 });
+
+function dropDownSearchWCA(value){
+    
+}
+
+//test log names
+// cubes.forEach(element => {
+//     console.log(element.name);
+// });
 
 function dailyTip() {
     let randNum = getRandNum(0, cubes.length - 1);
