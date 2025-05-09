@@ -142,11 +142,6 @@ let cubes = [
                 "price": "€54.00",
                 "url": "https://www.gdcube.com/products/gan-15-3x3-magnetic-maglev-uv-coated"
             },
-            {
-                "name": "CYCubes",
-                "price": "€63.00",
-                "url": "https://cubearena.com/products/gan-15-3x3-magnetic-maglev-uv-coated"
-            }
         ]
     },
     {
@@ -212,11 +207,6 @@ let cubes = [
                 "price": "€41.90",
                 "url": "https://cubestore.gr/en/product/moyu-weilong-wr-m-v10-3x3-20-magnet-ball-core-uv-maglev/"
             },
-            {
-                "name": "kewbzie",
-                "price": "€20.95",
-                "url": "https://kewbz.be/products/moyu-weilong-wr-m-v10-3x3-magnetic-standard-uv"
-            }
         ]
     },
     {
@@ -232,11 +222,6 @@ let cubes = [
                 "price": "€54.00",
                 "url": "https://www.gdcube.com/products/gan-15-3x3-magnetic-maglev-uv-coated"
             },
-            {
-                "name": "TheCubicle",
-                "price": "€63.00",
-                "url": "https://cubearena.com/products/gan-15-3x3-magnetic-maglev-uv-coated"
-            }
         ]
     },
     {
@@ -251,11 +236,6 @@ let cubes = [
                 "name": "cubeStore",
                 "price": "€41.90",
                 "url": "https://cubestore.gr/en/product/moyu-weilong-wr-m-v10-3x3-20-magnet-ball-core-uv-maglev/"
-            },
-            {
-                "name": "kewbzie",
-                "price": "€20.95",
-                "url": "https://kewbz.be/products/moyu-weilong-wr-m-v10-3x3-magnetic-standard-uv"
             }
         ]
     }
