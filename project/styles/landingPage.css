@@ -209,14 +209,6 @@ section {
         font-size: 1rem;
     }
 
-    nav {
-        display: none;
-    }
-
-    #logo {
-        display: none;
-    }
-
     #start {
         height: 40vh;
         background-position: center;

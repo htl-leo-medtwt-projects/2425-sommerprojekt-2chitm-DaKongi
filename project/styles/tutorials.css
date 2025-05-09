@@ -218,3 +218,8 @@ h1 {
 .tutorialAlgImg>img{
     width: 10vw;
 }
+
+
+@media screen and (max-width: 600px) {
+    
+}

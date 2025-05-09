@@ -1,8 +1,6 @@
 let settingsVisible = false;
 let settings = document.getElementById("settings");
 
-//fitty('.fit-me'); //fit elements in their boxes
-
 const user_preference_appearance_json_default = {
     "primary-color": "#38b7b7",
     "secondary-color": "#085e5e",
@@ -86,8 +84,8 @@ function getAppearance() {
 }
 
 //change preset to custom when changing spcific color
-function setToCustom(){
-    localStorage.setItem("currentPreset","custom");
+function setToCustom() {
+    localStorage.setItem("currentPreset", "custom");
 }
 
 
@@ -111,10 +109,10 @@ function updateApperance() {
 function updateUI() {
     //load preset
     if (!localStorage.getItem("currentPreset")) {
-        localStorage.setItem("currentPreset",currentPreset); 
+        localStorage.setItem("currentPreset", currentPreset);
     } else {
         currentPreset = localStorage.getItem("currentPreset");
-        localStorage.setItem("currentPreset",currentPreset); 
+        localStorage.setItem("currentPreset", currentPreset);
     }
     getAppearance();
     updateApperance();
@@ -127,9 +125,9 @@ function updateReadability() {
 function loadPreset(toDefault = false) {
     if (toDefault) {
         user_preference_appearance_json = user_preference_appearance_json_default;
-        localStorage.setItem("currentPreset","default");
+        localStorage.setItem("currentPreset", "default");
     } else {
-        localStorage.setItem("currentPreset",document.getElementById("inputPreset").value); 
+        localStorage.setItem("currentPreset", document.getElementById("inputPreset").value);
         switch (document.getElementById("inputPreset").value) {
             case "default": {
                 user_preference_appearance_json = user_preference_appearance_json_default;
@@ -206,3 +204,16 @@ function getContrastQuality(hex1, hex2) {
         return "bad"; // low contrast
     }
 }
+
+//Mobile Nav bar
+let mobileNavShown = false;
+document.getElementById("mobileNavHamburgerMenu").addEventListener("click", () => {
+    if (!mobileNavShown) {
+        document.getElementById("mobileNav").style.top = "100%";
+        mobileNavShown = true;
+    } else {
+        
+        document.getElementById("mobileNav").style.top = "-550%";
+         mobileNavShown = false;
+    }
+});
