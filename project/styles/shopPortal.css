@@ -169,7 +169,7 @@ main {
 }
 
 #dailyShopBoxes {
-    width: 50%;
+    width: 40%;
     height: 100%;
     aspect-ratio: 1/1;
     display: grid;
@@ -182,7 +182,7 @@ main {
     background-image: url("../img/shop/shopsIcons/cuboss.png");
     background-size: cover;
     border-radius: var(--border-radius);
-    width: 90%;
+    width: 100%;
     aspect-ratio: 1/1;
 }
 
