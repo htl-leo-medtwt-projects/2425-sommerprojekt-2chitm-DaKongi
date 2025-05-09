@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
     transition: all 0.3s;
 }
@@ -43,15 +43,17 @@ h1 {
     color: var(--accent-color);
 }
 
-#tutorialHeader{
+#tutorialHeader {
     transition: all 1s;
 }
-#tutorialHeader.scrolled{
+
+#tutorialHeader.scrolled {
     color: var(--font-color);
     background-color: var(--background-color);
     height: 5vh;
 }
-#tutorialHeader.scrolled #logo>img{
+
+#tutorialHeader.scrolled #logo>img {
     display: none;
 }
 
@@ -160,11 +162,12 @@ h1 {
     font-size: 2.5rem !important;
     background-color: var(--secondary-color);
 }
-.hoverItem:hover{
+
+.hoverItem:hover {
     background-color: var(--accent-color);
 }
 
-.tutorialInfoBox{
+.tutorialInfoBox {
     width: 90%;
     min-height: 10vh;
     border-top: var(--secondary-color) 5px solid;
@@ -174,34 +177,39 @@ h1 {
     justify-content: space-evenly;
     align-items: center;
 }
-.tutorialInfoBox>i{
+
+.tutorialInfoBox>i {
     font-size: 7rem;
     color: var(--accent-color);
     text-align: center;
 }
-.tutorialInfoBox>p{
+
+.tutorialInfoBox>p {
     font-size: 1.5rem;
     width: 60%;
     text-align: center;
 }
 
-.tutorialText{
+.tutorialText {
     width: 90%;
     font-size: 3rem;
     margin: 2% auto;
 }
-.tutorialStepBox{
+
+.tutorialStepBox {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.tutorialSteps{
+
+.tutorialSteps {
     text-align: center;
     font-size: 8rem;
     margin-bottom: 1%;
 }
-.tutorialAlg{
+
+.tutorialAlg {
     width: 50%;
     font-size: 3rem;
     display: flex;
@@ -210,16 +218,84 @@ h1 {
     font-family: jomhu;
     font-weight: bold;
 }
-.tutorialAlgImg{
+
+.tutorialAlgImg {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.tutorialAlgImg>img{
+
+.tutorialAlgImg>img {
     width: 10vw;
 }
 
 
 @media screen and (max-width: 600px) {
-    
+    h1 {
+        font-size: 4rem;
+    }
+
+    #tutorialHeader {
+        display: none;
+    }
+
+    #startInfo {
+        width: 100vw;
+        font-size: 1.5rem;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    #tutorialGrid {
+        grid-template-columns: auto auto;
+        font-size: 1rem;
+    }
+
+    .tutorial-item>p {
+        font-size: 2rem !important;
+        margin-top: 0 !important;
+    }
+
+    .tutorialBox h1 {
+        font-size: 3rem;
+    }
+
+    .tutorialStartInfo {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .tutorialStartInfo>div {
+        width: 100%;
+        height: 15vh;
+        margin: 2%;
+        font-size: 1.5rem;
+    }
+
+    .tutorialBox p {
+        font-size: 1.5rem;
+    }
+
+    .tutorialInfoBox {
+        flex-direction: column;
+        width: 100vw;
+        align-items: center;
+    }
+
+    .tutorialInfoBox p {
+        width: 100vw;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 2.5rem !important;
+    }
+
+    .tutorialAlgImg {
+        width: 90vw;
+    }
+
+    .tutorialAlgImg img {
+        flex: 1 1 0;
+    }
 }

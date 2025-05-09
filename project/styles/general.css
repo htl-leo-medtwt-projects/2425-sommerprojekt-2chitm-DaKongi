@@ -257,6 +257,7 @@ footer a{
     left: 0;
     align-items: center;
     display: none; 
+    border-bottom: var(--font-color) solid 3px;
 }
 
 #mobileHeaderWrapper{
