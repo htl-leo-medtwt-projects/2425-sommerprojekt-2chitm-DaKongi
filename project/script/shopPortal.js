@@ -86,7 +86,7 @@ function search() {
         const originalContent = box.innerHTML;
         const name = box.querySelector('p').textContent.trim();
 
-        box.addEventListener('mouseenter', () => {
+        box.addEventListener('mouseover', () => {
             let data = cubes[cubes.findIndex(cube => cube.name == name)];
             box.innerHTML = `
                     <p class="hoveredText hoveredTextSize">Starting from: ${data.shops[getBestPrice(data)].price}</p>
@@ -94,7 +94,6 @@ function search() {
                     <p class="hoveredText hoveredTextIsMaglev">Maglev: ${data.isMaglev ? "yes" : "no"}</p>
                     <p class="hoveredText hoveredTextIsMaglev">Magnetic: ${data.isMagnetic ? "yes" : "no"}</p>
                     <p class="hoveredText hoveredTextIsMaglev">UV-Coated: ${data.isUVCoated ? "yes" : "no"}</p>
-                    <p class="hoveredText clickToShowMoreInfo">(Click to show more info)</p>
                     `;
 
             //flip card or maybe not
