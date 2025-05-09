@@ -12,6 +12,7 @@ html {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 
@@ -34,7 +35,8 @@ h1 {
     color: white;
     margin: 0.2%;
 }
-#headlines{
+
+#headlines {
     margin: 0.5%;
 }
 
@@ -42,7 +44,7 @@ header {
     color: white;
 }
 
-section{
+section {
     width: 96%;
     height: 100vh;
     margin: 0 2%;
@@ -59,7 +61,7 @@ section{
     margin: 0;
 }
 
-#landingPageHeader{
+#landingPageHeader {
     transition: height 0.5s;
 }
 
@@ -68,10 +70,12 @@ section{
     background-color: var(--background-color);
     height: 5vh;
 }
-#landingPageHeader.scrolled #logo>img{
+
+#landingPageHeader.scrolled #logo>img {
     display: none;
 }
-#landingPageHeader.scrolled #logo:hover{
+
+#landingPageHeader.scrolled #logo:hover {
     background-color: none;
 }
 
@@ -84,7 +88,7 @@ section{
     border-radius: 25px;
 }
 
-.whatIsMastercubeBox h3{
+.whatIsMastercubeBox h3 {
     font-size: 6rem;
     padding: 5%;
     padding-bottom: 0;
@@ -92,7 +96,7 @@ section{
     font-weight: bold;
 }
 
-.whatIsMastercubeBoxContent{
+.whatIsMastercubeBoxContent {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,10 +105,12 @@ section{
     height: 40%;
     font-size: 5rem;
 }
-.whatIsMastercubeBoxContent i{
+
+.whatIsMastercubeBoxContent i {
     font-size: 10rem;
 }
-.whatIsMastercubeBoxContent p{
+
+.whatIsMastercubeBoxContent p {
     width: 60%;
 }
 
@@ -115,7 +121,8 @@ section{
     width: 80vw;
     margin: 5% auto;
 }
-.gettingFasterCol{
+
+.gettingFasterCol {
     width: 65%;
     display: flex;
     flex-direction: column;
@@ -124,12 +131,14 @@ section{
     border-radius: 25px;
     transition: all 0.75s;
 }
-.gettingFasterCol:hover{
+
+.gettingFasterCol:hover {
     transform: scale(1.1);
     cursor: pointer;
     background-color: rgba(128, 128, 128, 0.285);
 }
-.gettingFasterBox{
+
+.gettingFasterBox {
     width: 100%;
     aspect-ratio: 1/1;
     display: flex;
@@ -139,31 +148,34 @@ section{
     color: var(--background-color);
     border-radius: 45px;
 }
-.gettingFasterBox h3{
+
+.gettingFasterBox h3 {
     font-family: jomhu;
     font-size: 6rem;
 }
 
-.gettingFasterText p{
+.gettingFasterText p {
     font-size: 2rem;
     padding: 5%;
 }
 
 
 /*Learn overview section*/
-#learnMain{
+#learnMain {
     display: flex;
     flex-direction: column;
     width: 80%;
     height: 80%;
     margin: 0 auto;
 }
-#learnMainContent{
+
+#learnMainContent {
     display: flex;
     align-items: center;
     width: 100%;
 }
-#switchingImage{
+
+#switchingImage {
     width: 30%;
     aspect-ratio: 1/1;
     background-image: url('../img/cubeExample/cubic_cubes.png');
@@ -171,19 +183,111 @@ section{
     padding: 10%;
     margin-right: 10%;
 }
-#cubeList{
+
+#cubeList {
     width: 60%;
     display: flex;
     flex-direction: column;
     font-size: 3rem;
 }
-#cubeList p{
+
+#cubeList p {
     margin: 0;
     padding: 2.5%;
     height: 100%;
     border-bottom: var(--secondary-color) 5px solid;
     transition: all 0.5s ease;
 }
-#cubeList p:hover{
+
+#cubeList p:hover {
     background-color: var(--accent-color);
+}
+
+
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 1rem;
+    }
+
+    nav {
+        display: none;
+    }
+
+    #logo {
+        display: none;
+    }
+
+    #start {
+        height: 40vh;
+        background-position: center;
+    }
+
+    section{
+        height: auto;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    #start h2 {
+        font-size: 1rem;
+    }
+
+    .whatIsMastercubeBox h3 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .whatIsMastercubeBox {
+        height: 60vh;
+    }
+
+    .whatIsMastercubeBoxContent {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .whatIsMastercubeBoxContent p,i {
+        font-size: 1.5rem;
+    }
+
+    .whatIsMastercubeBoxContent span {
+        display: none;
+    }
+
+    #gettingFasterthreeCols{
+        grid-template-columns: auto;
+        width: 100vw;
+    }
+
+    .gettingFasterCol{
+        width: 75%;
+        margin: 5% auto;
+    }
+
+    #gettingFasterBox{
+        width: 90%;
+    }
+
+    #learn{
+        width: 100vw;
+    }
+    #learnMainContent{
+        flex-direction: column;
+    }
+    #cubeList{
+        width: 100%;
+        font-size: 1.5rem;
+    }
+    #switchingImage{
+        width: 80%;
+        margin: 0 auto;
+    }
 }
