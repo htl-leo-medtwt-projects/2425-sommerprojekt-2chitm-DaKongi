@@ -197,19 +197,19 @@
             <div class="categoryBox" id="categoryBoxWCA" onclick="showWcaCubes()">
                 <p>WCA Puzzles</p>
             </div>
-            <div class="categoryBox" onclick="show3x3()">
-                <p>3x3 Speedcubes</p>
+            <div class="categoryBox" id="categoryBox3x3" onclick="show3x3()">
+                <p>3x3</p>
             </div>
-            <div class="categoryBox">
+            <div class="categoryBox" id="categoryBoxLube">
                 <p>Lubrication</p>
             </div>
-            <div class="categoryBox" onclick="showBiggerCubes()">
+            <div class="categoryBox" id="categoryBoxBiggerCubes" onclick="showBiggerCubes()">
                 <p>Bigger cubes</p>
             </div>
-            <div class="categoryBox">
+            <div class="categoryBox" id="categoryBoxAccessories">
                 <p>Accessories</p>
             </div>
-            <div class="categoryBox">
+            <div class="categoryBox" id="categoryBoxShapeShifters">
                 <p>Shape shifters</p>
             </div>
         </section>
@@ -229,7 +229,8 @@
         <section id="shopOverlay">
             <h3 id="shopOverlayName">GAN 356 M MagLev 3x3</h3>
             <div id="shopOverlayContent">
-                <i class="material-icons" id="shopOverlayClose" onclick="document.getElementById('shopOverlay').style.display = 'none'">&#xe5cd;</i>
+                <i class="material-icons" id="shopOverlayClose"
+                    onclick="document.getElementById('shopOverlay').style.display = 'none'">&#xe5cd;</i>
                 <div id="shopOverlayImgCon">
                     <img src="../img/shop/cubes/GAN_3x3.png" alt="3x3 Cube" id="shopOverlayImg">
                 </div>

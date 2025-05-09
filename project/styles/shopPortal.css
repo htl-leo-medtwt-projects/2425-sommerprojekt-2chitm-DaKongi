@@ -7,11 +7,11 @@
     --font-family: jura
 }
 
+
 body,
 html {
     width: 100vw;
     scroll-behavior: smooth;
-    overflow-x: hidden;
 }
 
 header {
@@ -120,7 +120,7 @@ main {
     width: 98vw;
     position: sticky;
     height: 10vh;
-    top: 0;
+    top: 0%;
     background-color: var(--primary-color);
     display: flex;
     align-items: center;
@@ -269,8 +269,34 @@ main {
     align-items: end;
     font-size: 3.5rem;
     text-align: center;
-    background-size: cover;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+}
 
+.categoryBox:hover{
+    border: black solid 3px;
+}
+
+#categoryBoxWCA{
+    background-image: url(../img/shop/categories/wca.png);
+}
+#categoryBox3x3{
+     background-image: url(../img/shop/categories/3x3.png);
+}
+#categoryBoxLube{
+    background-image: url(../img/shop/categories/lube.webp);
+    background-size: 150%;
+}
+#categoryBoxBiggerCubes{
+     background-image: url(../img/shop/categories/bigCubes.png);
+}
+#categoryBoxAccessories{
+    background-image: url(../img/shop/categories/timer.png);
+}
+#categoryBoxShapeShifters{
+     background-image: url(../img/shop/categories/mirror.png);
 }
 
 #categories {
@@ -278,6 +304,11 @@ main {
     display: grid;
     grid-template-columns: repeat(3, auto);
     gap: 5vh;
+}
+
+.categoryBox p{
+    background-color: #ffffffbf;
+    width: 100%;
 }
 
 #searchResultsContent {
