@@ -55,7 +55,7 @@ function dailyTip() {
         document.getElementById("dailyTipShopBox" + i).style.backgroundImage = `url('../img/shop/shopsIcons/${cubes[cubes.findIndex(cube => cube.name === document.getElementById("presentedCubeText").textContent)].shops[i].name}.png')`
     }
 
-   // document.getElementById("presentedCubeImg").src = `../img/shop/cubes/${fittingCubes[i].brand}_${fittingCubes[i].size}.png`;
+   document.getElementById("presentedCubeImg").src = `../img/shop/cubes/${cubes[randNum].brand}_${cubes[randNum].size}.png`;
 }
 dailyTip();
 
@@ -79,31 +79,6 @@ function search() {
     });
 
     showSearchResults(fittingCubes);
-
-    //add eventlistener for hover effect
-    document.querySelectorAll('.searchResultsBox').forEach(box => {
-        // Store original content
-        const originalContent = box.innerHTML;
-        const name = box.querySelector('p').textContent.trim();
-
-        box.addEventListener('mouseover', () => {
-            let data = cubes[cubes.findIndex(cube => cube.name == name)];
-            box.innerHTML = `
-                    <p class="hoveredText hoveredTextSize">Starting from: ${data.shops[getBestPrice(data)].price}</p>
-                    <p class="hoveredText hoveredTextBrand">Brand: ${data.brand}</p>
-                    <p class="hoveredText hoveredTextIsMaglev">Maglev: ${data.isMaglev ? "yes" : "no"}</p>
-                    <p class="hoveredText hoveredTextIsMaglev">Magnetic: ${data.isMagnetic ? "yes" : "no"}</p>
-                    <p class="hoveredText hoveredTextIsMaglev">UV-Coated: ${data.isUVCoated ? "yes" : "no"}</p>
-                    `;
-
-            //flip card or maybe not
-            // box.style.transform = "scaleX(-1)";
-        });
-
-        box.addEventListener('mouseleave', () => {
-            box.innerHTML = originalContent;
-        });
-    });
 }
 
 function showSearchResults(fittingCubes) {
@@ -123,6 +98,31 @@ function showSearchResults(fittingCubes) {
         element.addEventListener("click", () => {
             document.getElementById("shopOverlay").style.display = "block";
         })
+    });
+
+    //add eventlistener for hover effect
+    document.querySelectorAll('.searchResultsBox').forEach(box => {
+        // Store original content
+        const originalContent = box.innerHTML;
+        const name = box.querySelector('p').textContent.trim();
+
+        box.addEventListener('mouseover', () => {
+            let data = cubes[cubes.findIndex(cube => cube.name == name)];
+            box.innerHTML = `
+                    <p class="hoveredText hoveredTextSize">Starting from: ${data.shops[getBestPrice(data)]?.price !== undefined ? data.shops[getBestPrice(data)].price : "no price available"}</p>
+                    <p class="hoveredText hoveredTextBrand">Brand: ${data.brand}</p>
+                    <p class="hoveredText hoveredTextIsMaglev">Maglev: ${data.isMaglev ? "yes" : "no"}</p>
+                    <p class="hoveredText hoveredTextIsMaglev">Magnetic: ${data.isMagnetic ? "yes" : "no"}</p>
+                    <p class="hoveredText hoveredTextIsMaglev">UV-Coated: ${data.isUVCoated ? "yes" : "no"}</p>
+                    `;
+
+            //flip card or maybe not
+            // box.style.transform = "scaleX(-1)";
+        });
+
+        box.addEventListener('mouseleave', () => {
+            box.innerHTML = originalContent;
+        });
     });
 
     //jump to searchResult
