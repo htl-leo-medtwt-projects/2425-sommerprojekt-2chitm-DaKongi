@@ -10,7 +10,6 @@
 
 body,
 html {
-    overflow: hidden;   
     background-color: rgba(0, 0, 0, 0);
 }
 
@@ -18,7 +17,7 @@ main {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -92,7 +91,7 @@ main {
 .singleTime>div {
     font-family: monospace;
     font-weight: bold;
-    padding-left:3%;
+    padding-left: 3%;
 }
 
 #times {
@@ -112,6 +111,7 @@ main {
     align-items: center;
     justify-content: space-around;
 }
+
 #times::-webkit-scrollbar {
     display: none;
 }
@@ -127,7 +127,7 @@ main {
     align-items: center;
 }
 
-#statistics{
+#statistics {
     width: 25%;
     height: 90%;
     display: grid;
@@ -136,7 +136,7 @@ main {
     border-radius: var(--border-radius);
 }
 
-#scramble{
+#scramble {
     width: 25%;
     height: 90%;
     background-color: #118a8a40;
@@ -146,7 +146,8 @@ main {
     align-items: center;
     font-size: 2rem;
 }
-#scramble>div{
+
+#scramble>div {
     width: 90%;
     height: 90%;
     background-color: var(--background-color);
@@ -158,7 +159,8 @@ main {
     font-size: 3rem;
     overflow: scroll;
 }
-#scramble>div::-webkit-scrollbar{
+
+#scramble>div::-webkit-scrollbar {
     display: none;
 }
 
@@ -172,15 +174,16 @@ main {
     align-items: center;
     font-size: 2vh;
 }
-#statistics>div:nth-child(1){
+
+#statistics>div:nth-child(1) {
     grid-column: span 2;
 }
 
-#statistics h2{
+#statistics h2 {
     font-size: 1rem;
 }
 
-#timeChart{
+#timeChart {
     max-width: 25%;
     max-height: 90%;
 }
@@ -204,7 +207,7 @@ main {
     background: #0000002d;
 }
 
-#cubeSelection{
+#cubeSelection {
     width: 10%;
     margin: 2%;
     aspect-ratio: 1/1;
@@ -212,13 +215,16 @@ main {
     justify-content: space-between;
     align-items: center;
 }
-#cubeSelection img{
+
+#cubeSelection img {
     width: 50%;
 }
-#cubeSelection i{
+
+#cubeSelection i {
     width: 10%;
 }
-#cubeSelection i:hover{
+
+#cubeSelection i:hover {
     color: var(--accent-color);
 }
 
@@ -259,5 +265,60 @@ main {
 
     to {
         top: -20vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        overflow: visible;
+    }
+
+    main {
+        width: 100%;
+        height: 50vh;
+        position: static;
+        margin-top: 10vh;
+    }
+
+    #time {
+        position: static;
+        width: 90%;
+        user-select: none;
+    }
+
+    #timeList {
+        width: 100%;
+        height: 45vh;
+    }
+
+    #menu {
+        width: 100%;
+        flex-direction: column-reverse;
+        height: auto;
+        position: static;
+    }
+
+    #menu>div {
+        width: 90%;
+    }
+
+    #timeChart {
+        max-width: none;
+        width: 90%;
+    }
+
+    #statistics {
+        grid-template-columns: auto;
+        height: auto;
+    }
+
+    #statistics>div{
+        height: 5vh;
+    } 
+
+    #statistics>div:nth-child(1) {
+        grid-column: span 1;
+        height: 10vh;
+        font-size: 2rem;
     }
 }

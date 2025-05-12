@@ -73,6 +73,32 @@
             <div id="close" onclick="toggleSettings()">Close</div>
         </div>
     </div>
+
+    <div id="mobileHeaderWrapper">
+        <header id="mobileHeader">
+            <div id="mobileNavHamburgerMenu">
+                <div class="mobileNavHamburgerMenuStripe"></div>
+                <div class="mobileNavHamburgerMenuStripe"></div>
+                <div class="mobileNavHamburgerMenuStripe"></div>
+            </div>
+            <div id="mobileSettings">
+                &#9881;
+            </div>
+
+            <div id="mobileNav">
+                <div class="mobileNavItem" id="mobileNavItem-1" onclick="window.location.href = '../index.html'">Home</div>
+                <div class="mobileNavItem" id="mobileNavItem-2" onclick="window.location.href = 'tutorials.html'">
+                    Tutorials</div>
+                <div class="mobileNavItem" id="mobileNavItem-3" onclick="window.location.href = 'timer.html'">
+                    Timer</div>
+                <div class="mobileNavItem" id="mobileNavItem-4"
+                    onclick="window.location.href = 'pages/competitionArea.html'">Competition</div>
+                <div class="mobileNavItem" id="mobileNavItem-5" onclick="window.location.href = 'shop.html'">Shop
+                    Portal</div>
+            </div>
+        </header>
+    </div>
+
     <header id="header">
         <div id="logo" onclick="window.location.href='../index.html'">
             <img src="../img/logo.png" alt="Master Cube Logo">
@@ -104,6 +130,9 @@
         <div class="menu-item" id="menu-dnf">DNF</div>
     </div>
 
+    <main>
+        <div id="time">00.00</div>
+    </main>
 
     <div id="timeList">
         <div id="times"></div>
@@ -124,10 +153,6 @@
             <i style="font-size:24px" class="fa" onclick="next()">&#xf18e;</i>
         </div>
     </div>
-
-    <main>
-        <div id="time">00.00</div>
-    </main>
 </body>
 
 </html>

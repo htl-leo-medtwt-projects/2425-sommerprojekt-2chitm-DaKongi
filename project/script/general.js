@@ -213,7 +213,7 @@ document.getElementById("mobileNavHamburgerMenu").addEventListener("click", () =
         mobileNavShown = true;
     } else {
         
-        document.getElementById("mobileNav").style.top = "-550%";
+        document.getElementById("mobileNav").style.top = "-600%";
          mobileNavShown = false;
     }
 });
