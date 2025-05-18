@@ -150,6 +150,7 @@ main>section {
 
 #competitionStartSettingsSettings>div {
     margin: 0% 5%;
+    position: relative;
 }
 
 #competitionStartSettingsSettings>div:nth-child(even) {
@@ -169,7 +170,7 @@ main>section {
     flex-direction: column;
 }
 
-.fit-me {
+/* .fit-me {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -178,7 +179,7 @@ main>section {
     justify-content: center;
     white-space: nowrap;
     line-height: 1;
-}
+} */
 
 #addContestant {
     border-radius: var(--border-radius);
@@ -197,7 +198,7 @@ main>section {
 }
 
 #disciplines {
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #disciplines::-webkit-scrollbar,
@@ -256,7 +257,7 @@ main>section {
     width: 100%;
 }
 
-#rules:hover{
+#rules:hover {
     background-color: var(--accent-color);
 }
 
@@ -265,23 +266,23 @@ main>section {
     cursor: pointer;
 }
 
-#compRules{
-    overflow-y: scroll;
+#compRules {
+    overflow-y: auto;
     justify-content: flex-start;
     padding: 5%;
 }
 
-#compRules h1{
+#compRules h1 {
     font-size: 8rem;
 }
 
-#compRules hr{
+#compRules hr {
     color: black;
     width: 80%;
     border: black solid 2px;
 }
 
-#closeRules{
+#closeRules {
     position: fixed;
     top: 2%;
     left: 2%;
@@ -382,6 +383,7 @@ i:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    user-select: none;
 }
 
 #duelTimerTimer {
@@ -474,7 +476,7 @@ i:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #resultsHeadline {
@@ -555,7 +557,7 @@ i:hover {
 }
 
 .duelPointBoxPoints {
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .duelPointBoxPoints::-webkit-scrollbar {
@@ -575,4 +577,104 @@ i:hover {
     width: 80%;
     height: 10%;
     margin-top: 2%;
+}
+
+
+.mobileNextButton {
+    position: absolute;
+    bottom: 1%;
+    width: 90%;
+    height: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+
+@media screen and (max-width:600px) {
+    #competitionStartSettingsSettings {
+        grid-template-columns: 1fr;
+    }
+
+    #competitionStartSettingsSettings>div {
+        display: none;
+    }
+
+    #gamemode {
+        display: block !important;
+    }
+
+    #contestants input {
+        width: 90%;
+        margin: 0;
+    }
+
+    #compRules {
+        font-size: 2rem;
+    }
+
+    #compRules>h1 {
+        font-size: 3rem;
+    }
+
+    .competitionSettingsItem {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .competitionSettingsItem h2 {
+        font-size: 2.5rem;
+    }
+
+    #contestantsInputs>input {
+        margin: 5% auto;
+        width: 100%;
+        font-size: 1.5rem;
+        padding: 5%;
+    }
+
+    .mobileNextButton {
+        display: block;
+    }
+
+    /*duel comp Area*/
+    #duelCompArea {
+        height: auto;
+    }
+
+    #duelTimer {
+        position: static;
+        width: 100%;
+        transform: none;
+        margin: 10% auto 0 auto;
+    }
+
+    #duelTimerTimer {
+        font-size: 6rem;
+    }
+
+    .duelPointBox {
+        width: 100%;
+        margin: 0;
+    }
+
+    .duelPointBoxHeadline {
+        height: 10vh;
+    }
+
+    #duelPointBoxCon {
+        margin-top: 10%;
+        position: static;
+        height: 40vh;
+        width: 100%;
+        border: var(--secondary-color) 3px solid;
+    }
+
+    #duelScrambleCon {
+        height: 5%;
+        padding: 2%;
+        font-size: 2.3rem;
+        text-align: center;
+    }
 }

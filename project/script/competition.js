@@ -22,6 +22,7 @@ let timesArray = [];
 
 let timesStarted = 0;
 
+
 function generateDisciplines() {
     //generate disciplines 
     let options = ["3x3", "4x4", "5x5", "6x6", "7x7", "skewb", "pyraminx", "megaminx", "square-1", "3x3_blind", "multi_blind"];
@@ -38,20 +39,6 @@ function generateDisciplines() {
     document.getElementById("disciplinesSelect").innerHTML = str;
 };
 generateDisciplines();
-
-
-//create contestants localstorage entry if it doesn't exist already (here is the error)
-// if (localStorage.getItem("contestants") == null) {
-//     localStorage.setItem("contestants", JSON.stringify(contestants));
-// } else {
-//     contestants = JSON.parse(localStorage.getItem("contestants"));
-//     //add to html
-//     let previousValue = document.getElementById("contestantsInputs").innerHTML;
-//     for (let i = 0; i < contestants.length; i++) {
-//         //insert at top
-//         document.getElementById("contestantsInputs").innerHTML = "<div class='contestantNames'>" + contestants[i] + "</div>" + previousValue;
-//     }
-// }
 
 let nameInput = document.getElementById("contestantInput");
 function addContestant() {
@@ -71,7 +58,12 @@ function addContestant() {
         alert("please enter a name")
     }
 
-    if (compData.gamemode == "duel" && compData.names.length == 2){
+    if (compData.gamemode == "duel" && compData.names.length == 2) {
+        document.getElementById("addContestant").onclick = null; //disable button
+        document.getElementById("addContestant").style.backgroundColor = "gray";
+    }
+
+    if (compData.gamemode == "solo" && compData.names.length == 1) {
         document.getElementById("addContestant").onclick = null; //disable button
         document.getElementById("addContestant").style.backgroundColor = "gray";
     }
@@ -433,6 +425,45 @@ document.addEventListener("keydown", function (event) {
     }
 });
 
+//alternative: press down(for mobile)
+document.querySelector('#duelTimer').addEventListener("touchstart", function (event) {
+    if (timerRunning) {
+        stopTimer();
+        timerRunning = false;
+    } else {
+        if (!turnedRed) {
+            document.getElementById("duelTimerTimer").style.color = "red";
+            document.getElementById("duelTimerTimer").style.boxShadow = "0 0 50px 35px red";
+            turnedRed = true;
+        }
+
+        keyDownTime = Date.now();
+        colorChangeTimer = setTimeout(() => {
+            if (Date.now() - keyDownTime >= 500) {
+                document.getElementById("duelTimerTimer").style.color = "green";
+                document.getElementById("duelTimerTimer").style.boxShadow = "0 0 50px 35px green";
+            }
+        }, 500);
+    }
+});
+
+document.querySelector('#duelTimer').addEventListener("touchend", function (event) {
+    turnedRed = false;
+    document.getElementById("duelTimerTimer").style.color = originalFontColor;
+    document.getElementById("duelTimerTimer").style.boxShadow = "0 0 50px 35px " + originalSecondColor;
+
+    if (keyDownTime !== null) {
+        let elapsedTime = Date.now() - keyDownTime;
+        if (elapsedTime >= 500) {
+            startTimer();
+            timerRunning = true;
+        }
+        keyDownTime = null;
+    }
+
+    clearTimeout(colorChangeTimer);
+});
+
 function saveTime() {
     let contestant = currentPlayer;
     let time = parseFormattedTime(document.getElementById("timer").textContent);
@@ -661,6 +692,30 @@ function showRules() {
 
 function hideRules() {
     document.getElementById("compRules").style.display = "none";
+}
+
+//mobile specific
+if (window.innerWidth < 600) {
+
+}
+
+function nextSettting(current) {
+    if (current === "gamemode") {
+        document.getElementById("gamemode").style.setProperty("display", "none", "important");
+        document.getElementById('contestants').style.setProperty("display", "block", "important");
+    }
+
+    if (current === "comp") {
+        if (compData.gamemode == "classic" || compData.gamemode == "duel") {
+            if (compData.names.length >= 2) {
+                document.getElementById("contestants").style.setProperty("display", "none", "important");
+                document.getElementById('disciplines').style.setProperty("display", "block", "important");
+            } else { alert("add more Players") }
+        } else if (compData.names.length <= 1) {
+            document.getElementById("contestants").style.setProperty("display", "none", "important");
+            document.getElementById('disciplines').style.setProperty("display", "block", "important");
+        }
+    }
 }
 
 /***TO PDF***/

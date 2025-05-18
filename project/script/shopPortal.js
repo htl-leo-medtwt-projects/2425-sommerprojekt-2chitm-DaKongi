@@ -46,7 +46,7 @@ function dailyTip() {
     for (let i = 0; i < Math.min(cubes[cubes.findIndex(cube => cube.name === document.getElementById("presentedCubeText").textContent)].shops.length, 4); i++) {
         buildStr +=
             `
-        <div class="shopBox" id="dailyTipShopBox${i}" onclick="window.open('')"></div>
+        <div class="shopBox" id="dailyTipShopBox${i}" onclick="window.open('https://www.thecubicle.com/en-at?srsltid=AfmBOoqhskMnz3xEJkzD2m7MZG5LlD4XBH9UtRHQ-zxXP3inQAoqX6m-')"></div>
         `
     }
     document.getElementById("dailyShopBoxes").innerHTML = buildStr;

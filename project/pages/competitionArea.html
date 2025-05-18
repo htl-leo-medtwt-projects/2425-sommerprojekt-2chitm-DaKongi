@@ -171,6 +171,8 @@
                         <input type="button" value="+ add contestant" id="addContestant" class="fit-me"
                             onclick="addContestant()">
                     </div>
+
+                    <div class="button mobileNextButton" onclick="nextSettting('comp')">Next ></div>
                 </div>
                 <div class="competitionSettingsItem" id="disciplines">
                     <h2>Disciplines</h2>
@@ -198,6 +200,8 @@
                             Solo
                         </label>
                     </form>
+
+                    <div class="button mobileNextButton" onclick="nextSettting('gamemode')">Next ></div>
                 </div>
             </div>
             <div class="button" id="rules" onclick="showRules()">How To Play</div>
@@ -274,9 +278,27 @@
 
         <section id="duelCompArea">
             <div id="duelScrambleCon">You shouldn't be able to read this text :O</div>
-
+            <div id="duelTimer"><span id="duelTimerTimer">00:00</span><span id="duelTimerDiscipline">3x3</span></div>
             <div id="duelPointBoxCon">
-                <div class="compNotificationBox" id="duelComplete">
+                <div class="duelPointBox" id="duelPointBoxLeft">
+                    <div class="duelPointBoxHeadline">
+                        <h2 id="duelNameField1">[Name]</h2>
+                    </div>
+                    <div class="duelPointBoxPoints" id="duelPointBoxLeftPoints">
+
+                    </div>
+                </div>
+                <div class="duelPointBox" id="duelPointBoxRight">
+                    <div class="duelPointBoxHeadline">
+                        <h2 id="duelNameField2">[Name]</h2>
+                    </div>
+                    <div class="duelPointBoxPoints" id="duelPointBoxRightPoints">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="compNotificationBox" id="duelComplete">
                     <h2>We have a Winner:</h2>
                     <div>
                         <p id="duelResultName">[Name]</p>
@@ -303,26 +325,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="duelPointBox" id="duelPointBoxLeft">
-                    <div class="duelPointBoxHeadline">
-                        <h2 id="duelNameField1">[Name]</h2>
-                    </div>
-                    <div class="duelPointBoxPoints" id="duelPointBoxLeftPoints">
-
-                    </div>
-                </div>
-                <div class="duelPointBox" id="duelPointBoxRight">
-                    <div class="duelPointBoxHeadline">
-                        <h2 id="duelNameField2">[Name]</h2>
-                    </div>
-                    <div class="duelPointBoxPoints" id="duelPointBoxRightPoints">
-
-                    </div>
-                </div>
-            </div>
-
-            <div id="duelTimer"><span id="duelTimerTimer">00:00</span><span id="duelTimerDiscipline">3x3</span></div>
         </section>
 
         <section id="results">
