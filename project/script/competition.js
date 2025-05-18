@@ -433,7 +433,6 @@ document.querySelector('#duelTimer').addEventListener("touchstart", function (ev
     } else {
         if (!turnedRed) {
             document.getElementById("duelTimerTimer").style.color = "red";
-            document.getElementById("duelTimerTimer").style.boxShadow = "0 0 50px 35px red";
             turnedRed = true;
         }
 
@@ -441,7 +440,6 @@ document.querySelector('#duelTimer').addEventListener("touchstart", function (ev
         colorChangeTimer = setTimeout(() => {
             if (Date.now() - keyDownTime >= 500) {
                 document.getElementById("duelTimerTimer").style.color = "green";
-                document.getElementById("duelTimerTimer").style.boxShadow = "0 0 50px 35px green";
             }
         }, 500);
     }
@@ -450,7 +448,6 @@ document.querySelector('#duelTimer').addEventListener("touchstart", function (ev
 document.querySelector('#duelTimer').addEventListener("touchend", function (event) {
     turnedRed = false;
     document.getElementById("duelTimerTimer").style.color = originalFontColor;
-    document.getElementById("duelTimerTimer").style.boxShadow = "0 0 50px 35px " + originalSecondColor;
 
     if (keyDownTime !== null) {
         let elapsedTime = Date.now() - keyDownTime;
@@ -720,13 +717,43 @@ function nextSettting(current) {
 
 /***TO PDF***/
 //Mischung aus Fremdcode und eigenem
-// const { jsPDF } = window.jspdf;
+document.getElementById('generate').addEventListener('click', async () => {
+      // Load your local template.pdf
+      const existingPdfBytes = await fetch('template.pdf').then(res => res.arrayBuffer());
 
-// document.getElementById('download-btn').addEventListener('click', () => {
-//     const doc = new jsPDF();
+      const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+      const pages = pdfDoc.getPages();
+      const firstPage = pages[0];
+      const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
 
-//     doc.text('Thanks for competing!', 10, 10);
-//     doc.text('Your Time : 11.15!', 10, 20);
+      // Draw "Hello" and "world" on specified coordinates
+      firstPage.drawText('Hello', {
+        x: 100,
+        y: 100,
+        size: 14,
+        font: font,
+        color: PDFLib.rgb(0, 0, 0),
+      });
 
-//     doc.save('generated-pdf.pdf');
-// });
+      firstPage.drawText('world', {
+        x: 100,
+        y: 200,
+        size: 14,
+        font: font,
+        color: PDFLib.rgb(0, 0, 0),
+      });
+
+      // Save the modified PDF and trigger download
+      const pdfBytes = await pdfDoc.save();
+
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'modified.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });

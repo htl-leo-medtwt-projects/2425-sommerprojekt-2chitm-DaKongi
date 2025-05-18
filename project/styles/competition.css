@@ -677,4 +677,38 @@ i:hover {
         font-size: 2.3rem;
         text-align: center;
     }
+
+     #duelTimeSelect{
+        width: 90% !important;
+     }
+
+    #duelTimeSelect>* {
+        height: 20%;
+    }
+
+    #resultInstantTime{
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    #resultInstantTimeCon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #duelTimeSelect>h2 {
+        font-size: 3rem;
+    }
+
+    #duelTimeSelectButtons {
+        flex-direction: column;
+    }
+
+    #duelTimeSelectButtons>div {
+        width: 100%;
+        height: 40%;
+        font-size: 2.5rem;
+        padding: 1%;
+    }
 }

@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/fitty@2.3.6/dist/fitty.min.js" defer></script>
     <script src="../script/general.js" defer></script>
     <script src="../script/competition.js" defer></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link rel="stylesheet" href="../styles/general.css">
@@ -312,7 +313,8 @@
                 </div>
                 <div class="compNotificationBox" id="duelTimeSelect">
                     <h2>Who stopped the timer?</h2>
-                    <div>
+                    <div id="resultInstantTimeCon">
+                        <p>Time:</p>
                         <p id="resultInstantTime">--:--</p>
                     </div>
 
