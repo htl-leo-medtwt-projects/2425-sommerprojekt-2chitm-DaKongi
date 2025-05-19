@@ -80,7 +80,19 @@ section {
 }
 
 /*What is Master Cube Slider*/
+#whatIsMastercube {
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    scroll-behavior: smooth;
+    display: flex;
+}   
+
 .whatIsMastercubeBox {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
     width: 80vw;
     height: 70vh;
     margin: auto;
@@ -214,7 +226,7 @@ section {
         background-position: center;
     }
 
-    section{
+    section {
         height: auto;
     }
 
@@ -246,7 +258,8 @@ section {
         text-align: center;
     }
 
-    .whatIsMastercubeBoxContent p,i {
+    .whatIsMastercubeBoxContent p,
+    i {
         font-size: 1.5rem;
     }
 
@@ -254,31 +267,34 @@ section {
         display: none;
     }
 
-    #gettingFasterthreeCols{
+    #gettingFasterthreeCols {
         grid-template-columns: auto;
         width: 100vw;
     }
 
-    .gettingFasterCol{
+    .gettingFasterCol {
         width: 75%;
         margin: 5% auto;
     }
 
-    #gettingFasterBox{
+    #gettingFasterBox {
         width: 90%;
     }
 
-    #learn{
+    #learn {
         width: 100vw;
     }
-    #learnMainContent{
+
+    #learnMainContent {
         flex-direction: column;
     }
-    #cubeList{
+
+    #cubeList {
         width: 100%;
         font-size: 1.5rem;
     }
-    #switchingImage{
+
+    #switchingImage {
         width: 80%;
         margin: 0 auto;
     }

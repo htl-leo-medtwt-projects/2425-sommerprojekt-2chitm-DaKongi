@@ -622,6 +622,7 @@ function generateInstantTable() {
         <td id="resultMO3-${i}">${mo3}</td>
         <td>${formatMilliseconds(Math.min(...(timesArray[i].disciplines[disciplines.findIndex(d => d === currentSelectedDiscipline)].times)))}</td>
         <td>${new Date().toLocaleDateString('en-GB')}</td>
+        <td><div class="downloadPDF" onclick="downloadPDF(${i})">Download</div></td>
         </tr>
         `
     }
@@ -717,43 +718,108 @@ function nextSettting(current) {
 
 /***TO PDF***/
 //Mischung aus Fremdcode und eigenem
-document.getElementById('generate').addEventListener('click', async () => {
-      // Load your local template.pdf
-      const existingPdfBytes = await fetch('template.pdf').then(res => res.arrayBuffer());
+async function downloadPDF(row) {
+    // Load your local template.pdf
+    const existingPdfBytes = await fetch('../data/template.pdf').then(res => res.arrayBuffer());
 
-      const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
-      const pages = pdfDoc.getPages();
-      const firstPage = pages[0];
-      const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+    const now = new Date();
 
-      // Draw "Hello" and "world" on specified coordinates
-      firstPage.drawText('Hello', {
-        x: 100,
-        y: 100,
-        size: 14,
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+
+    const formattedDate = `${day}.${month}.${year}`;
+
+    const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+    const pages = pdfDoc.getPages();
+    const firstPage = pages[0];
+    const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+    const table = document.getElementById("resultsTableTable");
+
+    //center on x
+    const pageWidth1 = firstPage.getWidth();
+    const textWidth1 = font.widthOfTextAtSize(table.rows[row].cells[0].textContent, 24);
+    const x1 = (pageWidth1 - textWidth1) / 2;
+
+    const pageWidth2 = firstPage.getWidth();
+    const textWidth2 = font.widthOfTextAtSize(table.rows[row].cells[1].textContent, 48);
+    const x2 = (pageWidth2 - textWidth2) / 2;
+
+    const pageWidth3 = firstPage.getWidth();
+    const textWidth3 = font.widthOfTextAtSize(formattedDate, 24);
+    const x3 = (pageWidth3 - textWidth3) / 2;
+
+    const pageWidth4 = firstPage.getWidth();
+    const textWidth4 = font.widthOfTextAtSize(document.getElementById('disciplineText').textContent, 28);
+    const x4 = (pageWidth4 - textWidth4) / 2;
+
+    row++;
+
+    //name
+    firstPage.drawText(table.rows[row].cells[0].textContent, {
+        x: x1,
+        y: 10,
+        size: 24,
         font: font,
         color: PDFLib.rgb(0, 0, 0),
-      });
-
-      firstPage.drawText('world', {
-        x: 100,
-        y: 200,
-        size: 14,
-        font: font,
-        color: PDFLib.rgb(0, 0, 0),
-      });
-
-      // Save the modified PDF and trigger download
-      const pdfBytes = await pdfDoc.save();
-
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
-
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'modified.pdf';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
     });
+
+    //position
+    firstPage.drawText(table.rows[row].cells[1].textContent, {
+        x: x2,
+        y: 100,
+        size: 48,
+        font: font,
+        color: PDFLib.rgb(0, 0, 0),
+    });
+
+    //mo3
+    firstPage.drawText(table.rows[row].cells[1].textContent, {
+        x: x2,
+        y: 200,
+        size: 48,
+        font: font,
+        color: PDFLib.rgb(0, 0, 0),
+    });
+
+    //discipline
+    firstPage.drawText(document.getElementById('disciplineText').textContent, {
+        x: x4,
+        y: 500,
+        size: 48,
+        font: font,
+        color: PDFLib.rgb(0, 0, 0),
+    });
+
+    //position
+    firstPage.drawText(table.rows[row].cells[1].textContent, {
+        x: x2,
+        y: 200,
+        size: 48,
+        font: font,
+        color: PDFLib.rgb(0, 0, 0),
+    });
+
+    //position
+    firstPage.drawText(table.rows[row].cells[1].textContent, {
+        x: x2,
+        y: 200,
+        size: 48,
+        font: font,
+        color: PDFLib.rgb(0, 0, 0),
+    });
+
+    // Save the modified PDF and trigger download
+    const pdfBytes = await pdfDoc.save();
+
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Master Cube Certificate.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}

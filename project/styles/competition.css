@@ -357,6 +357,11 @@ i:hover {
     height: 90%;
 }
 
+.downloadPDF {
+    width: 90%;
+    background-color: lime;
+}
+
 #timeAndStatsCon>div {
     height: 70%;
     background-color: var(--primary-color);
@@ -678,20 +683,20 @@ i:hover {
         text-align: center;
     }
 
-     #duelTimeSelect{
+    #duelTimeSelect {
         width: 90% !important;
-     }
+    }
 
     #duelTimeSelect>* {
         height: 20%;
     }
 
-    #resultInstantTime{
+    #resultInstantTime {
         font-size: 4rem;
         text-align: center;
     }
 
-    #resultInstantTimeCon{
+    #resultInstantTimeCon {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -710,5 +715,34 @@ i:hover {
         height: 40%;
         font-size: 2.5rem;
         padding: 1%;
+    }
+
+    #playersTurnCon {
+        flex-direction: column;
+    }
+
+    #playersTurnCon>div {
+        width: 100%;
+    }
+
+    #timeAndStatsCon {
+        flex-direction: column;
+    }
+
+    #timeAndStatsCon>div:nth-child(1) {
+        order: 2;
+    }
+
+    #timeAndStatsCon>div:nth-child(2) {
+        order: 1;
+    }
+
+    #timeAndStatsCon>div:nth-child(3) {
+        order: 3;
+    }
+
+    #timeAndStatsCon>div{
+        width: 100%;
+        margin: 0;
     }
 }
