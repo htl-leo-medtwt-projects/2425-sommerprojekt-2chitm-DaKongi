@@ -719,6 +719,7 @@ i:hover {
 
     #playersTurnCon {
         flex-direction: column;
+        margin-top: 10%;
     }
 
     #playersTurnCon>div {
@@ -744,5 +745,12 @@ i:hover {
     #timeAndStatsCon>div{
         width: 100%;
         margin: 0;
+    }
+
+    #timer{
+        position: static;
+        font-size: 7rem;
+        height: 20vh;
+        margin: 25% auto !important;
     }
 }
