@@ -753,4 +753,36 @@ i:hover {
         height: 20vh;
         margin: 25% auto !important;
     }
+
+    .compNotificationBox{
+        width: 85% !important;
+        margin: 0 auto;
+        height: auto;
+        padding: 3%;
+    }
+
+    .compNotificationBox h2{
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    #viewResults{
+        margin: 5%;
+    }
+
+    #resultsHeadline h2{
+        font-size: 3rem;
+        width: 100%;
+        font-weight: bold;
+    }
+
+    #resultsHeadline{
+        width: 100%;
+    }
+
+    #resultsTable{
+        overflow-x: scroll;
+        width: 95%;
+        margin: auto;
+    }
 }
