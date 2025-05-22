@@ -533,11 +533,11 @@ i:hover {
     border-radius: var(--border-radius);
     border: var(--secondary-color) 10px solid;
     width: 70vw !important;
-    height: 70vh;
+    height: 70vh !important;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    font-size: 2.5rem;
+    font-size: 1.9rem;
     text-align: center;
     display: none;
     z-index: 1000;
