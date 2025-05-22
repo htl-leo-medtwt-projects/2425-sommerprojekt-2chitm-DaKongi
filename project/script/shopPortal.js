@@ -16,8 +16,25 @@
 [...document.getElementsByClassName('dropDownWca')].forEach(element => {
     element.addEventListener("click", () => {
         dropDownSearchWCA(element.textContent);
+        document.getElementById("shopNavMenuWca").style.display = "none";
     });
 });
+
+//dropdown for mobile
+let isMenuVisible = false;
+[...document.getElementsByClassName("shopTopBarCategory")].forEach(element => {
+    element.addEventListener("click", () => {
+        const dropDownId = element.getAttribute("dropDown");
+
+        if (!isMenuVisible) {
+            document.getElementById(dropDownId).style.display = "block";
+            isMenuVisible = true;
+        }else{
+            document.getElementById(dropDownId).style.display = "none";
+            isMenuVisible = false;
+        }
+    });
+})
 
 function dropDownSearchWCA(value) {
     let fittingCubes = [];
@@ -55,7 +72,7 @@ function dailyTip() {
         document.getElementById("dailyTipShopBox" + i).style.backgroundImage = `url('../img/shop/shopsIcons/${cubes[cubes.findIndex(cube => cube.name === document.getElementById("presentedCubeText").textContent)].shops[i].name}.png')`
     }
 
-   document.getElementById("presentedCubeImg").src = `../img/shop/cubes/${cubes[randNum].brand}_${cubes[randNum].size}.png`;
+    document.getElementById("presentedCubeImg").src = `../img/shop/cubes/${cubes[randNum].brand}_${cubes[randNum].size}.png`;
 }
 dailyTip();
 
@@ -176,15 +193,15 @@ function showBiggerCubes() {
 
 //for mobile
 let shopTopBarVisible = false;
-function toggleShopTopBar(){
-    if(shopTopBarVisible){
-        [...document.getElementsByClassName("shopTopBarCategory")].forEach(element =>{
+function toggleShopTopBar() {
+    if (shopTopBarVisible) {
+        [...document.getElementsByClassName("shopTopBarCategory")].forEach(element => {
             element.style.display = "none";
         });
 
         shopTopBarVisible = false;
-    }else{
-        [...document.getElementsByClassName("shopTopBarCategory")].forEach(element =>{
+    } else {
+        [...document.getElementsByClassName("shopTopBarCategory")].forEach(element => {
             element.style.display = "block";
         });
 

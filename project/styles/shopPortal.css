@@ -127,7 +127,7 @@ main {
     justify-content: space-between;
     margin-top: 12vh;
     padding: 1vw;
-    z-index: 1000;
+    z-index: 999;
 }
 
 #dailyTip {
@@ -503,7 +503,7 @@ main {
 
     #shopTopBar{
         width: 100%;
-        top: 2%;
+        top: 7.5vh;
         flex-direction: column;
         padding: 2% 0;
         margin-top: 8vh;
@@ -535,7 +535,9 @@ main {
 
     .form{
       width: 90%;
+      margin-top:3%;
       background-color: var(--primary-color);  
+      border: var(--font-color) solid 2px;
     }
 
     #categories{

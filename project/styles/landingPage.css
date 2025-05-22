@@ -298,24 +298,4 @@ section {
         width: 80%;
         margin: 0 auto;
     }
-
-    /*Settings*/
-    #settings {
-        width: 90%;
-    }
-
-    #appearanceWarning {
-        display: none;
-    }
-
-    #appearance {
-        width: 100%;
-    }
-
-    #settings-menu div{
-        font-size: 1rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 }

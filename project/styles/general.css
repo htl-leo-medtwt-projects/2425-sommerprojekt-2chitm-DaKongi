@@ -355,4 +355,24 @@ footer a{
     .footerVertical h4{
         font-size: 1.2rem;
     }
+
+    /*Settings*/
+    #settings {
+        width: 90%;
+    }
+
+    #appearanceWarning {
+        display: none;
+    }
+
+    #appearance {
+        width: 100%;
+    }
+
+    #settings-menu div{
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
