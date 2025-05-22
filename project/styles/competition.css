@@ -632,6 +632,14 @@ i:hover {
         font-size: 2.5rem;
     }
 
+    #contestants{
+        margin: 0 !important;
+    }
+
+    #disciplines{
+        margin: 0 !important;
+    }
+
     #contestantsInputs>input {
         margin: 5% auto;
         width: 100%;

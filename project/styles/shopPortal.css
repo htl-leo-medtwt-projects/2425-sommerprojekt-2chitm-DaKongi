@@ -131,8 +131,8 @@ main {
 }
 
 #dailyTip {
-    width: 90vw;
-    height: 88vh;
+    width: 100%;
+    height: 80%;
     margin: 0% auto;
 }
 
@@ -164,8 +164,9 @@ main {
     width: 100%;
     height: 80%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    margin: 0;
 }
 
 #dailyShopBoxes {
@@ -260,7 +261,7 @@ main {
 }
 
 .categoryBox {
-    width: 20vw;
+    width: 75%;
     aspect-ratio: 1/1;
     background-color: var(--primary-color);
     border-radius: var(--border-radius);
@@ -300,10 +301,11 @@ main {
 }
 
 #categories {
-    width: 100vw;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, auto);
     gap: 5vh;
+    margin: 2% auto;
 }
 
 .categoryBox p{
@@ -444,4 +446,112 @@ main {
 
 #cheapestCrack{
     border: green solid 8px;
+}
+
+@media screen and (max-width: 600px) {
+    #backToTopButton{
+        display: none;
+    }
+
+    /*Wrapper*/
+
+    #mobileHeader,header{
+        position: fixed !important;
+        top: 0;
+    }
+
+    .shopHeadline2{
+        width: 90%;
+        margin: 2% auto;
+        font-size: 1.5rem;
+        flex-direction: column;
+    }
+    .shopHeadline2 hr{
+        width: 100%;
+    }
+    .shopHeadline2 h2{
+        width: 100%;
+    }
+
+    #dailyTip{
+        width: 100%;
+        height: auto;
+    }
+
+    #dailyTipContent{
+        flex-direction: column;
+    }
+
+    #presentedCube{
+        width: 100%;
+    }
+
+    #presentedCube p{
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    #dailyShopBoxes{
+        height: auto;
+        grid-template-columns: auto;
+    }
+
+    .shopBox{
+        width: 90%;
+        margin: 5%;
+    }
+
+    #shopTopBar{
+        width: 100%;
+        top: 2%;
+        flex-direction: column;
+        padding: 2% 0;
+        margin-top: 8vh;
+    }
+
+    #shopTopBar h2{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .shopTopBarCategory{
+        width: 100%;
+        text-align: center;
+        background-color: var(--primary-color);
+        padding: 2% 0;
+        display: none;
+        position: unset;
+    }
+
+    .shopTopBarCategory i {
+        display: none;
+    }
+
+    .shopNavMenu{
+        width: 100%;
+        position: absolute;
+        top: 35vh;
+    }
+
+    .form{
+      width: 90%;
+      background-color: var(--primary-color);  
+    }
+
+    #categories{
+        grid-template-columns: auto;
+        width: 100vw;
+    }
+
+    .categoryBox{
+        width: 90%;
+        margin: 0;
+    }
+
+    #searchResultsContent{
+        flex-wrap: wrap;
+    }
+    #searchResultsContent>div{
+        width: 100%;
+    }
 }

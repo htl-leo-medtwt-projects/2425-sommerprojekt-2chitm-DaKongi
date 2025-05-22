@@ -278,12 +278,12 @@ h1 {
 
     .tutorialInfoBox {
         flex-direction: column;
-        width: 100vw;
+        width: 100%;
         align-items: center;
     }
 
     .tutorialInfoBox p {
-        width: 100vw;
+        width: 100%;
         text-align: center;
     }
 

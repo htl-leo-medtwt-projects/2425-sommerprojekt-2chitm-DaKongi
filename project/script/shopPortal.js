@@ -173,3 +173,21 @@ function showBiggerCubes() {
     });
     showSearchResults(fittingCubes);
 }
+
+//for mobile
+let shopTopBarVisible = false;
+function toggleShopTopBar(){
+    if(shopTopBarVisible){
+        [...document.getElementsByClassName("shopTopBarCategory")].forEach(element =>{
+            element.style.display = "none";
+        });
+
+        shopTopBarVisible = false;
+    }else{
+        [...document.getElementsByClassName("shopTopBarCategory")].forEach(element =>{
+            element.style.display = "block";
+        });
+
+        shopTopBarVisible = true;
+    }
+}

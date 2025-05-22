@@ -287,15 +287,17 @@ main {
     }
 
     #timeList {
-        width: 100%;
+        width: 95%;
         height: 45vh;
+        margin: 10% auto;
     }
 
     #menu {
-        width: 100%;
+        width: 95%;
         flex-direction: column-reverse;
         height: auto;
         position: static;
+        margin: auto;
     }
 
     #menu>div {
@@ -304,7 +306,7 @@ main {
 
     #timeChart {
         max-width: none;
-        width: 90%;
+        width: 75%;
     }
 
     #statistics {
