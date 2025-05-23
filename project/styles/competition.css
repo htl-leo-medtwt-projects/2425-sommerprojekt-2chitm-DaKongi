@@ -441,7 +441,7 @@ i:hover {
 
 .duelPointBoxPoints {
     width: 100%;
-    height: 80%;
+    height: 100%;
     background-color: var(--secondary-color);
 }
 
@@ -596,6 +596,18 @@ i:hover {
 }
 
 @media screen and (max-width:600px) {
+    body{
+        overflow: visible;
+    }
+
+    #position h3{
+        font-size: 2rem;
+    }
+
+    #timeList{
+        margin-bottom: 10% !important;
+    }
+
     #competitionStartSettingsSettings {
         grid-template-columns: 1fr;
     }
@@ -682,6 +694,7 @@ i:hover {
         height: 40vh;
         width: 100%;
         border: var(--secondary-color) 3px solid;
+        align-items: start;
     }
 
     #duelScrambleCon {

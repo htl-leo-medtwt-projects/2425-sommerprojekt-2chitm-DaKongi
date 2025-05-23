@@ -461,6 +461,41 @@ document.querySelector('#duelTimer').addEventListener("touchend", function (even
     clearTimeout(colorChangeTimer);
 });
 
+document.querySelector('#timeAndStatsCon').addEventListener("touchstart", function (event) {
+    if (timerRunning) {
+        stopTimer();
+        timerRunning = false;
+    } else {
+        if (!turnedRed) {
+            document.getElementById("timer").style.color = "red";
+            turnedRed = true;
+        }
+
+        keyDownTime = Date.now();
+        colorChangeTimer = setTimeout(() => {
+            if (Date.now() - keyDownTime >= 500) {
+                document.getElementById("timer").style.color = "green";
+            }
+        }, 500);
+    }
+});
+
+document.querySelector('#timeAndStatsCon').addEventListener("touchend", function (event) {
+    turnedRed = false;
+    document.getElementById("timer").style.color = originalFontColor;
+
+    if (keyDownTime !== null) {
+        let elapsedTime = Date.now() - keyDownTime;
+        if (elapsedTime >= 500) {
+            startTimer();
+            timerRunning = true;
+        }
+        keyDownTime = null;
+    }
+
+    clearTimeout(colorChangeTimer);
+});
+
 function saveTime() {
     let contestant = currentPlayer;
     let time = parseFormattedTime(document.getElementById("timer").textContent);
