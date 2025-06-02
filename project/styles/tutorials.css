@@ -217,6 +217,8 @@ h1 {
     justify-content: space-evenly;
     font-family: jomhu;
     font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .tutorialAlgImg {
