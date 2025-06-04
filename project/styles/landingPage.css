@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #00FFFF;
+    --primary-color: #A7FFFF;
     --secondary-color: #118A8A;
     --accent-color: #F7A278;
     --font-color: #02182B;
@@ -12,7 +12,6 @@ html {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 
 
@@ -88,7 +87,7 @@ section {
     border-radius: 25px;
 }
 
-.whatIsMastercubeBox h3{
+.whatIsMastercubeBox h3 {
     font-size: 6rem;
     padding: 5%;
     padding-bottom: 0;
@@ -96,7 +95,7 @@ section {
     font-weight: bold;
 }
 
-.whatIsMastercubeBoxContent{
+.whatIsMastercubeBoxContent {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -105,10 +104,12 @@ section {
     height: 40%;
     font-size: 5rem;
 }
-.whatIsMastercubeBoxContent i{
+
+.whatIsMastercubeBoxContent i {
     font-size: 10rem;
 }
-.whatIsMastercubeBoxContent p{
+
+.whatIsMastercubeBoxContent p {
     width: 60%;
 }
 
@@ -251,6 +252,11 @@ section {
 
     .whatIsMastercubeBoxContent span {
         display: none;
+        user-select: none;
+    }
+
+    .whatIsMastercubeBoxContent span:hover {
+        cursor: pointer;
     }
 
     #gettingFasterthreeCols {

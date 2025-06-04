@@ -793,25 +793,25 @@ async function downloadPDF(row) {
     //name
     firstPage.drawText(table.rows[row].cells[0].textContent, {
         x: x1,
-        y: 10,
+        y: 550,
         size: 24,
         font: font,
         color: PDFLib.rgb(0, 0, 0),
     });
 
     //position
-    firstPage.drawText(table.rows[row].cells[1].textContent, {
+    firstPage.drawText(table.rows[row].cells[1].textContent + ".", {
         x: x2,
-        y: 100,
-        size: 48,
+        y: 300,
+        size: 24,
         font: font,
         color: PDFLib.rgb(0, 0, 0),
     });
 
     //mo3
-    firstPage.drawText(table.rows[row].cells[1].textContent, {
-        x: x2,
-        y: 200,
+    firstPage.drawText(table.rows[row].cells[2].textContent, {
+        x: 100,
+        y: 100,
         size: 48,
         font: font,
         color: PDFLib.rgb(0, 0, 0),
@@ -820,25 +820,7 @@ async function downloadPDF(row) {
     //discipline
     firstPage.drawText(document.getElementById('disciplineText').textContent, {
         x: x4,
-        y: 500,
-        size: 48,
-        font: font,
-        color: PDFLib.rgb(0, 0, 0),
-    });
-
-    //position
-    firstPage.drawText(table.rows[row].cells[1].textContent, {
-        x: x2,
-        y: 200,
-        size: 48,
-        font: font,
-        color: PDFLib.rgb(0, 0, 0),
-    });
-
-    //position
-    firstPage.drawText(table.rows[row].cells[1].textContent, {
-        x: x2,
-        y: 200,
+        y: 700,
         size: 48,
         font: font,
         color: PDFLib.rgb(0, 0, 0),
