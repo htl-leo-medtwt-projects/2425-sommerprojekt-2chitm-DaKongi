@@ -276,28 +276,33 @@ main {
     box-sizing: border-box;
 }
 
-.categoryBox:hover{
+.categoryBox:hover {
     border: black solid 3px;
 }
 
-#categoryBoxWCA{
+#categoryBoxWCA {
     background-image: url(../img/shop/categories/wca.png);
 }
-#categoryBox3x3{
-     background-image: url(../img/shop/categories/3x3.png);
+
+#categoryBox3x3 {
+    background-image: url(../img/shop/categories/3x3.png);
 }
-#categoryBoxLube{
+
+#categoryBoxLube {
     background-image: url(../img/shop/categories/lube.webp);
     background-size: 150%;
 }
-#categoryBoxBiggerCubes{
-     background-image: url(../img/shop/categories/bigCubes.png);
+
+#categoryBoxBiggerCubes {
+    background-image: url(../img/shop/categories/bigCubes.png);
 }
-#categoryBoxAccessories{
+
+#categoryBoxAccessories {
     background-image: url(../img/shop/categories/timer.png);
 }
-#categoryBoxShapeShifters{
-     background-image: url(../img/shop/categories/mirror.png);
+
+#categoryBoxShapeShifters {
+    background-image: url(../img/shop/categories/mirror.png);
 }
 
 #categories {
@@ -308,7 +313,7 @@ main {
     margin: 2% auto;
 }
 
-.categoryBox p{
+.categoryBox p {
     background-color: #ffffffbf;
     width: 100%;
 }
@@ -348,7 +353,7 @@ main {
     box-sizing: border-box;
 }
 
-.searchResultsBox>img{
+.searchResultsBox>img {
     width: 100%;
 }
 
@@ -436,7 +441,7 @@ main {
     aspect-ratio: 1/1;
 }
 
-#shopOverlayShops>div:hover{
+#shopOverlayShops>div:hover {
     border: var(--font-color) 2px solid;
 }
 
@@ -444,63 +449,75 @@ main {
     width: 100%;
 }
 
-#cheapestCrack{
+#cheapestCrack {
     border: green solid 8px;
 }
 
+#shopTopBarH2Arrow {
+    display: none;
+}
+
 @media screen and (max-width: 600px) {
-    #backToTopButton{
+    #shopTopBarH2Arrow {
+        display: initial;
+    }
+
+    #backToTopButton {
         display: none;
     }
+
     /*Wrapper*/
 
-    #mobileHeader,header{
+    #mobileHeader,
+    header {
         position: fixed !important;
         top: 0;
     }
 
-    .shopHeadline2{
+    .shopHeadline2 {
         width: 90%;
         margin: 2% auto;
         font-size: 1.5rem;
         flex-direction: column;
     }
-    .shopHeadline2 hr{
-        width: 100%;
-    }
-    .shopHeadline2 h2{
+
+    .shopHeadline2 hr {
         width: 100%;
     }
 
-    #dailyTip{
+    .shopHeadline2 h2 {
+        width: 100%;
+    }
+
+    #dailyTip {
         width: 100%;
         height: auto;
     }
 
-    #dailyTipContent{
+    #dailyTipContent {
         flex-direction: column;
     }
 
-    #presentedCube{
+    #presentedCube {
         width: 100%;
     }
 
-    #presentedCube p{
+    #presentedCube p {
         font-size: 3rem;
         text-align: center;
     }
 
-    #dailyShopBoxes{
+    #dailyShopBoxes {
         height: auto;
         grid-template-columns: auto;
     }
 
-    .shopBox{
+    .shopBox {
         width: 90%;
         margin: 5%;
     }
 
-    #shopTopBar{
+    #shopTopBar {
         width: 100%;
         top: 7.5vh;
         flex-direction: column;
@@ -508,12 +525,12 @@ main {
         margin-top: 8vh;
     }
 
-    #shopTopBar h2{
+    #shopTopBar h2 {
         font-size: 2rem;
         font-weight: bold;
     }
 
-    .shopTopBarCategory{
+    .shopTopBarCategory {
         width: 100%;
         text-align: center;
         background-color: var(--primary-color);
@@ -526,33 +543,34 @@ main {
         display: none;
     }
 
-    .shopNavMenu{
+    .shopNavMenu {
         width: 100%;
         position: absolute;
         top: 35vh;
     }
 
-    .form{
-      width: 90%;
-      margin-top:3%;
-      background-color: var(--primary-color);  
-      border: var(--font-color) solid 2px;
+    .form {
+        width: 90%;
+        margin-top: 3%;
+        background-color: var(--primary-color);
+        border: var(--font-color) solid 2px;
     }
 
-    #categories{
+    #categories {
         grid-template-columns: auto;
         width: 100vw;
     }
 
-    .categoryBox{
+    .categoryBox {
         width: 90%;
         margin: 0;
     }
 
-    #searchResultsContent{
+    #searchResultsContent {
         flex-wrap: wrap;
     }
-    #searchResultsContent>div{
+
+    #searchResultsContent>div {
         width: 100%;
     }
 }
