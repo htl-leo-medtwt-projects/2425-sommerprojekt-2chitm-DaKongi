@@ -785,7 +785,7 @@ async function downloadPDF(row) {
     const x3 = (pageWidth3 - textWidth3) / 2;
 
     const pageWidth4 = firstPage.getWidth();
-    const textWidth4 = font.widthOfTextAtSize(document.getElementById('disciplineText').textContent, 28);
+    const textWidth4 = font.widthOfTextAtSize(document.getElementById('disciplineText').textContent, 20);
     const x4 = (pageWidth4 - textWidth4) / 2;
 
     row++;
@@ -793,7 +793,7 @@ async function downloadPDF(row) {
     //name
     firstPage.drawText(table.rows[row].cells[0].textContent, {
         x: x1,
-        y: 550,
+        y: 560,
         size: 24,
         font: font,
         color: PDFLib.rgb(0, 0, 0),
@@ -801,18 +801,18 @@ async function downloadPDF(row) {
 
     //position
     firstPage.drawText(table.rows[row].cells[1].textContent + ".", {
-        x: x2,
-        y: 300,
-        size: 24,
+        x: x1,
+        y: 340,
+        size: 48,
         font: font,
         color: PDFLib.rgb(0, 0, 0),
     });
 
     //mo3
     firstPage.drawText(table.rows[row].cells[2].textContent, {
-        x: 100,
-        y: 100,
-        size: 48,
+        x: 150,
+        y: 110,
+        size: 20,
         font: font,
         color: PDFLib.rgb(0, 0, 0),
     });
@@ -820,8 +820,17 @@ async function downloadPDF(row) {
     //discipline
     firstPage.drawText(document.getElementById('disciplineText').textContent, {
         x: x4,
-        y: 700,
+        y: 650,
         size: 48,
+        font: font,
+        color: PDFLib.rgb(0, 0, 0),
+    });
+
+     //best
+    firstPage.drawText(table.rows[row].cells[3].textContent, {
+        x: 350,
+        y: 110,
+        size: 20,
         font: font,
         color: PDFLib.rgb(0, 0, 0),
     });
